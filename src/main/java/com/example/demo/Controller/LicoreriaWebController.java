@@ -23,7 +23,7 @@ public class LicoreriaWebController {
     }
 
     @GetMapping("/productos")
-    public String showProductsList() {
+    public String showProductsList() { 
         return "forward:/lista_productos.html";
     }
 
