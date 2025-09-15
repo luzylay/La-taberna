@@ -37,7 +37,6 @@ header {
   background: url("../img/taberna_foto.jpg") center/cover no-repeat;
   color: white;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-  padding: 100px 20px;
 }
 
 header h1 {
