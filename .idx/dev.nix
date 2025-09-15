@@ -6,9 +6,10 @@
 
   # Use https://search.nixos.org/packages to find packages
   packages = [
-    pkgs.jdk17
-    pkgs.maven
+  pkgs.jdk21
+  pkgs.maven
   ];
+
 
   # Sets environment variables in the workspace
   env = {};
