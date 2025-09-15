@@ -9,10 +9,6 @@
 /* ==========================
    Navbar
 ========================== */
-.navbar {
-  background-color: var(--vino) !important;
-}
-
 .navbar-brand,
 .nav-link {
   color: white !important;

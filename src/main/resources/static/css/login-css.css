@@ -7,10 +7,6 @@
     --verde-oliva: #556B2F;
 }
 
-.navbar {
-    background-color: var(--vino);
-}
-
 .navbar .nav-link {
     color: var(--marfil);
     font-weight: 500;
