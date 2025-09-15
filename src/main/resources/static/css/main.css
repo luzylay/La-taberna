@@ -50,13 +50,16 @@ header h1 {
    Productos (cards)
 ========================== */
 .card-img-top {
-  height: 250px;       /* Todas las imágenes tendrán la misma altura */
-  object-fit: cover;   /* Recorta la imagen para que no se deforme */
+  height: 250px;
+  /* Todas las imágenes tendrán la misma altura */
+  object-fit: cover;
+  /* Recorta la imagen para que no se deforme */
 }
 
 .card-title {
   font-weight: bold;
-  color: #b22222; /* un tono de rojo vino */
+  color: #b22222;
+  /* un tono de rojo vino */
 }
 
 /* ==========================

@@ -59,9 +59,9 @@ section {
 .section-nosotros {
     position: relative;
     background-image:
-            linear-gradient(rgba(97, 34, 55, 0.7),
+        linear-gradient(rgba(97, 34, 55, 0.7),
             rgba(97, 34, 55, 0.7)),
-            url('https://wallpapers.com/images/featured/bar-c5vakob55hk4alvi.jpg');
+        url('https://wallpapers.com/images/featured/bar-c5vakob55hk4alvi.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

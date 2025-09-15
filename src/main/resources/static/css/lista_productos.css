@@ -2,8 +2,10 @@
 
 /* Ajustar imágenes de productos */
 .card-img-top {
-  height: 250px;       /* Todas las imágenes tendrán la misma altura */
-  object-fit: cover;   /* Rellena el espacio sin deformarse */
+  height: 250px;
+  /* Todas las imágenes tendrán la misma altura */
+  object-fit: cover;
+  /* Rellena el espacio sin deformarse */
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
 }
@@ -15,5 +17,5 @@
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
