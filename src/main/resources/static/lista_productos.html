@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Productos - Licorería</title>
+
+  <!-- Boots -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!--  Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <!--  propios -->
+  <link rel="stylesheet" href="/css/lista_productos.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="/css/contact-css.css">
+        <link rel="stylesheet" href="/css/login-css.css">
+
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-transparente">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="main.html">La Taberna de Roly</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="main.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="lista_productos.html">Productos</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="publicidad.html">Ofertas</a></li>
+          <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+        </ul>
+        <a href="login.html" class="btn btn-outline-light m-1">Ingresar</a>
+        <a href="#" class="btn btn-outline-light m-1">Registrarse</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO -->
+  <div class="container mt-5 pt-5">
+    <h1>Nuestros Productos</h1>
+    <p class="lead">Explora nuestra colección completa de licores.</p>
+
+    <!-- Filtros -->
+    <div class="row mb-4 g-3">
+      <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Buscar producto...">
+      </div>
+      <div class="col-md-4">
+        <select class="form-select">
+          <option selected>Filtrar por Categoría</option>
+          <option value="vino">Vino</option>
+          <option value="cerveza">Cerveza</option>
+          <option value="destilado">Destilado</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-outline-secondary w-100">Aplicar Filtros</button>
+      </div>
+    </div>
+
+    
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <!-- P1 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/vino.jpg" class="card-img-top producto-img" alt="Vino Tinto">
+          <div class="card-body">
+            <h5 class="card-title">Vino Tinto</h5>
+            <p class="card-text">Vino tinto de uva, añejado 12 meses.</p>
+            <p class="card-text"><strong>Precio: S/50.00</strong></p>
+            <a href="#" class="btn btn-info btn-sm">Detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/cervezaCusque.jpg" class="card-img-top producto-img" alt="Cerveza Cusqueña">
+          <div class="card-body">
+            <h5 class="card-title">Cerveza Cusqueña</h5>
+            <p class="card-text">Con alto contenido de lúpulo y aroma cítrico.</p>
+            <p class="card-text"><strong>Precio: S/18.00</strong></p>
+            <a href="#" class="btn btn-info btn-sm">Detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/bluelabel.jpg" class="card-img-top producto-img" alt="Whisky Blue Label">
+          <div class="card-body">
+            <h5 class="card-title">Whisky Johnnie Walker</h5>
+            <p class="card-text">Blue Label Botella 750 ml</p>
+            <p class="card-text"><strong>Precio: S/1145.00</strong></p>
+            <a href="#" class="btn btn-info btn-sm">Detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/ronCartavio.jpg" class="card-img-top producto-img" alt="Ron Cartavio">
+          <div class="card-body">
+            <h5 class="card-title">Ron Cartavio</h5>
+            <p class="card-text">Ron de 7 años, ideal para cócteles o disfrutar solo.</p>
+            <p class="card-text"><strong>Precio: S/135.00</strong></p>
+            <a href="#" class="btn btn-info btn-sm">Detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- P5 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/gin.jpg" class="card-img-top producto-img" alt="Gin Beefeater">
+          <div class="card-body">
+            <h5 class="card-title">Gin Beefeater</h5>
+            <p class="card-text">Gin con una mezcla única de botánicos.</p>
+            <p class="card-text"><strong>Precio: S/70.00</strong></p>
+            <a href="#" class="btn btn-info btn-sm">Detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- P6 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/tequila.jpg" class="card-img-top producto-img" alt="Tequila Reposado">
+          <div class="card-body">
+            <h5 class="card-title">Tequila Reposado</h5>
+            <p class="card-text">Tequila 100% agave, reposado por 6 meses.</p>
+            <p class="card-text"><strong>Precio: S/130.00</strong></p>
+            <a href="#" class="btn btn-info btn-sm">Detalles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pag -->
+    <nav aria-label="Page navigation" class="mt-4">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="mt-5 bg-dark text-light pt-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 mb-4">
+          <h3 class="footer-title">La Taberna de Roly</h3>
+          <p class="text-secondary">Donde cada copa cuenta una historia y cada momento se celebra</p>
+          <div class="d-flex">
+            <a href="https://www.tiktok.com/@rolando.g.e" class="social-link text-light fs-4"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5>Contacto</h5>
+          <p class="text-secondary mb-0"><i class="bi bi-geo-alt-fill me-2"></i> Av. Túpac Amaru 1148, Carabayllo 15321</p>
+          <p class="text-secondary">Lima, Perú</p>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <h5>Horarios de Visita</h5>
+          <p class="text-secondary mb-0"><i class="bi bi-clock-fill me-2"></i><span class="fw-medium">Lun - Miér:</span> 2 p.m.-1 a.m.</p>
+          <p class="text-secondary mb-0"><span class="fw-medium">Jue - Vier:</span> 2 p.m.-2 a.m.</p>
+          <p class="text-secondary mb-0"><span class="fw-medium">Sábados:</span> 2 p.m.-2:30 a.m.</p>
+          <p class="text-secondary"><span class="fw-medium">Domingos:</span> 2 p.m.-2 a.m.</p>
+        </div>
+      </div>
+
+      <hr class="border-secondary my-4">
+
+      <div class="row">
+        <div class="col-md-6">
+          <p class="text-secondary mb-0">© 2025 La Taberna de Roly. Todos los derechos reservados.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="#" class="footer-link me-3 text-secondary">Política de Privacidad</a>
+          <a href="#" class="footer-link me-3 text-secondary">Términos de Uso</a>
+          <a href="#" class="footer-link text-secondary">Aviso Legal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/script_main.js"></script>
+</body>
+</html>

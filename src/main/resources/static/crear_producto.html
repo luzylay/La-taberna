@@ -1,0 +1,41 @@
+<!-- ... (código de plantilla base) ... -->
+<div class="container mt-4">
+    <h1>Crear Nuevo Producto</h1>
+    <p class="lead">Completa los campos para añadir un nuevo licor a tu inventario.</p>
+
+    <form class="mt-4">
+        <div class="mb-3">
+            <label for="nombreProducto" class="form-label">Nombre del Producto</label>
+            <input type="text" class="form-control" id="nombreProducto" placeholder="Ej: Vino Tinto Malbec">
+        </div>
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <textarea class="form-control" id="descripcion" rows="3" placeholder="Breve descripción del producto"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="categoria" class="form-label">Categoría</label>
+            <select class="form-select" id="categoria">
+                <option selected>Selecciona una categoría</option>
+                <option value="vino">Vino</option>
+                <option value="cerveza">Cerveza</option>
+                <option value="destilado">Destilado</option>
+                <option value="otro">Otro</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio (\$)</label>
+            <input type="number" class="form-control" id="precio" step="0.01" placeholder="Ej: 29.99">
+        </div>
+        <div class="mb-3">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" class="form-control" id="stock" placeholder="Ej: 100">
+        </div>
+        <div class="mb-3">
+            <label for="imagenProducto" class="form-label">Imagen del Producto</label>
+            <input class="form-control" type="file" id="imagenProducto">
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Producto</button>
+        <button type="reset" class="btn btn-secondary">Limpiar Formulario</button>
+    </form>
+</div>
+<!-- ... (código de plantilla base) ... -->

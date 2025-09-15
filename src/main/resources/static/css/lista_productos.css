@@ -1,0 +1,19 @@
+/* lista_productos.css */
+
+/* Ajustar imágenes de productos */
+.card-img-top {
+  height: 250px;       /* Todas las imágenes tendrán la misma altura */
+  object-fit: cover;   /* Rellena el espacio sin deformarse */
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+/* Un pequeño efecto hover en las tarjetas */
+.card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
