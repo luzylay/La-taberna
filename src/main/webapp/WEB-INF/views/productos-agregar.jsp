@@ -51,8 +51,7 @@
 
                 <!-- TODO EL MAIN ES EL APARTADO DE AGREGAR -->
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 min-vh-100">
-                    <h1 class="mt-2 mb-2 text-center p-1">Actualizar
-                        Productos</h1>
+                    <h1 class="mt-2 mb-2 text-center p-1">Crear Nuevo Producto</h1>
                     <div class="container mt-3">
                         <div class="row justify-content-center">
                             <div class="col-md-8">
@@ -179,13 +178,6 @@
                 </main>
             </div>
         </div>
-
-        <!-- ESTA COSA SOLO EJECUTARÁ SI SE ENVIA EL REDIRECTATTRIBUTES EL BOOLEAN VERIFICAR :D -->
-        <script>
-            <c:if test="${not empty verificar}">
-                alert("Se agrego un producto correctamente :D");
-            </c:if>
-        </script>
 
         <footer class="bg-dark text-white text-center py-2">
             <div>© 2025 - Panel de Gestión | <i class="bi bi-shield-lock"></i>

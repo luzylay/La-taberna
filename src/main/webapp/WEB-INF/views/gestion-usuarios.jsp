@@ -5,12 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Usuarios</title>
+    <title>Gestión - Usuarios</title>
     <link rel="stylesheet" href="css/gestion-css.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
 </head>
 <body>
+
 <div class="container-fluid">
     <div class="row">
 
@@ -26,20 +27,29 @@
                         aria-label="Cerrar"></button>
             </div>
             <div class="offcanvas-body p-0">
-                <jsp:include page="gestion-panel-lateral.jsp" />
+                <jsp:include page="gestion-panel-lateral.jsp"/>
             </div>
         </div>
         <div class="d-none d-md-block col-md-2 p-0 vh-100">
-            <jsp:include page="gestion-panel-lateral.jsp" />
+            <jsp:include page="gestion-panel-lateral.jsp"/>
         </div>
 
         <!-- MAIN -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 min-vh-100">
-            <h1 class="mt-4 mb-4 text-center p-3">Usuarios Registrados</h1>
+            <div class="d-flex justify-content-between align-items-center mt-4 mb-3">
+                <h1 class="text-center p-3 flex-grow-1">Gestión de Usuarios</h1>
 
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered">
-                    <thead class="table-dark">
+                <!-- Btn Agregar -->
+                <a href="/gestion/usuarios/NuevoUsuario"
+                   class="btn btn-success btn-lg shadow-sm"
+                   style="border-radius: 50px; transition: all 0.3s;">
+                    <i class="bi bi-plus-circle me-2"></i> Agregar Usuario
+                </a>
+            </div>
+
+            <div class="table-responsive shadow-sm rounded">
+                <table class="table table-striped table-bordered align-middle">
+                    <thead class="table-dark text-center">
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
@@ -49,11 +59,12 @@
                         <th>Teléfono</th>
                         <th>Tipo Usuario</th>
                         <th>Estado</th>
+                        <th>Acciones</th>
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach var="u" items="${usuarios}">
-                        <tr>
+                        <tr class="align-middle text-center">
                             <td>${u.id_usuario}</td>
                             <td>${u.nombre_user}</td>
                             <td>${u.apaterno_user}</td>
@@ -61,11 +72,28 @@
                             <td>${u.correo_user}</td>
                             <td>${u.telefono_user}</td>
                             <td>${u.tipo_user.nombre_tipoUsuario}</td>
-                             <td>
+                            <td>
                                 <c:choose>
                                     <c:when test="${u.estado_user}">Activo</c:when>
                                     <c:otherwise>Desactivado</c:otherwise>
                                 </c:choose>
+                            </td>
+                            <td>
+                                <!-- Btn Editar -->
+                                <a href="/gestion/usuarios/editar/${u.id_usuario}"
+                                   class="btn btn-warning btn-sm btn-editar mb-1">
+                                    <i class="bi bi-pencil-square me-2"></i>Editar
+                                </a>
+
+                                <!-- Btn Eliminar -->
+                                <form action="/gestion/usuarios/eliminarUsuario" method="post"
+                                      onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');"
+                                      style="display:inline;">
+                                    <input type="hidden" name="id_usuario" value="${u.id_usuario}">
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="bi bi-trash me-1"></i>Eliminar
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     </c:forEach>
@@ -76,9 +104,29 @@
     </div>
 </div>
 
-    <footer class="bg-dark text-white text-center py-2">
-        <div>© 2025 - Panel de Gestión | <i class="bi bi-shield-lock"></i> Derechos reservados</div>
-    </footer>
+<c:if test="${not empty verificar}">
+    <script type="text/javascript">
+        <c:choose>
+            <c:when test="${verificar == 1}">
+                alert("Se agregó un usuario correctamente :D");
+            </c:when>
+            <c:when test="${verificar == 2}">
+                alert("Se editó un usuario correctamente :D");
+            </c:when>
+            <c:when test="${verificar == 3}">
+                alert("Se eliminó un usuario correctamente :D");
+            </c:when>
+            <c:otherwise>
+                alert("La operación no se pudo realizar D:");
+            </c:otherwise>
+        </c:choose>
+    </script>
+</c:if>
+
+<!--Footer-->
+<footer class="bg-dark text-white text-center py-2">
+    <div>© 2025 - Panel de Gestión | <i class="bi bi-shield-lock"></i> Derechos reservados</div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

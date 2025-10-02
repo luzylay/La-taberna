@@ -56,6 +56,23 @@ public class ProductoDAO implements ProductoRepository {
         });
     }
 
+    // Método para obtener productos por categoría
+    public List<Producto> obtenerProductosPorCategoria(int id_categoria) {
+        String sql = "SELECT * FROM Producto WHERE categoria_pro = ?";
+        return jdbcTemplate.query(sql, new Object[]{id_categoria}, (rs, rowNum) -> {
+            Producto p = new Producto();
+            p.setId_producto(rs.getInt("id_producto"));
+            p.setNombre_pro(rs.getString("nombre_pro"));
+            p.setDescrip_pro(rs.getString("descrip_pro"));
+            p.setPrecio_pro(rs.getDouble("precio_pro"));
+            p.setAnio_pro(rs.getInt("anio_pro"));
+            p.setCategoria_pro(categoriaDAO.obtenerCategoriaPorId(rs.getInt("categoria_pro")));
+            p.setStock_pro(rs.getInt("stock_pro"));
+            p.setUrl_pro(rs.getString("url_pro"));
+            return p;
+        });
+    }
+
     // Metodos para agregar, actualizar y eliminar productos
     public int agregarProducto(Producto producto) {
         String sql = "INSERT INTO Producto (nombre_pro, descrip_pro, categoria_pro, stock_pro, anio_pro, precio_pro, url_pro) VALUES (?, ?, ?, ?, ?, ?, ?)";

@@ -23,4 +23,5 @@ public interface ProductoRepository {
 
     public int eliminarProducto(int idDetalle);
 
+    public List<Producto> obtenerProductosPorCategoria(int id_categoria);
 }

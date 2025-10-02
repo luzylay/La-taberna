@@ -22,7 +22,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         Usuario usuario = usuarioDAO.buscarPorCorreo(correo);
         if (usuario != null && usuario.getPassword().equals(password)) {
             session.setAttribute("user", usuario);
-            session.setMaxInactiveInterval(15*60);
+            session.setMaxInactiveInterval(30*60);
             return true;
         }
         return false;

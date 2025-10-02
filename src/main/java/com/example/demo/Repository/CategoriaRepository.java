@@ -5,15 +5,15 @@ import com.example.demo.Model.Categoria;
 
 public interface CategoriaRepository {
 
-    List<Categoria> obtenerCategorias();
+    public List<Categoria> obtenerCategorias();
 
-    Categoria obtenerCategoriaPorId(int id);
+    public Categoria obtenerCategoriaPorId(int id);
 
-    int agregarCategoria(Categoria categoria);
+    public int agregarCategoria(Categoria categoria);
 
-    int actualizarCategoria(Categoria categoria);
+    public int actualizarCategoria(Categoria categoria);
 
-    int eliminarCategoria(int id);
+    public int eliminarCategoria(int id);
 
-    boolean existeId(int id);
+    public boolean existeId(int id);
 }

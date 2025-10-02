@@ -1,48 +1,95 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Model.Categoria;
 import com.example.demo.Model.Producto;
 import com.example.demo.Service.CategoriaService;
+import com.example.demo.Service.DetalleVentaService;
 import com.example.demo.Service.Impl.ProductoServiceImpl;
 import com.example.demo.Service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("/productos")
+@RequestMapping("/gestion/productos")
 public class ProductoController {
+
 
     private final ProductoService productoService;
     private final CategoriaService categoriaService;
+    private final DetalleVentaService detalleVentaService;
+
 
     @Autowired
-    public ProductoController(ProductoServiceImpl productoServiceImpl, CategoriaService categoriaService) {
+    public ProductoController(ProductoServiceImpl productoServiceImpl, CategoriaService categoriaService, DetalleVentaService detalleVentaService) {
         this.productoService = productoServiceImpl;
         this.categoriaService = categoriaService;
+        this.detalleVentaService = detalleVentaService;
     }
 
     @GetMapping
-    public String listarProductos(@RequestParam(name = "page", defaultValue = "1") int paginaActual,
-                                  @RequestParam(name = "nombre", required = false) String nombreFiltro,
-                                  @RequestParam(name = "categoria", required = false) String categoriaFiltro,
-                                  Model model) {
+    public String showManagementProduct(Model model) {
+        List<Producto> productos = productoService.getTodosLosProductos();
+        model.addAttribute("productos", productos);
+        return "gestion-productos";
+    }
 
-        int productosPorPagina = 16;
+    @GetMapping("/NuevoProducto")
+    public String showCreateProductPage(Model model) {
+        List<Categoria> categorias = categoriaService.obtenerCategorias();
+        model.addAttribute("categorias", categorias);
+        model.addAttribute("nuevoProducto", new Producto());
+        return "productos-agregar";
+    }
 
-        List<Producto> productos = productoService.getProductosFiltrados(paginaActual, productosPorPagina, nombreFiltro, categoriaFiltro);
-        int totalProductos = productoService.getProductCountFiltered(nombreFiltro, categoriaFiltro);
-        int totalDePaginas = (int) Math.ceil((double) totalProductos / productosPorPagina);
+    // EDITAR
+    @GetMapping("/editar/{id}")
+    public String obtenerProducto(@PathVariable Integer id, Model model) {
+        Producto producto = productoService.getProductoPorId(id);
+        List<Categoria> categorias = categoriaService.obtenerCategorias();
 
-        model.addAttribute("listaProductos", productos);
-        model.addAttribute("paginaActual", paginaActual);
-        model.addAttribute("totalDePaginas", totalDePaginas);
-        model.addAttribute("nombreFiltro", nombreFiltro != null ? nombreFiltro : "");
-        model.addAttribute("categoriaFiltro", categoriaFiltro != null ? categoriaFiltro : "");
+        model.addAttribute("producto", producto);
+        model.addAttribute("categorias", categorias);
+        model.addAttribute("productoEditado", new Producto());
 
-        return "productos";
+        return "productos-editar";
+    }
+
+    // GUARDAR - GUARDAR NUEVO PRODUCTO
+    @PostMapping("/guardar")
+    public String guardarProducto(@ModelAttribute Producto producto,
+                                  RedirectAttributes redirigir) {
+        Categoria c = categoriaService.obtenerCategoriaPorId(producto.getCategoria_pro().getId_categoria());
+        producto.setCategoria_pro(c);
+        productoService.agregarProducto(producto);
+
+        redirigir.addFlashAttribute("verificar", 1);
+        return "redirect:/gestion/productos";
+    }
+
+    // EDITAR - GUARDAR CAMBIOS PRODUCTO
+    @PostMapping("/aplicarEdicion")
+    public String editarProducto(@ModelAttribute Producto producto,
+                                 RedirectAttributes redirigir) {
+        Categoria c = categoriaService.obtenerCategoriaPorId(producto.getCategoria_pro().getId_categoria());
+        producto.setCategoria_pro(c);
+        productoService.actualizarProducto(producto);
+
+        redirigir.addFlashAttribute("verificar", 2);
+        return "redirect:/gestion/productos";
+    }
+
+    // ELIMINAR - ELIMINAR PRODCUTO
+    @PostMapping("/eliminarProducto")
+    public String eliminarProducto(@RequestParam Integer id_producto, RedirectAttributes redirigir) {
+        detalleVentaService.eliminarDetallePorProducto(id_producto);
+        productoService.eliminarProducto(id_producto);
+        redirigir.addFlashAttribute("verificar", 3);
+        return "redirect:/gestion/productos";
     }
 
 }

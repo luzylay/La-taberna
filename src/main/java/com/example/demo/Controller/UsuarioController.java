@@ -20,10 +20,10 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    @GetMapping("/ver")
+    @GetMapping
     public String showViewUsers(Model model){
         List<Usuario> listaUsuarios = usuarioService.obtenerUsuarios();
         model.addAttribute("usuarios",listaUsuarios);
-        return "usuarios-ver";
+        return "gestion-usuarios";
     }
 }

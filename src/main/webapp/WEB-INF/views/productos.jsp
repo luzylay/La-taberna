@@ -30,10 +30,14 @@
                     <div class="col-md-4">
                         <select name="categoria" class="form-select">
                             <option value="">Filtrar por Categoría</option>
-                            <option value="vino" ${param.categoria == 'vino' ? 'selected' : ''}>Vino</option>
-                            <option value="cerveza" ${param.categoria == 'cerveza' ? 'selected' : ''}>Cerveza</option>
-                            <option value="destilado" ${param.categoria == 'destilado' ? 'selected' : ''}>Destilados</option>
+                            <c:forEach var="c" items="${categorias}">
+                                <option value="${c.nombre_cate}" ${param.categoria == c.nombre_cate ? 'selected' : ''}>
+                                ${c.nombre_cate}
+                                </option>
+                            </c:forEach>
                         </select>
+
+
                     </div>
                     <div class="col-md-4">
                         <button type="submit" class="btn btn-outline-secondary">Aplicar Filtros</button>

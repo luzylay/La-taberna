@@ -20,4 +20,6 @@ public interface ProductoService {
     List<Producto> getProductosFiltrados(int pagina, int productosPorPagina, String nombre, String categoria);
 
     int getProductCountFiltered(String nombre, String categoria);
+
+    public List<Producto> getProductosPorCategoria(int id_categoria);
 }

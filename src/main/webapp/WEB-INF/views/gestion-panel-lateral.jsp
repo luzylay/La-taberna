@@ -12,7 +12,7 @@
 <nav class="sidebar pt-3 bg-dark bg-opacity-90 shadow-sm">
     <ul class="nav flex-column">
 
-        <!-- PANEL PRINCIPAL - LOGO -->
+        <!-- PANEL PRINCIPAL -->
         <li class="nav-item mb-4 text-center">
             <span class="text-white fw-bold fs-5">
                 <i class="bi bi-speedometer2 me-2"></i> Panel de Gestión
@@ -32,6 +32,7 @@
                 <span class="badge bg-success">${sessionScope.user.tipo_user.nombre_tipoUsuario}</span>
             </span>
         </li>
+
         <hr class="text-light opacity-25">
 
         <!-- Panel Principal -->
@@ -75,41 +76,17 @@
         <!-- Productos -->
         <li class="nav-item mb-2">
             <a class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center justify-content-between"
-               data-bs-toggle="collapse" href="#subProductos">
+                    href="/gestion/productos">
                 <span><i class="bi bi-box-seam me-2"></i> Productos</span>
-                <i class="bi bi-chevron-down"></i>
             </a>
-            <div class="collapse ps-3" id="subProductos">
-                <a href="/gestion/productos/NuevoProducto" class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center">
-                    <i class="bi bi-plus-circle me-2"></i> Agregar
-                </a>
-                <a href="/gestion/productos/actualizar" class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center">
-                    <i class="bi bi-pencil-square me-2"></i> Actualizar
-                </a>
-                <a href="/gestion/productos/eliminar" class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center">
-                    <i class="bi bi-trash me-2"></i> Eliminar
-                </a>
-            </div>
         </li>
 
         <!-- Categorías -->
         <li class="nav-item mb-2">
             <a class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center justify-content-between"
-               data-bs-toggle="collapse" href="#subCategoria">
+               href="/gestion/categoria">
                 <span><i class="bi bi-tags-fill me-2"></i> Categorías</span>
-                <i class="bi bi-chevron-down"></i>
             </a>
-            <div class="collapse ps-3" id="subCategoria">
-                <a href="/" class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center">
-                    <i class="bi bi-journal-plus me-2"></i> Agregar
-                </a>
-                <a href="/" class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center">
-                    <i class="bi bi-journal-code me-2"></i> Actualizar
-                </a>
-                <a href="/" class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center">
-                    <i class="bi bi-journal-x me-2"></i> Eliminar
-                </a>
-            </div>
         </li>
 
         <hr class="text-light opacity-25">
@@ -117,21 +94,9 @@
         <!-- Usuarios -->
         <li class="nav-item mb-2">
             <a class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center justify-content-between"
-               data-bs-toggle="collapse" href="#subUsuarios">
+               href="/gestion/usuarios">
                 <span><i class="bi bi-people-fill me-2"></i> Usuarios</span>
-                <i class="bi bi-chevron-down"></i>
             </a>
-            <div class="collapse ps-3" id="subUsuarios">
-                <a href="/gestion/usuarios/ver" class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center">
-                    <i class="bi bi-person-fill me-2"></i> Ver Usuarios
-                </a>
-                <a href="/" class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center">
-                    <i class="bi bi-person-fill-gear me-2"></i> Actualizar
-                </a>
-                <a href="/" class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center">
-                    <i class="bi bi-person-x-fill me-2"></i> Eliminar
-                </a>
-            </div>
         </li>
 
         <hr class="text-light opacity-25">

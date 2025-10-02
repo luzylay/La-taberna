@@ -48,4 +48,9 @@ public class ProductoServiceImpl implements ProductoService {
     public int getProductCountFiltered(String nombre, String categoria) {
         return productoDAO.getCantidadDeDatosObtenidos(nombre,categoria);
     }
+
+    public List<Producto> getProductosPorCategoria(int id_categoria) {
+        return productoDAO.obtenerProductosPorCategoria(id_categoria);
+    }
+
 }
