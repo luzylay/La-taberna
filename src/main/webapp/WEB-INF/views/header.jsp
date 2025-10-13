@@ -27,8 +27,6 @@
                     <li class="nav-item"><a class="nav-link"
                             href="/productos">Productos</a></li>
                     <li class="nav-item"><a class="nav-link"
-                            href="#">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link"
                             href="/contacto">Contacto</a></li>
                     <li class="nav-item"><a class="nav-link"
                             href="/nosotros">Nosotros</a></li>
