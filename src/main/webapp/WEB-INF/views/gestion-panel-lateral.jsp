@@ -37,7 +37,7 @@
 
         <!-- Panel Principal -->
         <li class="nav-item mb-2">
-            <a class="nav-link active btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center"
+            <a class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center"
                href="/gestion">
                 <i class="bi bi-house-door-fill me-2"></i> Panel Principal
             </a>

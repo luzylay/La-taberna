@@ -81,12 +81,12 @@
                                     <td>
                                         <!-- Btn Editar -->
                                         <a href="/gestion/categoria/editar/${c.id_categoria}"
-                                           class="btn btn-warning btn-sm btn-editar mb-1">
+                                           class="btn btn-warning btn-sm btn-editar mb-1" onsubmit="return confirm('¿Estás seguro de eliminar esta categorpia?');">
                                             <i class="bi bi-pencil-square me-2"></i>Editar
                                         </a>
 
                                         <!-- Btn Eliminar -->
-                                        <form action="/gestion/categoria/eliminarCategoria" method="post" style="display:inline;">
+                                        <form action="/gestion/categoria/eliminarCategoria" method="post" style="display:inline;" >
                                             <input type="hidden" name="id_categoria" value="${c.id_categoria}" />
                                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                         </form>

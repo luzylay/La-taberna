@@ -15,15 +15,12 @@
         <jsp:include page="header.jsp" />
         <!-- header -->
 
-        <!-- Texto principal -->
-        <section class="main-texto">
-            <div class="container text-center py-5 caja">
-                <h1 class="titulo-dorado">Contacta con nosotros</h1>
-                <p class="lead">
-                    Si tienes dudas, sugerencias o quieres más información sobre
-                    nuestros productos,
-                    completa el formulario y te responderemos lo antes posible.
-                </p>
+        <!-- Encabezado -->
+        <section class="page-header text-center text-white py-5 mb-5">
+            <div class="overlay"></div>
+            <div class="container position-relative">
+                <h1 class="display-4 fw-bold mb-3">Contacta con nosotros</h1>
+                <p class="lead mb-0">Si tienes dudas, sugerencias o quieres más información sobre nuestros productos, completa el formulario y te responderemos lo antes posible.</p>
             </div>
         </section>
 

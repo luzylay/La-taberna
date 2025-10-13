@@ -56,7 +56,7 @@ public class ProductoController {
         model.addAttribute("categorias", categorias);
         model.addAttribute("productoEditado", new Producto());
 
-        return "productos-editar";
+        return "productos-actualizar";
     }
 
     // GUARDAR - GUARDAR NUEVO PRODUCTO

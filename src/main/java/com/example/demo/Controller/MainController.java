@@ -82,4 +82,9 @@ public class MainController {
     public String showAboutUsPage() {
         return "/nosotros";
     }
+
+    @GetMapping("/carrito")
+    public String showBuyPage() {
+        return "/carrito";
+    }
 }

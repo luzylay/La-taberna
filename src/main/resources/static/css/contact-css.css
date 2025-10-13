@@ -6,13 +6,18 @@
     --color5: #723659af;
 }
 
-.main-texto {
-    background-image:
-        linear-gradient(rgba(66, 39, 61, 0.85),var(--color5)),
-        url('https://blog.borderio.com/wp-content/uploads/2024/06/%C2%BFQue-es-el-vino-fortificado.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.page-header {
+  position: relative;
+      background-image:
+              linear-gradient(rgba(97, 34, 55, 0.7),
+              rgba(97, 34, 55, 0.7)),
+              url('https://www.losvinos.com.ar/wp-content/uploads/2019/10/bartender.jpeg');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: var(--marfil);
+      padding: 100px 20px;
+      text-align: center;
 }
 
 .main-texto h1 {
