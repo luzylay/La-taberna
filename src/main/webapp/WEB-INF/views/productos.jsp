@@ -101,11 +101,20 @@
                                             class="card-price fw-bold text-danger fs-6">
                                             S/ ${producto.precio_pro}
                                         </span>
-                                        <button type="button"
-                                            class="btn btn-sm btn-outline-danger rounded-pill px-3 modalito">
-                                            <i class="bi bi-eye"></i> Ver
-                                            Detalles
+                                        <button type="button" class="btn btn-sm btn-outline-danger modalito wine-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#wineModal"
+                                                data-id="${producto.id_producto}"
+                                                data-nombre="${producto.nombre_pro}"
+                                                data-precio="${producto.precio_pro}"
+                                                data-stock="${producto.stock_pro}"
+                                                data-anio="${producto.anio_pro}"
+                                                data-categoria="${producto.categoria_pro.nombre_cate}"
+                                                data-descripcion="${producto.descrip_pro}"
+                                                data-imagen="${producto.url_pro}">
+                                            <i class="bi bi-eye"></i> Ver Detalles
                                         </button>
+
                                     </div>
                                 </div>
                             </div>
@@ -143,13 +152,62 @@
         </div>
 
         <!-- MODAL PRODUCTO -->
-        <jsp:include page="modal.jsp" />
-        <!-- MODAL PRODUCTO -->
+        <div class="modal fade" id="wineModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-md modal-dialog-centered">
+                <div class="modal-content shadow border-0 rounded-3">
+
+                    <!-- Header -->
+                    <div class="modal-header bg-light border-0">
+                        <h5 class="modal-title fw-bold text-danger" id="modal-name"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="modal-body">
+                        <div class="row g-3">
+
+                            <!-- Imagen del producto -->
+                            <div class="col-12 col-md-5 text-center">
+                                <img id="modal-image" src="" alt="Producto"
+                                     class="img-fluid rounded shadow-sm mb-2 border border-light">
+                            </div>
+
+                            <!-- Información del producto -->
+                            <div class="col-12 col-md-7">
+                                <ul class="list-unstyled text-muted mb-2 small">
+                                    <li><strong>Año:</strong> <span id="modal-year"></span></li>
+                                    <li><strong>Stock:</strong> <span id="modal-stock"></span></li>
+                                    <li><strong>Categoría:</strong> <span id="modal-category"></span></li>
+                                </ul>
+                                <p id="modal-description" class="text-muted mb-3 small"></p>
+                                <div class="mb-3">
+                                    <span id="modal-price" class="text-danger fw-bold fs-5"></span>
+                                </div>
+
+                                <!-- Agregar al carrito -->
+                                <form id="modal-form" action="/carrito/agregarProducto" method="POST"
+                                      class="d-flex flex-column flex-sm-row align-items-center gap-2">
+                                    <input type="hidden" name="id_producto" id="modal-id-producto" value="modal-id-producto">
+                                    <input type="number" name="cantidad" class="form-control" min="1" value="1"
+                                           style="width: 100px;">
+                                    <button type="submit" class="btn btn-danger w-100 w-sm-auto">
+                                        <i class="bi bi-cart-fill me-2"></i> Añadir
+                                    </button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <!-- Footer -->
         <jsp:include page="footer.jsp" />
         <!-- Footer -->
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/modal.js"></script>
     </body>
 </html>

@@ -101,6 +101,16 @@
 
         <hr class="text-light opacity-25">
 
+        <!-- Ventas -->
+        <li class="nav-item mb-2">
+            <a class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center justify-content-between"
+               href="/gestion/ventas">
+                <span><i class="bi bi-cart-check me-2"></i> Ventas</span>
+            </a>
+        </li>
+
+        <hr class="text-light opacity-25">
+
         <!-- Volver y Logout -->
         <li class="nav-item mb-2">
             <a class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center"

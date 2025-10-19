@@ -16,7 +16,7 @@
 <jsp:include page="header.jsp"/>
 <!-- /Header -->
 
-<!-- Encabezado con fondo -->
+<!-- Encabezado -->
 <section class="page-header text-center text-white py-5 mb-5 position-relative">
     <div class="overlay"></div>
     <div class="container position-relative">
@@ -34,6 +34,8 @@
                     <table class="table align-middle">
                         <thead class="table-dark text-center">
                         <tr>
+                            <th>#</th>
+                            <th>Img. Referencia</th>
                             <th>Producto</th>
                             <th>Precio Unitario</th>
                             <th>Cantidad</th>
@@ -42,41 +44,36 @@
                         </tr>
                         </thead>
                         <tbody class="text-center">
-                        <!-- Ejemplo de productos -->
-                        <tr>
-                            <td>Vino Tinto Reserva</td>
-                            <td>S/ 45.00</td>
-                            <td>
-                                <input type="number" class="form-control text-center mx-auto" value="1" min="1"
-                                       style="width: 80px;">
-                            </td>
-                            <td>S/ 45.00</td>
-                            <td>
-                                <button class="btn btn-danger btn-sm">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Whisky Premium</td>
-                            <td>S/ 120.00</td>
-                            <td>
-                                <input type="number" class="form-control text-center mx-auto" value="2" min="1"
-                                       style="width: 80px;">
-                            </td>
-                            <td>S/ 240.00</td>
-                            <td>
-                                <button class="btn btn-danger btn-sm">Eliminar</button>
-                            </td>
-                        </tr>
+                        <!-- Bucle de productos en la venta -->
+                        <c:forEach var="det" items="${venta.detalles_Venta}" varStatus="status">
+                            <tr>
+                                <td>${status.count}</td>
+                                <td>
+                                    <img src="${det.producto.url_pro}"
+                                         alt="(${det.producto.id_producto}) ${det.producto.nombre_pro}"
+                                         style="width: 80px; height: 80px; object-fit: cover;">
+                                </td>
+                                <td>${det.producto.nombre_pro}</td>
+                                <td>S/${det.producto.precio_pro}</td>
+                                <td>${det.cantidad_det}</td>
+                                <td>S/${det.subtotal_det}</td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
 
                 <!-- Total -->
                 <div class="d-flex justify-content-between align-items-center mt-4">
-                    <h4>Total: <span class="text-primary fw-bold">S/ 285.00</span></h4>
-                    <button class="btn btn-success btn-lg">
-                        Finalizar Compra
-                    </button>
+                    <h4>Total: <span class="text-primary fw-bold">S/${venta.total_venta}</span></h4>
+                    <form action="/carrito/finalizar" method="POST">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            Compra
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

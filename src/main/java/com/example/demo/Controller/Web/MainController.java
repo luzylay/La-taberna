@@ -1,4 +1,4 @@
-package com.example.demo.Controller;
+package com.example.demo.Controller.Web;
 
 import com.example.demo.Model.Categoria;
 import com.example.demo.Model.Producto;
@@ -83,8 +83,8 @@ public class MainController {
         return "/nosotros";
     }
 
-    @GetMapping("/carrito")
-    public String showBuyPage() {
-        return "/carrito";
+    @GetMapping("/servicios")
+    public String showServicesPage() {
+        return "/servicios";
     }
 }

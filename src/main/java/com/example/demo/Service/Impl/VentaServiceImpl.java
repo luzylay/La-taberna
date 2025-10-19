@@ -3,6 +3,9 @@ package com.example.demo.Service.Impl;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.example.demo.Model.DetalleVenta;
+import com.example.demo.Service.CategoriaService;
+import com.example.demo.Service.DetalleVentaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +17,17 @@ import com.example.demo.Service.VentaService;
 public class VentaServiceImpl implements VentaService {
 
     private final VentaDAO ventaDAO;
+    private final DetalleVentaService detalleVentaService;
+    private final CategoriaService categoriaService;
 
     @Autowired
-    public VentaServiceImpl(VentaDAO ventaDAO) {
+    public VentaServiceImpl(
+            VentaDAO ventaDAO,
+            DetalleVentaService detalleVentaService,
+            CategoriaService categoriaService) {
         this.ventaDAO = ventaDAO;
+        this.detalleVentaService = detalleVentaService;
+        this.categoriaService = categoriaService;
     }
 
     @Override
@@ -31,9 +41,8 @@ public class VentaServiceImpl implements VentaService {
     }
 
     @Override
-    public void guardarVenta(Venta venta) {
-        // Aquí podrías añadir lógica de negocio antes de guardar
-        ventaDAO.guardarVenta(venta);
+    public int guardarVenta(Venta venta) {
+        return ventaDAO.guardarVenta(venta);
     }
 
     @Override
@@ -68,4 +77,22 @@ public class VentaServiceImpl implements VentaService {
     public List<Venta> obtenerVentasPorFecha(LocalDateTime inicio, LocalDateTime fin) {
         return ventaDAO.obtenerVentasPorFecha(inicio, fin);
     }
+
+    public double montoTotalDeMes(int mes) {
+        return ventaDAO.obtenerVentas().stream()
+                .filter(v -> v.getFecha_venta().getMonthValue() == mes)
+                .mapToDouble(Venta::getTotal_venta)
+                .sum();
+    }
+
+    @Override
+    public List<DetalleVenta> ventasPorCategoria(int idCategoria) {
+        return detalleVentaService.obtenerDetalles()
+                .stream()
+                .filter(d -> d.getProducto() != null
+                        && d.getProducto().getCategoria_pro() != null
+                        && d.getProducto().getCategoria_pro().getId_categoria() == idCategoria)
+                .toList();
+    }
+
 }

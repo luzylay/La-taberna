@@ -33,24 +33,25 @@
                     <li class="nav-item"><a class="nav-link"
                             href="/nosotros">Nosotros</a></li>
 
+
                     <!--Primero verifica que no este vacia la sesion en servidor-->
                     <c:if test="${not empty sessionScope.user}">
                         <c:choose>
                             <c:when test="${sessionScope.user.tipo_user.nombre_tipoUsuario == 'Administrador'
                                         or sessionScope.user.tipo_user.nombre_tipoUsuario == 'Auxiliar'}">
-                                <li class="nav-item"><a class="nav-link" href="/gestion">Panel de Gestión</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/gestion">Gestión</a></li>
 
                                 <ul class="navbar-nav ms-auto">
                                   <li class="nav-item">
                                     <span class="nav-link text-white">
                                       <i class="bi bi-person-circle"></i>
-                                      Usuario: <span class="badge bg-primary">${sessionScope.user.nombre_user}</span>
+                                      <span class="badge bg-primary">${sessionScope.user.nombre_user}</span>
                                     </span>
                                   </li>
                                   <li class="nav-item">
                                     <span class="nav-link text-white">
                                       <i class="bi bi-shield-lock-fill"></i>
-                                      Tipo: <span class="badge bg-success">${sessionScope.user.tipo_user.nombre_tipoUsuario}</span>
+                                      <span class="badge bg-success">${sessionScope.user.tipo_user.nombre_tipoUsuario}</span>
                                     </span>
                                   </li>
                                 </ul>
@@ -61,13 +62,13 @@
                                   <li class="nav-item">
                                     <span class="nav-link text-white">
                                       <i class="bi bi-person-circle"></i>
-                                      Usuario: <span class="badge bg-primary">${sessionScope.user.nombre_user}</span>
+                                      <span class="badge bg-primary">${sessionScope.user.nombre_user}</span>
                                     </span>
                                   </li>
                                   <li class="nav-item">
                                     <span class="nav-link text-white">
                                       <i class="bi bi-shield-lock-fill"></i>
-                                      Tipo: <span class="badge bg-success">${sessionScope.user.tipo_user.nombre_tipoUsuario}</span>
+                                      <span class="badge bg-success">${sessionScope.user.tipo_user.nombre_tipoUsuario}</span>
                                     </span>
                                   </li>
                                 </ul>
@@ -75,14 +76,17 @@
                         </c:choose>
                         <a href="/perfil" class="btn btn-outline-light m-2">Perfil</a>
                         <a href="/logout" class="btn btn-outline-light m-2">Logout</a>
+                        <li class="nav-link text-white fs-4">
+                            <a href="/carrito" class="text-white">
+                                <i class="bi bi-cart4 me-2"></i>
+                            </a>
+                        </li>
                     </c:if>
 
                     <c:if test="${empty sessionScope.user}">
                         <a href="/login" class="btn btn-outline-light m-2">Ingresar</a>
                         <a href="/registro" class="btn btn-outline-light m-2">Registrarse</a>
                     </c:if>
-
-
                 </ul>
             </div>
         </div>

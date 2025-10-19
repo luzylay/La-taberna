@@ -42,15 +42,18 @@
                             <span id="modal-price" class="text-danger fw-bold fs-5"></span>
                         </div>
 
-                        <!-- Cantidad y añadir al carrito -->
-                        <form id="addToCartForm" action="/carrito" method="GET"
-                            class="d-flex flex-column flex-sm-row align-items-center gap-2">
-                            <input type="hidden" id="modal-id" name="id_producto">
+                        <form action="/carrito/agregarProducto" method="POST"
+                              class="d-flex flex-column flex-sm-row align-items-center gap-2">
+
+                            <input type="hidden" name="id_producto" value="${producto.id_producto}">
+
                             <input type="number" name="cantidad" class="form-control" min="1" value="1" style="width: 100px;">
+
                             <button type="submit" class="btn btn-danger w-100 w-sm-auto">
                                 <i class="bi bi-cart-fill me-2"></i> Añadir
                             </button>
                         </form>
+
                     </div>
 
                 </div>

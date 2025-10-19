@@ -1,12 +1,14 @@
 package com.example.demo.Service.Impl;
 
 import com.example.demo.Model.Usuario;
+import com.example.demo.Model.Venta;
 import com.example.demo.Repository.DAO.UsuarioDAO;
 import com.example.demo.Service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,6 +24,12 @@ public class UsuarioServiceImpl implements UsuarioService {
         Usuario usuario = usuarioDAO.buscarPorCorreo(correo);
         if (usuario != null && usuario.getPassword().equals(password)) {
             session.setAttribute("user", usuario);
+
+            Venta venta =   new Venta();
+            venta.setDetalles_Venta(new ArrayList<>());
+            venta.setId_usuario(usuario);
+            session.setAttribute("ventaActiva",venta);
+
             session.setMaxInactiveInterval(60*60);
             return true;
         }

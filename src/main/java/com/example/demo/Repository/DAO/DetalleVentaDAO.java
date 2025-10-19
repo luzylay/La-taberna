@@ -2,6 +2,7 @@ package com.example.demo.Repository.DAO;
 
 import java.util.List;
 
+import com.example.demo.Model.Venta;
 import com.example.demo.Repository.DetalleVentaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,10 +20,8 @@ public class DetalleVentaDAO implements DetalleVentaRepository {
     @Autowired
     public DetalleVentaDAO(
             JdbcTemplate jdbcTemplate,
-            VentaDAO ventaDAO,
             ProductoDAO productoDAO) {
         this.jdbcTemplate = jdbcTemplate;
-        this.ventaDAO = ventaDAO;
         this.productoDAO = productoDAO;
     }
 
@@ -31,7 +30,11 @@ public class DetalleVentaDAO implements DetalleVentaRepository {
         return jdbcTemplate.query(sql, (rs, i) -> {
             DetalleVenta d = new DetalleVenta();
             d.setId_detalle(rs.getInt("id_detalle"));
-            d.setVenta(ventaDAO.obtenerVentaPorId(rs.getInt("id_venta")));
+
+            Venta v = new Venta();
+            v.setId_venta(rs.getInt("id_venta"));
+            d.setVenta(v);
+
             d.setProducto(productoDAO.obtenerProductoPorId(rs.getInt("id_producto")));
             d.setCantidad_det(rs.getInt("cantidad_det"));
             d.establecerSubtotal_det();
@@ -44,13 +47,18 @@ public class DetalleVentaDAO implements DetalleVentaRepository {
         return jdbcTemplate.query(sql, new Object[]{idBuscada}, (rs, i) -> {
             DetalleVenta d = new DetalleVenta();
             d.setId_detalle(rs.getInt("id_detalle"));
-            d.setVenta(ventaDAO.obtenerVentaPorId(rs.getInt("id_venta")));
+
+            Venta v = new Venta();
+            v.setId_venta(rs.getInt("id_venta"));
+            d.setVenta(v);
+
             d.setProducto(productoDAO.obtenerProductoPorId(rs.getInt("id_producto")));
             d.setCantidad_det(rs.getInt("cantidad_det"));
             d.establecerSubtotal_det();
             return d;
         });
     }
+
 
     /**
      * Metodo para eliminar los detalles de una venta en la BD

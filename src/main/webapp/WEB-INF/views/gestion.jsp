@@ -54,7 +54,7 @@
 
                 <!-- Main -->
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-4 py-4">
-                    <h1 class="text-center mb-4">Panel Principal</h1>
+                    <h1 class="text-center mb-4">Dashboards</h1>
 
                     <!-- Panelitos de resumen -->
                     <div class="row g-3 mb-4">

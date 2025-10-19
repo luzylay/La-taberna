@@ -13,32 +13,37 @@ function drawCharts() {
 }
 
 // Chart 1: Ventas Mensuales
-function drawChart1() {
-    var data1 = google.visualization.arrayToDataTable([
-        ["Mes", "Ventas"],
-        ["Enero", 1000],
-        ["Febrero", 1170],
-        ["Marzo", 660],
-        ["Abril", 1030],
-    ]);
+function drawChart1(){
+    fetch("/api/productos/por-mes")
+        .then(rpta => rpta.json())
+        .then(data => {
+            var data1 = [["Mes", "Ventas"]];
+            for (const mes in data) {
+                data1.push([mes, data[mes]]);
+            }
 
-    var chart1 = new google.visualization.LineChart(
-        document.getElementById("chart1")
-    );
+            var dataCheck1 = google.visualization.arrayToDataTable(data1);
 
-    var options1 = {
-        title: "Ventas Mensuales",
-        legend: { position: "bottom" },
-        colors: ["#007bff"],
-        chartArea: { width: "90%", height: "70%" },
-    };
+            var chart1 = new google.visualization.LineChart(
+                document.getElementById("chart1")
+            );
 
-    chart1.draw(data1, options1);
+            var options1 = {
+                title: "Ventas Mensuales",
+                legend: { position: "bottom" },
+                colors: ["#007bff"],
+                chartArea: { width: "90%", height: "70%" },
+            };
 
-    window.addEventListener("resize", function () {
-        chart1.draw(data1, options1);
-    });
+            chart1.draw(dataCheck1, options1);
+
+            window.addEventListener("resize", function () {
+                chart1.draw(dataCheck1, options1);
+            });
+        })
+        .catch(error => console.error("Error al cargar datos:", error));
 }
+
 
 // Chart 2: Usuarios por Mes
 function drawChart2() {
@@ -67,30 +72,36 @@ function drawChart2() {
     });
 }
 
-// Chart 3: Distribución de Productos
+// Chart 3: Por Categoría
 function drawChart3() {
-    var data3 = google.visualization.arrayToDataTable([
-        ["Producto", "Cantidad"],
-        ["Vino Tinto", 10],
-        ["Vino Blanco", 8],
-        ["Rosado", 7],
-    ]);
+    fetch("/api/productos/por-categoria")
+        .then(rpta => rpta.json())
+        .then(data => {
+            var data3 = [["Categoría", "Ventas"]];
+            for (const categoria in data) {
+                data3.push([categoria, data[categoria]]);
+            }
 
-    var chart3 = new google.visualization.PieChart(
-        document.getElementById("chart3")
-    );
+            var dataCheck3 = google.visualization.arrayToDataTable(data3);
 
-    var options3 = {
-        title: "Distribución de Productos",
-        colors: ["#ffc107", "#17a2b8", "#fd7e14"],
-        chartArea: { width: "90%", height: "70%" },
-    };
+            var chart3 = new google.visualization.PieChart(
+                document.getElementById("chart3")
+            );
 
-    chart3.draw(data3, options3);
+            var options3 = {
+                title: "Ventas Por Categoría",
+                legend: { position: "bottom" },
+                colors: ["#007bff", "#28a745", "#ffc107", "#dc3545", "#6f42c1"],
+                chartArea: { width: "90%", height: "70%" },
+            };
 
-    window.addEventListener("resize", function () {
-        chart3.draw(data3, options3);
-    });
+            chart3.draw(dataCheck3, options3);
+
+            window.addEventListener("resize", function () {
+                chart3.draw(dataCheck3, options3);
+            });
+        })
+        .catch(error => console.error("Error al cargar datos:", error));
 }
 
 // Chart 4: Ingresos Mensuales

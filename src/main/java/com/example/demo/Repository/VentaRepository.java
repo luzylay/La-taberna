@@ -7,19 +7,19 @@ import com.example.demo.Model.Venta;
 
 public interface VentaRepository {
 
-    List<Venta> obtenerVentas();
+    public List<Venta> obtenerVentas();
 
-    Venta obtenerVentaPorId(int id);
+    public Venta obtenerVentaPorId(int id);
 
-    void guardarVenta(Venta venta);
+    public int guardarVenta(Venta venta);
 
-    void actualizarVenta(Venta venta);
+    public void actualizarVenta(Venta venta);
 
-    void eliminarVenta(int id);
+    public void eliminarVenta(int id);
 
-    boolean existeVenta(int id);
+    public boolean existeVenta(int id);
 
-    List<Venta> obtenerVentasPorUsuario(int idUsuario);
+    public List<Venta> obtenerVentasPorUsuario(int idUsuario);
 
-    List<Venta> obtenerVentasPorFecha(LocalDateTime inicio, LocalDateTime fin);
+    public List<Venta> obtenerVentasPorFecha(LocalDateTime inicio, LocalDateTime fin);
 }

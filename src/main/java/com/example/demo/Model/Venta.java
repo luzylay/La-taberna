@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @AllArgsConstructor
@@ -30,6 +31,14 @@ public class Venta {
                 ", total_venta=" + total_venta +
                 ", detalles_Venta=" + detalles_Venta +
                 '}';
+    }
+
+    public String getFechaFormateada() {
+        if (fecha_venta == null) {
+            return "";
+        }
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return fecha_venta.format(f);
     }
 
     public void establecerTotal_venta() {
