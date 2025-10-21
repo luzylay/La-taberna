@@ -10,7 +10,7 @@ VALUES
 INSERT INTO Usuario (nombre_user, apaterno_user, amaterno_user, correo_user, password, telefono_user, estado_user, tipo_user)
 VALUES
 -- Administrador
-('Jose', 'De la Cruz', 'Yarleque', 'joseyar1032@gmail.com', '77269064', '987654321', 1, 1),
+('Admin', 'User', 'Test', 'admin@gmail.com', 'admin', '987654321', 1, 1),
 -- Auxiliares
 ('Maria', 'Fernandez', 'Quispe', 'maria.fernandez@empresa.com', '12345', '945123456', 1, 3),
 ('Luis', 'Torres', 'Gomez', 'luis.torres@empresa.com', '12345', '912345678', 1, 3),
