@@ -48,10 +48,13 @@
                 </div>
                 <!-- FIN BARRITA LATAREAL :D ----------------------------------------------------------->
 
-                <!-- TODO EL MAIN ES EL APARTADO DE ELIMINAR PRODUCTOS -->
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 min-vh-100">
-                    <div class="d-flex justify-content-between align-items-center mt-4 mb-3">
-                        <h1 class="text-center p-3 flex-grow-1">Gestión de Productos</h1>
+                    <div class="d-flex justify-content-between align-items-center mt-5 mb-5">
+                        <div class="titulo-panel text-center flex-grow-1">
+                            <h1 class="fw-bold mb-0">
+                                <i class="bi bi-box-seam me-2"></i> Gestión de Categorías
+                            </h1>
+                        </div>
 
                         <!-- Btn Agregar -->
                         <a href="/gestion/productos/NuevoProducto"
@@ -61,59 +64,57 @@
                         </a>
                     </div>
 
-                    <!-- Tabla de productos -->
-                    <div class="table-responsive shadow-sm rounded">
-                        <table class="table table-striped table-bordered align-middle">
-                            <thead class="table-dark text-center">
-                            <tr>
-                                <th>ID</th>
-                                <th>Imagen</th>
-                                <th>Nombre</th>
-                                <th>Descripción</th>
-                                <th>Categoría</th>
-                                <th>Año</th>
-                                <th>Precio</th>
-                                <th>Stock</th>
-                                <th>Acciones</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach var="p" items="${productos}">
-                                <tr class="align-middle text-center">
-                                    <td>${p.id_producto}</td>
-                                    <td>
-                                        <img src="${p.url_pro}"
-                                             alt="ID: ${p.id_producto} - P: ${p.nombre_pro}"
-                                             width="50" height="50" class="rounded shadow-sm">
-                                    </td>
-                                    <td>${p.nombre_pro}</td>
-                                    <td>${p.descrip_pro}</td>
-                                    <td>${p.categoria_pro.nombre_cate}</td>
-                                    <td>${p.anio_pro}</td>
-                                    <td>${p.precio_pro}</td>
-                                    <td>${p.stock_pro}</td>
-                                    <td>
-                                        <!-- Btn Editar -->
-                                        <a href="/gestion/productos/editar/${p.id_producto}"
-                                           class="btn btn-warning btn-sm btn-editar mb-1">
-                                            <i class="bi bi-pencil-square me-2"></i>Editar
-                                        </a>
+                    <!-- Productos -->
+                    <div class="row g-4">
+                        <c:forEach var="p" items="${productos}">
+                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                <div class="card h-100 shadow border-0 rounded-4 producto-card"
+                                     style="transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                                    <span class="badge bg-dark bg-opacity-75 mb-3 d-block">ID: ${p.id_producto}</span>
+                                    <!-- Img -->
+                                    <img src="${p.url_pro}"
+                                         class="card-img-top rounded-top-4"
+                                         alt="ID: ${p.id_producto} - P: ${p.nombre_pro}"
+                                         style="height: 180px; object-fit: cover;">
 
-                                        <!-- Btn Eliminar -->
-                                        <form action="/gestion/productos/eliminarProducto" method="post"
-                                              onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
-                                            <input type="hidden" name="id_producto" value="${p.id_producto}">
-                                            <button type="submit" class="btn btn-danger btn-sm">
-                                                <i class="bi bi-trash me-1"></i>Eliminar
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title text-center fw-bold text-primary mb-2">
+                                            ${p.nombre_pro}
+                                        </h5>
+                                        <p class="card-text text-muted small mb-2">
+                                            ${p.descrip_pro}
+                                        </p>
+
+                                        <ul class="list-unstyled mb-3">
+                                            <li><strong>Categoría:</strong> ${p.categoria_pro.nombre_cate}</li>
+                                            <li><strong>Año:</strong> ${p.anio_pro}</li>
+                                            <li><strong>Precio:</strong> S/. ${p.precio_pro}</li>
+                                            <li><strong>Stock:</strong> ${p.stock_pro}</li>
+                                        </ul>
+
+                                        <div class="mt-auto d-flex justify-content-around">
+                                            <!-- Btn Editar -->
+                                            <a href="/gestion/productos/editar/${p.id_producto}"
+                                               class="btn btn-warning btn-sm rounded-pill shadow-sm px-3">
+                                                <i class="bi bi-pencil-square me-1"></i> Editar
+                                            </a>
+
+                                            <!-- Btn Eliminar -->
+                                            <form action="/gestion/productos/eliminarProducto" method="post"
+                                                  onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
+                                                <input type="hidden" name="id_producto" value="${p.id_producto}">
+                                                <button type="submit" class="btn btn-danger btn-sm rounded-pill shadow-sm px-3">
+                                                    <i class="bi bi-trash me-1"></i> Eliminar
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
                     </div>
                 </main>
+
             </div>
         </div>
 

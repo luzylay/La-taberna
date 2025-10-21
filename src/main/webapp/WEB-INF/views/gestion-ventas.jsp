@@ -38,110 +38,123 @@
 
         <!-- MAIN -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 min-vh-100">
-            <div class="d-flex justify-content-between align-items-center mt-4 mb-3">
-                <h1 class="text-center p-3 flex-grow-1">Gestión de Ventas</h1>
+
+            <!-- TÍTULO -->
+            <div class="d-flex justify-content-center align-items-center mt-4 mb-4">
+                <h1 class="fw-bold border-3 border-primary pb-2">
+                    <i class="bi bi-cart-check me-2"></i> Gestión de Ventas
+                </h1>
             </div>
 
-            <div class="table-responsive shadow-sm rounded">
-                <table class="table table-striped table-bordered align-middle">
-                    <thead class="table-dark text-center">
-                    <tr>
-                        <th>ID</th>
-                        <th>Cliente</th>
-                        <th>Correo</th>
-                        <th>Telefóno</th>
-                        <th>Fecha Venta</th>
-                        <th>Detalles</th>
-                        <th>Total</th>
-                        <th>Acciones</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="v" items="${ventas}">
-                        <tr class="align-middle text-center">
-                            <td>${v.id_venta}</td>
-                            <td>
-                                ${v.id_usuario.apaterno_user}
-                                ${v.id_usuario.amaterno_user}
-                                ${v.id_usuario.nombre_user}
-                            </td>
-                            <td>${v.id_usuario.correo_user}</td>
-                            <td>${v.id_usuario.telefono_user}</td>
-                            <td>${v.fechaFormateada}</td>
-                            <td>
-                                <table class="table table-sm table-bordered border-secondary-subtle mb-0 bg-light">
-                                    <thead class="table-secondary text-center small">
-                                    <tr>
-                                        <th>Producto</th>
-                                        <th>Precio U.</th>
-                                        <th>Cantidad</th>
-                                        <th>Subtotal</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody class="text-center">
-                                    <c:forEach var="d" items="${v.detalles_Venta}">
-                                        <tr>
-                                            <td class="text-start">${d.producto.nombre_pro}</td>
-                                            <td>S/${d.producto.precio_pro}</td>
-                                            <td>${d.cantidad_det}</td>
-                                            <td>S/${d.subtotal_det}</td>
-                                        </tr>
-                                    </c:forEach>
-                                    </tbody>
-                                </table>
+            <!-- CONTENEDOR DE TARJETAS -->
+            <div class="row g-4">
+                <c:forEach var="v" items="${ventas}">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card border-0 rounded-4 h-100 shadow">
 
-                            </td>
-                            <td>S/ ${v.total_venta}</td>
-                            <td>
-                                <!-- Btn Editar -->
-                                <a href="/gestion/usuarios/editar/${u.id_usuario}"
-                                   class="btn btn-warning btn-sm btn-editar mb-1">
-                                    <i class="bi bi-pencil-square me-2"></i>Editar
-                                </a>
+                            <!-- encabezado -->
+                            <div class="card-header bg-secondary bg-opacity-50 border-0 rounded-top-4">
+                                <span class="badge bg-dark bg-opacity-75 mb-3 d-block">ID: ${v.id_venta}</span>
 
-                                <!-- Btn Eliminar -->
-                                <form action="/gestion/usuarios/eliminarUsuario" method="post"
-                                      onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');"
-                                      style="display:inline;">
-                                    <input type="hidden" name="id_usuario" value="${u.id_usuario}">
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="bi bi-trash me-1"></i>Eliminar
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+                                <h5 class="mb-1 fw-bold">
+                                    <i class="bi bi-person-circle me-2"></i>
+                                    ${v.id_usuario.apaterno_user} ${v.id_usuario.amaterno_user},
+                                    ${v.id_usuario.nombre_user}
+                                </h5>
+
+                                <p class="mb-0 small fw-bold">
+                                    <i class="bi bi-calendar3 me-1"></i> ${v.fechaFormateada}
+                                </p>
+                                <p class="mb-0 small fw-bold">
+                                    <i class="bi bi-envelope me-1"></i> ${v.id_usuario.correo_user}
+                                    <br>
+                                    <i class="bi bi-telephone me-1"></i> ${v.id_usuario.telefono_user}
+                                </p>
+                            </div>
+
+                            <!-- body -->
+                            <div class="card-body">
+                                <!-- Btn colapsador de detalles -->
+                                <button class="btn btn-outline-primary w-100 text-start mb-2 fw-semibold d-flex justify-content-between align-items-center"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#c${v.id_venta}"
+                                        aria-controls="c${v.id_venta}">
+                                <span class="fs-5">
+                                    <i class="bi bi-receipt me-2 fs-5"></i>
+                                    Ver Detalles de la Venta
+                                </span>
+                                </button>
+
+                                <!-- Detalles de compra -->
+                                <div class="collapse" id="c${v.id_venta}">
+                                    <ul class="list-group list-group-flush small border-top mt-2">
+                                        <c:forEach var="d" items="${v.detalles_Venta}">
+                                            <li class="list-group-item px-2 py-2 d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <span class="fw-semibold">${d.producto.nombre_pro}</span><br>
+                                                    <small class="text-muted">Cant: ${d.cantidad_det} ×
+                                                        S/${d.producto.precio_pro}</small>
+                                                </div>
+                                                <span class="badge bg-primary bg-opacity-75 rounded-pill">
+                                                    S/${d.subtotal_det}
+                                                </span>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- footer -->
+                            <div class="card-footer bg-light rounded-bottom-4 d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-success fs-5">
+                                    Total: S/${v.total_venta}
+                                </span>
+                                <div class="d-flex">
+                                    <!-- Btn Editar -->
+                                    <a href="/gestion/ventas/editar/${v.id_venta}"
+                                       class="btn btn-warning btn-sm rounded-pill shadow-sm me-2">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+
+                                    <!-- Btn Eliminar -->
+                                    <form action="/gestion/ventas/eliminarVenta" method="post"
+                                          onsubmit="return confirm('¿Seguro que deseas eliminar esta venta?');">
+                                        <input type="hidden" name="id_venta" value="${v.id_venta}">
+                                        <button type="submit" class="btn btn-danger btn-sm rounded-pill shadow-sm">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
         </main>
+
     </div>
 </div>
 
+<!-- ALERTAS -->
 <c:if test="${not empty verificar}">
     <script type="text/javascript">
         <c:choose>
-            <c:when test="${verificar == 1}">
-                alert("Se agregó un usuario correctamente :D");
-            </c:when>
-            <c:when test="${verificar == 2}">
-                alert("Se editó un usuario correctamente :D");
-            </c:when>
-            <c:when test="${verificar == 3}">
-                alert("Se eliminó un usuario correctamente :D");
-            </c:when>
-            <c:otherwise>
-                alert("La operación no se pudo realizar D:");
-            </c:otherwise>
+            <c:when test="${verificar == 1}">alert("Venta registrada correctamente ✅");</c:when>
+            <c:when test="${verificar == 2}">alert("Venta editada correctamente ✏️");</c:when>
+            <c:when test="${verificar == 3}">alert("Venta eliminada correctamente 🗑️");</c:when>
+            <c:otherwise>alert("La operación no se pudo realizar 😢");</c:otherwise>
         </c:choose>
     </script>
 </c:if>
 
-<!--Footer-->
-<footer class="bg-dark text-white text-center py-2">
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-2 mt-4">
     <div>© 2025 - Panel de Gestión | <i class="bi bi-shield-lock"></i> Derechos reservados</div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

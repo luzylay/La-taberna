@@ -19,6 +19,11 @@
             </span>
         </li>
 
+        <!-- Logo -->
+        <li class="nav-item mb-4 text-center">
+            <img src="https://static.vecteezy.com/system/resources/previews/036/331/638/original/bottle-of-wine-icon-png.png" alt="Logo" class="img-fluid rounded" style="max-width: 120px;">
+        </li>
+
         <!-- Sesión activa -->
         <li class="nav-item mb-2">
             <span class="nav-link text-white d-flex flex-column align-items-start">

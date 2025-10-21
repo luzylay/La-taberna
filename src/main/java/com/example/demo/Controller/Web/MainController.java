@@ -87,4 +87,14 @@ public class MainController {
     public String showServicesPage() {
         return "/servicios";
     }
+
+    @GetMapping("/saltar-error")
+    public String showErrorPage() {
+        return "/error";
+    }
+
+    @GetMapping("/error")
+    public String redirectError() {
+        return "forward:/saltar-error";
+    }
 }

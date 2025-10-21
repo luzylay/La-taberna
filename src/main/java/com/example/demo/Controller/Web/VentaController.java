@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -23,5 +24,16 @@ public class VentaController {
         model.addAttribute("ventas",ventas);
 
         return "gestion-ventas";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String showAddSellPage(@PathVariable Integer id, Model model) {
+
+        Venta venta = ventaService.obtenerVentaPorId(id);
+
+        model.addAttribute("venta",venta);
+        model.addAttribute("productoEditado",new Venta());
+
+        return "ventas-actualizar";
     }
 }

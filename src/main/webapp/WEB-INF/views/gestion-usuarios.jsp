@@ -37,7 +37,9 @@
         <!-- MAIN -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 min-vh-100">
             <div class="d-flex justify-content-between align-items-center mt-4 mb-3">
-                <h1 class="text-center p-3 flex-grow-1">Gestión de Usuarios</h1>
+                <h1 class="text-center p-3 flex-grow-1 fw-bold">
+                    <i class="bi bi-people-fill me-2"></i> Gestión de Usuarios
+                </h1>
 
                 <!-- Btn Agregar -->
                 <a href="/gestion/usuarios/NuevoUsuario"
@@ -47,59 +49,71 @@
                 </a>
             </div>
 
-            <div class="table-responsive shadow-sm rounded">
-                <table class="table table-striped table-bordered align-middle">
-                    <thead class="table-dark text-center">
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellido Paterno</th>
-                        <th>Apellido Materno</th>
-                        <th>Correo</th>
-                        <th>Teléfono</th>
-                        <th>Tipo Usuario</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="u" items="${usuarios}">
-                        <tr class="align-middle text-center">
-                            <td>${u.id_usuario}</td>
-                            <td>${u.nombre_user}</td>
-                            <td>${u.apaterno_user}</td>
-                            <td>${u.amaterno_user}</td>
-                            <td>${u.correo_user}</td>
-                            <td>${u.telefono_user}</td>
-                            <td>${u.tipo_user.nombre_tipoUsuario}</td>
-                            <td>
-                                <c:choose>
-                                    <c:when test="${u.estado_user}">Activo</c:when>
-                                    <c:otherwise>Desactivado</c:otherwise>
-                                </c:choose>
-                            </td>
-                            <td>
+            <!-- LISTA DE USUARIOS EN FORMATO DE TARJETAS -->
+            <div class="row g-4">
+                <c:forEach var="u" items="${usuarios}">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card border-0 shadow rounded-4 h-100">
+
+                            <!-- Encabezado -->
+                            <div class="card-header bg-dark bg-opacity-75 text-white rounded-top-4">
+                                <h5 class="mb-1 fw-bold">
+                                    <span class="badge bg-dark bg-opacity-75 mb-3 d-block">ID: ${u.id_usuario}</span>
+                                    <i class="bi bi-person-circle me-2"></i>
+                                    ${u.nombre_user} ${u.apaterno_user} ${u.amaterno_user}
+                                </h5>
+                            </div>
+
+                            <!-- Cuerpo -->
+                            <div class="card-body">
+                                <p class="mb-2">
+                                    <i class="bi bi-envelope me-2"></i>
+                                    <strong>Correo:</strong> ${u.correo_user}
+                                </p>
+                                <p class="mb-2">
+                                    <i class="bi bi-telephone me-2"></i>
+                                    <strong>Teléfono:</strong> ${u.telefono_user}
+                                </p>
+                                <p class="mb-2">
+                                    <i class="bi bi-person-badge me-2"></i>
+                                    <strong>Tipo de usuario:</strong> ${u.tipo_user.nombre_tipoUsuario}
+                                </p>
+                                <p class="mb-0">
+                                    <i class="bi bi-toggle-on me-2"></i>
+                                    <strong>Estado:</strong>
+                                    <c:choose>
+                                        <c:when test="${u.estado_user}">
+                                            <span class="badge bg-success bg-opacity-75">Activo</span>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <span class="badge bg-danger bg-opacity-75">Desactivado</span>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </p>
+                            </div>
+
+                            <!-- Pie -->
+                            <div class="card-footer bg-light d-flex justify-content-between align-items-center rounded-bottom-4">
                                 <!-- Btn Editar -->
                                 <a href="/gestion/usuarios/editar/${u.id_usuario}"
-                                   class="btn btn-warning btn-sm btn-editar mb-1">
-                                    <i class="bi bi-pencil-square me-2"></i>Editar
+                                   class="btn btn-warning btn-sm rounded-pill shadow-sm">
+                                    <i class="bi bi-pencil-square"></i> Editar
                                 </a>
 
                                 <!-- Btn Eliminar -->
                                 <form action="/gestion/usuarios/eliminarUsuario" method="post"
-                                      onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');"
-                                      style="display:inline;">
+                                      onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');" class="m-0">
                                     <input type="hidden" name="id_usuario" value="${u.id_usuario}">
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="bi bi-trash me-1"></i>Eliminar
+                                    <button type="submit" class="btn btn-danger btn-sm rounded-pill shadow-sm">
+                                        <i class="bi bi-trash"></i> Eliminar
                                     </button>
                                 </form>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
+
         </main>
     </div>
 </div>

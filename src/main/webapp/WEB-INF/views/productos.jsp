@@ -194,14 +194,12 @@
                                         <i class="bi bi-cart-fill me-2"></i> Añadir
                                     </button>
                                 </form>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
 
         <!-- Footer -->
         <jsp:include page="footer.jsp" />

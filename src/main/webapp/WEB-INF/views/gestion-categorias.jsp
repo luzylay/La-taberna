@@ -48,10 +48,15 @@
                 </div>
                 <!-- FIN BARRITA LATAREAL :D ----------------------------------------------------------->
 
-                <!-- TODO EL MAIN ES EL APARTADO DE ELIMINAR PRODUCTOS -->
+                <!-- CRUD DE CATEGORIAS -->
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 min-vh-100">
+                    <!-- Encabezado -->
                     <div class="d-flex justify-content-between align-items-center mt-4 mb-3">
-                        <h1 class="text-center p-3 flex-grow-1">Gestión de Categorias</h1>
+                        <div class="titulo-panel text-center flex-grow-1 mb-5 mt-3">
+                            <h1 class="fw-bold mb-0">
+                                <i class="bi bi-tags-fill me-2"></i> Gestión de Categorías
+                            </h1>
+                        </div>
 
                         <!-- Btn Agregar -->
                         <a href="/gestion/categoria/NuevaCategoria"
@@ -61,43 +66,51 @@
                         </a>
                     </div>
 
-                    <!-- Tabla de productos -->
-                    <div class="table-responsive shadow-sm rounded">
-                        <table class="table table-striped table-bordered align-middle">
-                            <thead class="table-dark text-center">
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre Categoría</th>
-                                <th>Descripción</th>
-                                <th>Acciones</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach var="c" items="${categorias}">
-                                <tr class="align-middle text-center">
-                                    <td>${c.id_categoria}</td>
-                                    <td>${c.nombre_cate}</td>
-                                    <td>${c.descrip_cate}</td>
-                                    <td>
+                    <!-- Tarjetas -->
+                    <div class="row g-4">
+                        <c:forEach var="c" items="${categorias}">
+                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                <div class="card shadow border-0 rounded-4 h-100 p-3 "
+                                     style="transition: all 0.3s ease;">
+                                    <!-- Encabezado de la tarjeta-->
+                                    <!-- ID -->
+                                    <span class="badge bg-dark bg-opacity-75 mb-1 d-block">ID: ${c.id_categoria}</span>
+                                    <div class="d-flex align-items-center badge bg-primary bg-opacity-75 mb-1">
+                                        <div class="d-flex justify-content-center align-items-center"
+                                             style="width: 50px; height: 50px;">
+                                            <i class="bi bi-folder-fill fs-4"></i>
+                                        </div>
+                                        <h5 class="mb-0 fw-bold text-truncate">${c.nombre_cate}</h5>
+                                    </div>
+
+                                    <!-- Descrip -->
+                                    <p class="text-muted small mb-4 mt-3">
+                                        ${c.descrip_cate}
+                                    </p>
+
+                                    <!-- Acciones -->
+                                    <div class="mt-auto d-flex justify-content-between">
                                         <!-- Btn Editar -->
                                         <a href="/gestion/categoria/editar/${c.id_categoria}"
-                                           class="btn btn-warning btn-sm btn-editar mb-1">
-                                            <i class="bi bi-pencil-square me-2"></i>Editar
+                                           class="btn btn-warning btn-sm rounded-pill shadow-sm px-3">
+                                            <i class="bi bi-pencil-square me-1"></i> Editar
                                         </a>
 
                                         <!-- Btn Eliminar -->
-                                        <form action="/gestion/categoria/eliminarCategoria" method="post" style="display:inline;" onsubmit="return confirm('¿Estás seguro de eliminar esta categoría?');">
-                                            <input type="hidden" name="id_categoria" value="${c.id_categoria}" />
-                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                        <form action="/gestion/categoria/eliminarCategoria" method="post"
+                                              onsubmit="return confirm('¿Estás seguro de eliminar esta categoría?');">
+                                            <input type="hidden" name="id_categoria" value="${c.id_categoria}">
+                                            <button type="submit" class="btn btn-danger btn-sm rounded-pill shadow-sm px-3">
+                                                <i class="bi bi-trash me-1"></i> Eliminar
+                                            </button>
                                         </form>
-
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
                     </div>
                 </main>
+
             </div>
         </div>
 
