@@ -54,31 +54,33 @@
 
                 <!-- Main -->
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-4 py-4">
-                    <h1 class="text-center mb-4">Dashboards</h1>
+                    <h1 class="border-start border-4 border-primary ps-3 fw-bold mb-4">
+                        <i class="bi bi-bar-chart-fill me-2"></i>Dashboards
+                    </h1>
 
                     <!-- Panelitos de resumen -->
                     <div class="row g-3 mb-4">
                         <div class="col-md-4">
                             <div class="card text-white bg-primary h-100">
                                 <div class="card-body">
-                                    <h5 class="card-title">Venta del mes</h5>
-                                    <p class="card-text">S/ 10,000</p>
+                                    <h5 class="card-title">Venta Total</h5>
+                                    <p class="card-text" >S/<span id="total_venta">...</span></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="card text-white bg-success h-100">
                                 <div class="card-body">
-                                    <h5 class="card-title">Ventas Mensuales</h5>
-                                    <p class="card-text">75</p>
+                                    <h5 class="card-title">Promedio por Ticket</h5>
+                                    <p class="card-text" >S/<span id="promedio">...</span></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="card text-white bg-warning h-100">
                                 <div class="card-body">
-                                    <h5 class="card-title">Productos</h5>
-                                    <p class="card-text">25</p>
+                                    <h5 class="card-title">Usuarios Existentes</h5>
+                                    <p class="card-text" id="cant_users">...</p>
                                 </div>
                             </div>
                         </div>
@@ -96,19 +98,14 @@
                                 <div id="chart2" class="h-100"></div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="chart-container h-100">
                                 <div id="chart3" class="h-100"></div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="chart-container h-100">
                                 <div id="chart4" class="h-100"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="chart-container" style="height: 400px;">
-                                <div id="chart5" class="h-100"></div>
                             </div>
                         </div>
                     </div>
@@ -125,6 +122,6 @@
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript"
-            src="/js/gestion-graficos.js"></script>
+            src="/js/gestion-info.js"></script>
     </body>
 </html>
