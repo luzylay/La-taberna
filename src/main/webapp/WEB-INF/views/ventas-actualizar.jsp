@@ -48,8 +48,11 @@
                             <!-- Fecha -->
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Fecha de Venta</label>
-                                <input type="datetime-local" class="form-control" name="fecha_venta"
-                                       value="${venta.fecha_venta}" required>
+                                <input type="datetime-local"
+                                       class="form-control"
+                                       name="fecha_venta"
+                                       value="${venta.fecha_venta}"
+                                       required>
                             </div>
 
                         </div>
@@ -96,7 +99,6 @@
                                             <!-- Nombre -->
                                             <td class="fw-semibold">
                                                 ${d.producto.nombre_pro}
-                                                <input type="hidden" value="${d.producto.id_producto}">
                                             </td>
 
                                             <!-- Cantidad --->
@@ -116,6 +118,7 @@
                                                     <span style="font-weight: 500;">S/</span>
                                                     <input type="text"
                                                            value="${d.subtotal_det}"
+                                                           name="precios[]"
                                                            readonly
                                                            style="background: transparent; border: none; text-align: right; width: 35px; padding: 0; margin: 0;">
                                                 </div>
@@ -126,13 +129,14 @@
                                                 <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0;">
                                                     <span style="font-weight: 500;">S/</span>
                                                     <input type="text"
+                                                           name="subtotales[]"
                                                            value="${d.subtotal_det}"
                                                            readonly
                                                            style="background: transparent; border: none; text-align: right; width: 50px; padding: 0; margin: 0;">
                                                 </div>
                                             </td>
 
-                                            <!-- Acciones -->
+                                            <!-- Btn Eliminar Detalle -->
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-danger btn-sm eliminarFila"
                                                     onclick="if(confirm('¿Estás seguro de eliminar este producto?')) eliminarFila(this)">
@@ -146,13 +150,13 @@
                                 </table>
                             </div>
 
-                            <!-- Botón para abrir modal -->
+                            <!-- Btn modal -->
                             <button type="button" class="btn btn-outline-primary mt-2" data-bs-toggle="modal" data-bs-target="#modalProductos">
                                 <i class="bi bi-plus-circle"></i> Agregar Producto
                             </button>
                         </div>
 
-                        <!-- Btn finalizar -->
+                        <!-- Btn principales -->
                         <div class="mt-4 d-flex justify-content-between">
                             <a href="/gestion/ventas" class="btn btn-secondary rounded-pill px-4">
                                 <i class="bi bi-arrow-left"></i> Volver
@@ -174,6 +178,7 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/js/actualizar-ventas-js.js"></script>
+
 <!-- Modal -->
 <div class="modal fade" id="modalProductos" tabindex="-1" aria-labelledby="modalProductosLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
@@ -193,7 +198,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <!-- Se llenará dinámicamente con JS -->
+                    <!-- Se llena con JS -->
                     </tbody>
                 </table>
             </div>

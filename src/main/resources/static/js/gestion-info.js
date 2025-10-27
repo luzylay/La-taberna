@@ -44,9 +44,9 @@ function obtenerColores(arrayColores, cantidad) {
 // PANELES
 // =======================
 function generarPanelitos() {
-    crearPanelito("/api/productos/promedio-por-ticket", "promedio", true);
-    crearPanelito("/api/productos/total-usuarios", "cant_users", false);
-    crearPanelito("/api/productos/total-ventas", "total_venta", true);
+    crearPanelito("/api/ventas/promedio-por-ticket", "promedio", true);
+    crearPanelito("/api/usuarios/total-usuarios", "cant_users", false);
+    crearPanelito("/api/ventas/total-ventas", "total_venta", true);
 }
 
 function crearPanelito(dataURL, div_contenedor, habilitar_decimales) {
@@ -131,7 +131,7 @@ function crearGraficos() {
             chartArea: { width: "75%", left: 100, height: "80%" },
             annotations: { alwaysOutside: true, textStyle: { fontSize: 12 } },
         },
-        "/api/productos/top-10-vendidos",
+        "/api/ventas/top-10-vendidos",
         "Producto",
         "Cantidad Vendida",
         "chart1"
@@ -164,7 +164,7 @@ function crearGraficos() {
         pointSize: 6,
         curveType: "function"
       },
-      "/api/productos/por-mes",
+      "/api/ventas/venta-por-mes",
       "Mes",
       "Se vendió: S/",
       "chart3"
@@ -182,7 +182,7 @@ function crearGraficos() {
             vAxis: { textStyle: { fontSize: 12 } },
             hAxis: { title: "Monto Total (S/.)" }
         },
-        "/api/productos/por-categoria",
+        "/api/ventas/venta-por-categoria",
         "Categoría",
         "Monto (S/.)",
         "chart4"

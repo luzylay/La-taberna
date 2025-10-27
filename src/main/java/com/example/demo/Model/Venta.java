@@ -4,12 +4,14 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+@Builder
 @AllArgsConstructor
 @Data
 @NoArgsConstructor

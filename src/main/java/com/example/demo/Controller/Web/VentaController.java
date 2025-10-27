@@ -2,22 +2,19 @@ package com.example.demo.Controller.Web;
 
 import com.example.demo.Model.DetalleVenta;
 import com.example.demo.Model.Venta;
+import com.example.demo.Service.DetalleVentaService;
+import com.example.demo.Service.ProductoService;
+import com.example.demo.Service.UsuarioService;
 import com.example.demo.Service.VentaService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.example.demo.Service.DetalleVentaService;
-import com.example.demo.Service.ProductoService;
 
 @Controller
 @RequestMapping("/gestion/ventas")
@@ -26,15 +23,18 @@ public class VentaController {
     private VentaService ventaService;
     private ProductoService productoService;
     private DetalleVentaService detalleVentaService;
+    private UsuarioService usuarioService;
 
     @Autowired
     public VentaController(
             VentaService ventaService,
             ProductoService productoService,
-            DetalleVentaService detalleVentaService) {
+            DetalleVentaService detalleVentaService,
+            UsuarioService usuarioService) {
         this.ventaService = ventaService;
         this.productoService = productoService;
         this.detalleVentaService = detalleVentaService;
+        this.usuarioService = usuarioService;
     }
 
     @GetMapping
@@ -46,26 +46,82 @@ public class VentaController {
         return "gestion-ventas";
     }
 
+
+    @GetMapping("/NuevaVenta")
+    public String showAddSellPage(Model model) {
+        model.addAttribute("productoNuevo", new Venta());
+        return "ventas-agregar";
+    }
+
     @GetMapping("/editar/{id}")
-    public String showAddSellPage(@PathVariable Integer id, Model model) {
+    public String showEditSellPage(@PathVariable Integer id, Model model) {
 
         Venta venta = ventaService.obtenerVentaPorId(id);
-
         model.addAttribute("venta", venta);
-        model.addAttribute("productoEditado", new Venta());
 
         return "ventas-actualizar";
     }
+
+    @PostMapping("/guardarVenta")
+    public String guardarVenta(
+            @RequestParam("id_usuario") Integer id_usuario,
+            @RequestParam("id_producto") List<Integer> ids_productos,
+            @RequestParam("cantidades") List<Integer> cantidades,
+            @RequestParam("fecha_venta") LocalDateTime fecha_venta,
+            RedirectAttributes redirigir) {
+
+        if (ids_productos.size() != cantidades.size() || ids_productos.isEmpty()) {
+            redirigir.addFlashAttribute("error", "Error: Productos y cantidades no coinciden o están vacíos");
+            return "redirect:/gestion/ventas";
+        }
+
+        try {
+            int idVentaNueva;
+            synchronized (this) {
+                idVentaNueva = ventaService.obtenerUltimoID() + 1;
+            }
+
+            Venta ventaNueva = new Venta();
+            ventaNueva.setId_venta(idVentaNueva);
+            ventaNueva.setId_usuario(usuarioService.obtenerUsuarioPorId(id_usuario));
+            ventaNueva.setFecha_venta(fecha_venta);
+
+            List<DetalleVenta> detallesVenta = new ArrayList<>();
+            for (int i = 0; i < ids_productos.size(); i++) {
+                DetalleVenta detalle = new DetalleVenta();
+                detalle.setVenta(ventaNueva);
+                detalle.setProducto(productoService.getProductoPorId(ids_productos.get(i)));
+                detalle.setCantidad_det(cantidades.get(i));
+                detalle.establecerSubtotal_det();
+                detallesVenta.add(detalle);
+            }
+
+            ventaNueva.setDetalles_Venta(detallesVenta);
+
+            ventaService.guardarVenta(ventaNueva);
+
+            redirigir.addFlashAttribute("verificar", 1);
+            return "redirect:/gestion/ventas";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/gestion/ventas";
+        }
+    }
+
 
     @PostMapping("/actualizarVenta")
     public String actualizarVenta(
             @RequestParam("id_venta") Integer id_venta,
             @RequestParam("id_producto") List<Integer> productos,
-            @RequestParam("cantidades") List<Integer> cantidades) {
+            @RequestParam("cantidades") List<Integer> cantidades,
+            @RequestParam("fecha_venta") LocalDateTime fecha_venta,
+            RedirectAttributes redirigir) {
 
         detalleVentaService.eliminarDetallesVenta(id_venta);
 
         Venta venta = ventaService.obtenerVentaPorId(id_venta);
+        venta.setFecha_venta(fecha_venta);
 
         List<DetalleVenta> detalles = new ArrayList<>();
 
@@ -81,7 +137,17 @@ public class VentaController {
         venta.setDetalles_Venta(detalles);
         ventaService.actualizarVenta(venta);
 
+        redirigir.addFlashAttribute("verificar", 2);
+        return "redirect:/gestion/ventas";
+    }
 
+    @PostMapping("/eliminarVenta")
+    public String eliminarVenta(
+            @RequestParam("id_venta") Integer id_venta,
+            RedirectAttributes redirigir) {
+        detalleVentaService.eliminarDetallesVenta(id_venta);
+        ventaService.eliminarVenta(id_venta);
+        redirigir.addFlashAttribute("verificar", 3);
         return "redirect:/gestion/ventas";
     }
 }

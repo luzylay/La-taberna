@@ -17,33 +17,50 @@
 <div class="container-fluid">
     <div class="row">
 
-        <!-- BARRA LATERAL -->
-        <button class="btn btn-dark d-md-none mb-3" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" style="border-radius: 0px;">
+        <!-- BARRITA LATERAL :D ----------------------------------------------------------->
+        <!-- Botón para móviles -->
+        <button class="btn btn-dark d-md-none mb-3" type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#sidebarMenu"
+                aria-controls="sidebarMenu" style="border-radius: 0px;">
             <i class="bi bi-list"></i> Menú
         </button>
-        <div class="offcanvas offcanvas-start d-md-none bg-dark bg-opacity-90" tabindex="-1"
-             id="sidebarMenu" aria-labelledby="sidebarLabel">
+        <div
+                class="offcanvas offcanvas-start d-md-none bg-dark bg-opacity-90"
+                tabindex="-1"
+                id="sidebarMenu" aria-labelledby="sidebarLabel">
             <div class="offcanvas-header">
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                <button type="button" class="btn-close text-reset"
+                        data-bs-dismiss="offcanvas"
                         aria-label="Cerrar"></button>
             </div>
             <div class="offcanvas-body p-0">
-                <jsp:include page="gestion-panel-lateral.jsp"/>
+                <jsp:include page="gestion-panel-lateral.jsp" />
             </div>
         </div>
+        <!-- SOLO APARECE SI ES PANTALLA GRANDE -->
         <div class="d-none d-md-block col-md-2 p-0 vh-100">
-            <jsp:include page="gestion-panel-lateral.jsp"/>
+            <jsp:include page="gestion-panel-lateral.jsp" />
         </div>
+        <!-- FIN BARRITA LATAREAL :D ----------------------------------------------------------->
 
         <!-- MAIN -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 min-vh-100">
 
             <!-- TÍTULO -->
-            <div class="d-flex justify-content-center align-items-center mt-4 mb-4">
-                <h1 class="fw-bold border-3 border-primary pb-2">
-                    <i class="bi bi-cart-check me-2"></i> Gestión de Ventas
-                </h1>
+            <div class="d-flex justify-content-between align-items-center mt-5 mb-5">
+                <div class="titulo-panel text-center flex-grow-1">
+                    <h1 class="fw-bold mb-0">
+                        <i class="bi bi-cart-check me-2"></i> Gestión de Ventas
+                    </h1>
+                </div>
+
+                <!-- Btn Agregar -->
+                <a href="/gestion/ventas/NuevaVenta"
+                   class="btn btn-success btn-lg shadow-sm"
+                   style="border-radius: 50px; transition: all 0.3s;">
+                    <i class="bi bi-plus-circle me-2"></i> Agregar Venta Manual
+                </a>
             </div>
 
             <!-- CONTENEDOR DE TARJETAS -->

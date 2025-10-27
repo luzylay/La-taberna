@@ -31,6 +31,11 @@ public class VentaServiceImpl implements VentaService {
     }
 
     @Override
+    public int obtenerUltimoID(){
+        return ventaDAO.obtenerUltimoID();
+    }
+
+    @Override
     public List<Venta> obtenerVentas() {
         return ventaDAO.obtenerVentas();
     }

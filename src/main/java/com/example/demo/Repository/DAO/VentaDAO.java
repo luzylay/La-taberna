@@ -28,6 +28,11 @@ public class VentaDAO implements VentaRepository {
         this.detalleVentaDAO = detalleVentaDAO;
     }
 
+    public int obtenerUltimoID(){
+        String sql = "SELECT MAX(id) AS ultimo_id FROM ventas";
+        return jdbcTemplate.queryForObject(sql,Integer.class);
+    }
+
     public List<Venta> obtenerVentas() {
         String sql = "SELECT * FROM Venta";
         return jdbcTemplate.query(sql, (rs, rowNum) -> {
@@ -71,7 +76,7 @@ public class VentaDAO implements VentaRepository {
     }
 
     public void actualizarVenta(Venta venta) {
-        String sql = "UPDATE Venta SET id_usuario = ?, total_venta = ? WHERE id_venta = ?";
+        String sql = "UPDATE Venta SET fecha_venta = ?, id_usuario = ?, total_venta = ? WHERE id_venta = ?";
 
         if (venta.getDetalles_Venta() != null) {
             venta.getDetalles_Venta().forEach(d -> {
@@ -80,7 +85,7 @@ public class VentaDAO implements VentaRepository {
             });
         }
         venta.establecerTotal_venta();
-        jdbcTemplate.update(sql, venta.getId_usuario().getId_usuario(), venta.getTotal_venta(), venta.getId_venta());
+        jdbcTemplate.update(sql, venta.getFecha_venta(),venta.getId_usuario().getId_usuario(), venta.getTotal_venta(), venta.getId_venta());
     }
 
 

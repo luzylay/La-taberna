@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td>
                             <div style="display:flex; justify-content:flex-end; gap:0;">
                                 <span style="font-weight:500;">S/</span>
-                                <span style="text-align:right; width:50px; padding:0; margin:0;">${(producto.precio_pro ?? 0).toFixed(2)}</span>
+                                <span style="text-align:right; width:50px; padding:0; margin:0;">${(producto.precio_pro ?? 0)}</span>
                             </div>
                         </td>
                         <td class="text-center">
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </td>
                     `;
                     fila.querySelector('.agregarProductoBtn').addEventListener('click', () => {
-                        agregarProductoTablaPrincipal(producto);
+                        agregarProducto(producto);
                         bootstrap.Modal.getInstance(modalProductos).hide();
                     });
                     tablaProductos.appendChild(fila);
@@ -33,33 +33,78 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // Agregar producto a la tabla
-    function agregarProductoTablaPrincipal(producto) {
+    function agregarProducto(producto) {
         const fila = document.createElement('tr');
+
+        const cantidad = producto.cantidad_det ?? 1;
+        const precio = producto.precio_pro ?? 0;
+        const subtotal = (cantidad * precio).toFixed(2);
+
         fila.innerHTML = `
-            <td><img src="${producto.url_pro || ''}" style="width:60px;height:60px;object-fit:cover;"></td>
-            <td><input type="number" name="cantidades[]" value="1" min="1" class="form-control text-center" style="max-width:55px;"></td>
+            <!-- Imagen -->
             <td>
-                <div style="display:flex; justify-content:flex-end; gap:0;">
-                    <span style="font-weight:500;">S/</span>
-                    <input type="text"value="${(producto.precio_pro ?? 0).toFixed(2)}" readonly style="background:transparent; border:none; text-align:right; width:35px; padding:0; margin:0;">
+                <img src="${producto.url_pro || ''}"
+                     alt="${producto.nombre_pro || ''}"
+                     class="img-thumbnail"
+                     style="width: 60px; height: 60px; object-fit: cover;">
+            </td>
+
+            <!-- Nombre -->
+            <td class="fw-semibold">
+                ${producto.nombre_pro || ''}
+            </td>
+
+            <!-- Cantidad -->
+            <td>
+                <input type="number"
+                       name="cantidades[]"
+                       class="form-control text-center"
+                       value="${cantidad}"
+                       style="max-width:55px;"
+                       min="1">
+            </td>
+
+            <!-- Precio unidad -->
+            <td>
+                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0;">
+                    <span style="font-weight: 500;">S/</span>
+                    <input type="text"
+                           name="precios[]"
+                           value="${precio.toFixed(2)}"
+                           readonly
+                           style="background: transparent; border: none; text-align: right; width: 35px; padding: 0; margin: 0;">
                 </div>
             </td>
+
+            <!-- SubTotal -->
             <td>
-                <div style="display:flex; justify-content:flex-end; gap:0;">
-                    <span style="font-weight:500;">S/</span>
-                    <input type="text" value="${(producto.precio_pro ?? 0).toFixed(2)}" readonly style="background:transparent; border:none; text-align:right; width:50px; padding:0; margin:0;">
+                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0;">
+                    <span style="font-weight: 500;">S/</span>
+                    <input type="text"
+                           name="subtotales[]"
+                           value="${subtotal}"
+                           readonly
+                           style="background: transparent; border: none; text-align: right; width: 50px; padding: 0; margin: 0;">
                 </div>
             </td>
+
+            <!-- ID oculto -->
             <td style="display: none;">
                 <input type="hidden" class="id_producto" name="id_producto[]" value="${producto.id_producto}">
             </td>
-            <td class="text-center"><button type="button" class="btn btn-danger btn-sm eliminarFila"><i class="bi bi-trash"></i></button></td>
+
+            <!-- Acciones -->
+            <td class="text-center">
+                <button type="button" class="btn btn-danger btn-sm eliminarFila"
+                    onclick="if(confirm('¿Estás seguro de eliminar este producto?')) eliminarFila(this)">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </td>
         `;
+
         tablaPrincipal.appendChild(fila);
         actualizarSubtotal(fila);
     }
-
 
     function actualizarSubtotal(fila) {
         const cantidad = parseFloat(fila.querySelector('input[name="cantidades[]"]').value) || 0;
@@ -79,6 +124,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Cargar productos al abrir el modal
     modalProductos.addEventListener('show.bs.modal', cargarProductos);
 });
