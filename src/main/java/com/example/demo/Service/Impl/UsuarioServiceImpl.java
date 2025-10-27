@@ -47,8 +47,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     // Crear un nuevo usuario
-    public void crearUsuario(Usuario usuario) {
-        usuarioDAO.crearUsuario(usuario);
+    public boolean crearUsuario(Usuario usuario) {
+        return usuarioDAO.crearUsuario(usuario);
     }
 
     // Actualizar usuario existente

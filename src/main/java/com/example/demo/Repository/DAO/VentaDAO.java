@@ -71,9 +71,18 @@ public class VentaDAO implements VentaRepository {
     }
 
     public void actualizarVenta(Venta venta) {
-        String sql = "UPDATE Venta SET fecha_venta = ?, id_usuario = ?, total_venta = ? WHERE id_venta = ?";
-        jdbcTemplate.update(sql, venta.getFecha_venta(), venta.getId_usuario().getId_usuario(), venta.getTotal_venta(), venta.getId_venta());
+        String sql = "UPDATE Venta SET id_usuario = ?, total_venta = ? WHERE id_venta = ?";
+
+        if (venta.getDetalles_Venta() != null) {
+            venta.getDetalles_Venta().forEach(d -> {
+                d.establecerSubtotal_det();
+                detalleVentaDAO.agregarDetalleVenta(d);
+            });
+        }
+        venta.establecerTotal_venta();
+        jdbcTemplate.update(sql, venta.getId_usuario().getId_usuario(), venta.getTotal_venta(), venta.getId_venta());
     }
+
 
     public void eliminarVenta(int id) {
         String sql = "DELETE FROM Venta WHERE id_venta = ?";
@@ -88,13 +97,13 @@ public class VentaDAO implements VentaRepository {
 
     public List<Venta> obtenerVentasPorUsuario(int idUsuario) {
         String sql = "SELECT * FROM Venta WHERE id_usuario = ?";
-        return jdbcTemplate.query(sql, new Object[]{idUsuario}, (rs, rowNum) -> {
+        return jdbcTemplate.query(sql,new Object[]{idUsuario}, (rs, rowNum) -> {
             Venta venta = new Venta();
             venta.setId_venta(rs.getInt("id_venta"));
             venta.setFecha_venta(rs.getTimestamp("fecha_venta").toLocalDateTime());
             venta.setId_usuario(usuarioDAO.obtenerUsuarioPorId(rs.getInt("id_usuario")));
             venta.setTotal_venta(rs.getDouble("total_venta"));
-
+            venta.setDetalles_Venta(detalleVentaDAO.obtenerDetallesPorVenta(venta.getId_venta()));
             return venta;
         });
     }

@@ -85,7 +85,7 @@
 
                     <c:if test="${empty sessionScope.user}">
                         <a href="/login" class="btn btn-outline-light m-2">Ingresar</a>
-                        <a href="/registro" class="btn btn-outline-light m-2">Registrarse</a>
+                        <a href="/registrar" class="btn btn-outline-light m-2">Registrarse</a>
                     </c:if>
                 </ul>
             </div>

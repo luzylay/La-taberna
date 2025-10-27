@@ -55,7 +55,7 @@
                 <!-- Main -->
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-4 py-4">
                     <h1 class="border-start border-4 border-primary ps-3 fw-bold mb-4">
-                        <i class="bi bi-bar-chart-fill me-2"></i>Dashboards
+                        <i class="bi bi-bar-chart-fill me-2"></i>Dashboard
                     </h1>
 
                     <!-- Panelitos de resumen -->

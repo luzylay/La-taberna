@@ -141,10 +141,10 @@
 <c:if test="${not empty verificar}">
     <script type="text/javascript">
         <c:choose>
-            <c:when test="${verificar == 1}">alert("Venta registrada correctamente ✅");</c:when>
-            <c:when test="${verificar == 2}">alert("Venta editada correctamente ✏️");</c:when>
-            <c:when test="${verificar == 3}">alert("Venta eliminada correctamente 🗑️");</c:when>
-            <c:otherwise>alert("La operación no se pudo realizar 😢");</c:otherwise>
+            <c:when test="${verificar == 1}">alert("Venta registrada correctamente");</c:when>
+            <c:when test="${verificar == 2}">alert("Venta editada correctamente");</c:when>
+            <c:when test="${verificar == 3}">alert("Venta eliminada correctamente");</c:when>
+            <c:otherwise>alert("La operación no se pudo realizar");</c:otherwise>
         </c:choose>
     </script>
 </c:if>

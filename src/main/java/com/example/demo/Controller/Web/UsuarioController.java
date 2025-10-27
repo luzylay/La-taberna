@@ -1,7 +1,10 @@
 package com.example.demo.Controller.Web;
 
 import com.example.demo.Model.Usuario;
+import com.example.demo.Model.Venta;
 import com.example.demo.Service.UsuarioService;
+import com.example.demo.Service.VentaService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +18,13 @@ import java.util.List;
 public class UsuarioController {
 
     private UsuarioService usuarioService;
+    private VentaService ventaService;
     @Autowired
-    public UsuarioController(UsuarioService usuarioService){
+    public UsuarioController(
+            UsuarioService usuarioService,
+            VentaService ventaService){
         this.usuarioService = usuarioService;
+        this.ventaService = ventaService;
     }
 
     @GetMapping
@@ -26,4 +33,5 @@ public class UsuarioController {
         model.addAttribute("usuarios",listaUsuarios);
         return "gestion-usuarios";
     }
+
 }

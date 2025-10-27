@@ -57,10 +57,24 @@ public class UsuarioDAO implements UsuarioRepository {
         });
     }
 
-    public void crearUsuario(Usuario usuario) {
-        String sql = "INSERT INTO Usuario (nombre_user, apaterno_user, amaterno_user, correo_user, telefono_user, estado_user, tipo_user) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, usuario.getNombre_user(), usuario.getApaterno_user(), usuario.getAmaterno_user(), usuario.getCorreo_user(), usuario.getTelefono_user(), usuario.isEstado_user(), usuario.getTipo_user().getId_tipoUsuario());
+    public boolean crearUsuario(Usuario usuario) {
+        String sql = "INSERT INTO Usuario (nombre_user, apaterno_user, amaterno_user, correo_user, password, telefono_user, estado_user, tipo_user) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        int registrados = jdbcTemplate.update(sql,
+                usuario.getNombre_user(),
+                usuario.getApaterno_user(),
+                usuario.getAmaterno_user(),
+                usuario.getCorreo_user(),
+                usuario.getPassword(),
+                usuario.getTelefono_user(),
+                usuario.isEstado_user(),
+                usuario.getTipo_user().getId_tipoUsuario()
+        );
+
+        return registrados > 0;
     }
+
 
     public void actualizarUsuario(Usuario usuario) {
         String sql = "UPDATE Usuario SET nombre_user = ?, apaterno_user = ?, amaterno_user = ?, correo_user = ?, telefono_user = ?, estado_user = ?, tipo_user = ? WHERE id_usuario = ?";

@@ -6,17 +6,17 @@ import com.example.demo.Model.Usuario;
 
 public interface UsuarioRepository {
 
-    List<Usuario> obtenerUsuarios();
+    public List<Usuario> obtenerUsuarios();
 
-    Usuario obtenerUsuarioPorId(int id);
+    public Usuario obtenerUsuarioPorId(int id);
 
-    void crearUsuario(Usuario usuario);
+    public boolean crearUsuario(Usuario usuario);
 
-    void actualizarUsuario(Usuario usuario);
+    public void actualizarUsuario(Usuario usuario);
 
-    void eliminarUsuario(int id);
+    public void eliminarUsuario(int id);
 
-    boolean existerUsuarioPorCorreo(String correo);
+    public boolean existerUsuarioPorCorreo(String correo);
 
-    Usuario buscarPorCorreo(String correo);
+    public Usuario buscarPorCorreo(String correo);
 }

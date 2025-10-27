@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDate;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -41,27 +39,34 @@ public class ProductosRestController {
         this.usuarioService = usuarioService;
     }
 
+    @GetMapping("/todos-productos")
+    public List<Producto> getAllProducts() {
+        List<Producto> lista = productoService.getTodosLosProductos();
+        return lista;
+    }
+
 
     @GetMapping("/por-mes")
-    public Map<String,Double> LineDash(){
+    public Map<String, Double> lineDash() {
 
-        Map<String, Double> graficoDeLineas =  new LinkedHashMap<>();
+        Map<String, Double> graficoDeLineas = new LinkedHashMap<>();
 
-        graficoDeLineas.put("Enero", ventaService.montoTotalDeMes(1));
-        graficoDeLineas.put("Febrero", ventaService.montoTotalDeMes(2));
-        graficoDeLineas.put("Marzo", ventaService.montoTotalDeMes(3));
-        graficoDeLineas.put("Abril", ventaService.montoTotalDeMes(4));
-        graficoDeLineas.put("Mayo", ventaService.montoTotalDeMes(5));
-        graficoDeLineas.put("Junio", ventaService.montoTotalDeMes(6));
-        graficoDeLineas.put("Julio", ventaService.montoTotalDeMes(7));
-        graficoDeLineas.put("Agosto", ventaService.montoTotalDeMes(8));
-        graficoDeLineas.put("Septiembre", ventaService.montoTotalDeMes(9));
-        graficoDeLineas.put("Octubre", ventaService.montoTotalDeMes(10));
-        graficoDeLineas.put("Noviembre", ventaService.montoTotalDeMes(11));
-        graficoDeLineas.put("Diciembre", ventaService.montoTotalDeMes(12));
+        String[] meses = {
+                "Enero", "Febrero", "Marzo", "Abril",
+                "Mayo", "Junio", "Julio", "Agosto",
+                "Septiembre", "Octubre", "Noviembre", "Diciembre"
+        };
+
+        int nroMes = LocalDate.now().getMonthValue();
+
+        for (int i = 0; i < nroMes; i++) {
+            double monto = Optional.ofNullable(ventaService.montoTotalDeMes(i + 1)).orElse(0.0);
+            graficoDeLineas.put(meses[i], monto);
+        }
 
         return graficoDeLineas;
     }
+
 
     @GetMapping("/por-categoria")
     public Map<String,Double> pasterDash() {
