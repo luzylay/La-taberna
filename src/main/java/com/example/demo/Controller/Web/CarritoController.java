@@ -79,7 +79,6 @@ public class CarritoController {
         ventaActiva.setId_venta(id_venta);
         ventaActiva.getDetalles_Venta()
                 .forEach(d->{
-                    System.out.println(d);
                     d.setVenta(ventaActiva);
                     detalleVentaService.agregarDetalleVenta(d);
                 });

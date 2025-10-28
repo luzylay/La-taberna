@@ -131,7 +131,7 @@
                 alert("Se eliminó un usuario correctamente :D");
             </c:when>
             <c:otherwise>
-                alert("La operación no se pudo realizar D:");
+                alert("La operación no se pudo realizar D:\nMotivo: ${msj}");
             </c:otherwise>
         </c:choose>
     </script>

@@ -77,8 +77,17 @@ public class UsuarioDAO implements UsuarioRepository {
 
 
     public void actualizarUsuario(Usuario usuario) {
-        String sql = "UPDATE Usuario SET nombre_user = ?, apaterno_user = ?, amaterno_user = ?, correo_user = ?, telefono_user = ?, estado_user = ?, tipo_user = ? WHERE id_usuario = ?";
-        jdbcTemplate.update(sql, usuario.getNombre_user(), usuario.getApaterno_user(), usuario.getAmaterno_user(), usuario.getCorreo_user(), usuario.getTelefono_user(), usuario.isEstado_user(), usuario.getTipo_user().getId_tipoUsuario(), usuario.getId_usuario());
+        String sql = "UPDATE Usuario SET nombre_user = ?, apaterno_user = ?, amaterno_user = ?, correo_user = ?, telefono_user = ?, estado_user = ?, tipo_user = ? , password = ? WHERE id_usuario = ?";
+        jdbcTemplate.update(sql,
+                usuario.getNombre_user(),
+                usuario.getApaterno_user(),
+                usuario.getAmaterno_user(),
+                usuario.getCorreo_user(),
+                usuario.getTelefono_user(),
+                usuario.isEstado_user(),
+                usuario.getTipo_user().getId_tipoUsuario(),
+                usuario.getPassword(),
+                usuario.getId_usuario());
     }
 
     public void eliminarUsuario(int id) {

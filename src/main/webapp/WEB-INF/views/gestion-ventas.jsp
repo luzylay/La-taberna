@@ -138,13 +138,19 @@
                                     <form action="/gestion/ventas/eliminarVenta" method="post"
                                           onsubmit="return confirm('¿Seguro que deseas eliminar esta venta?');">
                                         <input type="hidden" name="id_venta" value="${v.id_venta}">
-                                        <button type="submit" class="btn btn-danger btn-sm rounded-pill shadow-sm">
+                                        <button type="submit" class="btn btn-danger btn-sm rounded-pill shadow-sm me-2">
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </form>
+
+                                    <!-- Btn Boleta PDF -->
+                                    <a href="/gestion/reportes/generarBoleta/${v.id_venta}"
+                                       class="btn btn-success btn-sm rounded-pill shadow-sm"
+                                       target="_blank">
+                                        <i class="bi bi-file-earmark-pdf"></i>
+                                    </a>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </c:forEach>
