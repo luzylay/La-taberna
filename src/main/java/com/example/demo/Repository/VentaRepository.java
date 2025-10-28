@@ -7,8 +7,6 @@ import com.example.demo.Model.Venta;
 
 public interface VentaRepository {
 
-    public int obtenerUltimoID();
-
     public List<Venta> obtenerVentas();
 
     public Venta obtenerVentaPorId(int id);

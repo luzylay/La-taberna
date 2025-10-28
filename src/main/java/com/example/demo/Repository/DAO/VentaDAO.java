@@ -28,11 +28,6 @@ public class VentaDAO implements VentaRepository {
         this.detalleVentaDAO = detalleVentaDAO;
     }
 
-    public int obtenerUltimoID(){
-        String sql = "SELECT MAX(id) AS ultimo_id FROM ventas";
-        return jdbcTemplate.queryForObject(sql,Integer.class);
-    }
-
     public List<Venta> obtenerVentas() {
         String sql = "SELECT * FROM Venta";
         return jdbcTemplate.query(sql, (rs, rowNum) -> {
@@ -61,16 +56,23 @@ public class VentaDAO implements VentaRepository {
 
     public int guardarVenta(Venta venta) {
         String sql = "INSERT INTO Venta (id_usuario, total_venta) VALUES (?, ?)";
+
+        //Este objeto se encaraga de capturar el id generado por la venta ingresada
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        //Al ejecutar el script sql si le pasamos el Keyholder se le asigna el valor
+        //El Statment.Return_generated_keys indica que debe hacerlo
+        jdbcTemplate.update(c -> {
+            PreparedStatement ps = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, venta.getId_usuario().getId_usuario());
             ps.setDouble(2, venta.getTotal_venta());
             return ps;
         }, keyHolder);
 
+        //KeyHolder almacena el numerico como un Number, por eso se parsea
         Number idGenerado = (Number) keyHolder.getKeys().get("id_venta");
+
+        //Se parsea al tipo de dato necesario mientras sea numerico
         venta.setId_venta(idGenerado.intValue());
         return venta.getId_venta();
     }

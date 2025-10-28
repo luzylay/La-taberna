@@ -71,20 +71,16 @@ public class VentaController {
             RedirectAttributes redirigir) {
 
         if (ids_productos.size() != cantidades.size() || ids_productos.isEmpty()) {
-            redirigir.addFlashAttribute("error", "Error: Productos y cantidades no coinciden o están vacíos");
             return "redirect:/gestion/ventas";
         }
 
         try {
-            int idVentaNueva;
-            synchronized (this) {
-                idVentaNueva = ventaService.obtenerUltimoID() + 1;
-            }
-
             Venta ventaNueva = new Venta();
-            ventaNueva.setId_venta(idVentaNueva);
             ventaNueva.setId_usuario(usuarioService.obtenerUsuarioPorId(id_usuario));
             ventaNueva.setFecha_venta(fecha_venta);
+            ventaNueva.setTotal_venta(0.0);
+
+            int idGenerada = ventaService.guardarVenta(ventaNueva);
 
             List<DetalleVenta> detallesVenta = new ArrayList<>();
             for (int i = 0; i < ids_productos.size(); i++) {
@@ -97,8 +93,9 @@ public class VentaController {
             }
 
             ventaNueva.setDetalles_Venta(detallesVenta);
+            ventaNueva.establecerTotal_venta();
 
-            ventaService.guardarVenta(ventaNueva);
+            ventaService.actualizarVenta(ventaNueva);
 
             redirigir.addFlashAttribute("verificar", 1);
             return "redirect:/gestion/ventas";

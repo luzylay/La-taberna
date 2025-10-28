@@ -161,11 +161,15 @@
                                                     required>
                                             </div>
 
-                                            <!-- BOTÓN GUARDAR -->
-                                            <div class="d-grid">
-                                                <button type="submit"
-                                                    class="btn btn-dark btn-lg">Agregar
-                                                    Producto</button>
+                                            <!-- Btns -->
+                                            <div class="d-flex justify-content-between">
+                                                <a href="/gestion/productos" class="btn btn-secondary btn-lg rounded-pill">
+                                                    <i class="bi bi-arrow-left"></i> Volver
+                                                </a>
+
+                                                <button type="submit" class="btn btn-dark btn-lg">
+                                                    Agregar Producto
+                                                </button>
                                             </div>
                                         </form>
                                         <!-- FORMULARIO PARA AGREGAR PRODUCTOS -->

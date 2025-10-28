@@ -8,8 +8,6 @@ import java.util.List;
 
 public interface VentaService {
 
-    public int obtenerUltimoID();
-
     public List<Venta> obtenerVentas();
 
     public Venta obtenerVentaPorId(int id);

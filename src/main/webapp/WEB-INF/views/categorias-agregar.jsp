@@ -66,8 +66,15 @@
                                     </div>
 
                                     <!-- BTN GUARDAR -->
-                                    <div class="d-grid">
-                                        <button type="submit" class="btn btn-dark btn-lg">Agregar Categoría</button>
+                                    <!-- Btns -->
+                                    <div class="d-flex justify-content-between">
+                                        <a href="/gestion/categoria" class="btn btn-secondary btn-lg rounded-pill">
+                                            <i class="bi bi-arrow-left"></i> Volver
+                                        </a>
+
+                                        <button type="submit" class="btn btn-dark btn-lg">
+                                            Agregar Categoría
+                                        </button>
                                     </div>
                                 </form>
                                 <!-- FIN FORMULARIO -->
