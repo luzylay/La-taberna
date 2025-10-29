@@ -104,15 +104,25 @@
                                                 </p>
                                                 <p class="card-text"><strong>Total:</strong> S/ ${venta.total_venta}</p>
 
-                                                <!-- Btnn mostrar/ocultar-->
-                                                <p>
-                                                    <a class="btn btn-primary btn-sm" data-bs-toggle="collapse"
+                                                <!-- Contenedor botones -->
+                                                <div class="d-flex gap-2 align-items-center">
+                                                    <!-- Btn Mostrar/Ocultar productos -->
+                                                    <a class="btn btn-primary btn-sm"
+                                                       data-bs-toggle="collapse"
                                                        href="#collapseDetalles${statusVenta.index}"
-                                                       role="button" aria-expanded="false"
+                                                       role="button"
+                                                       aria-expanded="false"
                                                        aria-controls="collapseDetalles${statusVenta.index}">
                                                         Ver productos
                                                     </a>
-                                                </p>
+
+                                                    <!-- Btn Boleta PDF -->
+                                                    <a href="/gestion/reportes/generarBoleta/${venta.id_venta}"
+                                                       class="btn btn-success btn-sm rounded-pill shadow-sm"
+                                                       target="_blank">
+                                                        <i class="bi bi-file-earmark-pdf"></i>
+                                                    </a>
+                                                </div>
 
                                                 <!-- Detalles -->
                                                 <div class="collapse" id="collapseDetalles${statusVenta.index}">
