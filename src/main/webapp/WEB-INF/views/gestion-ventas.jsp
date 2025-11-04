@@ -144,7 +144,7 @@
                                     </form>
 
                                     <!-- Btn Boleta PDF -->
-                                    <a href="/gestion/reportes/generarBoleta/${v.id_venta}"
+                                    <a href="/generar/generarBoleta/${v.id_venta}"
                                        class="btn btn-success btn-sm rounded-pill shadow-sm"
                                        target="_blank">
                                         <i class="bi bi-file-earmark-pdf"></i>

@@ -123,8 +123,8 @@ public class VentaDAO implements VentaRepository {
             venta.setFecha_venta(rs.getTimestamp("fecha_venta").toLocalDateTime());
             venta.setId_usuario(usuarioDAO.obtenerUsuarioPorId(rs.getInt("id_usuario")));
             venta.setTotal_venta(rs.getDouble("total_venta"));
+            venta.setDetalles_Venta(detalleVentaDAO.obtenerDetallesPorVenta(venta.getId_venta()));
             return venta;
         });
     }
-
 }

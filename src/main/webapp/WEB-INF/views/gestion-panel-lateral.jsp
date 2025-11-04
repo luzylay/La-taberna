@@ -64,18 +64,9 @@
         <!-- Reportes -->
         <li class="nav-item mb-2">
             <a class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center justify-content-between"
-               data-bs-toggle="collapse" href="#subReporte">
+               href="/gestion/reportes">
                 <span><i class="bi bi-file-earmark-text me-2"></i> Reportes</span>
-                <i class="bi bi-chevron-down"></i>
             </a>
-            <div class="collapse ps-3" id="subReporte">
-                <a href="#" class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center">
-                    <i class="bi bi-circle-fill fs-6 me-2"></i> Reporte 1
-                </a>
-                <a href="#" class="nav-link btn btn-outline-light rounded-pill m-lg-1 d-flex align-items-center">
-                    <i class="bi bi-circle-fill fs-6 me-2"></i> Reporte 2
-                </a>
-            </div>
         </li>
 
         <!-- Productos -->
