@@ -11,52 +11,65 @@ import com.example.demo.Model.TipoUsuario;
 
 @Repository
 public class TipoUsuarioDAO implements TipoUsuarioRepository {
-    
-    private JdbcTemplate jdbcTemplate;
+
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public TipoUsuarioDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    // Métodos para operaciones CRUD 
     public List<TipoUsuario> obtenerTiposUsuario() {
-        String sql = "SELECT * FROM Tipo_Usuario";
-
-        return jdbcTemplate.query(sql, (resultSet, i) -> {
+        String sql = "SELECT * FROM Tipo_Usuario WHERE estado_tipo = TRUE";
+        return jdbcTemplate.query(sql, (rs, i) -> {
             TipoUsuario tu = new TipoUsuario();
-            tu.setId_tipoUsuario(resultSet.getInt("id_tipousuario"));
-            tu.setNombre_tipoUsuario(resultSet.getString("nombre_tipo"));
-            tu.setDescrip_tipoUsuario(resultSet.getString("descrip_tipo"));
+            tu.setId_tipoUsuario(rs.getInt("id_tipousuario"));
+            tu.setNombre_tipoUsuario(rs.getString("nombre_tipo"));
+            tu.setDescrip_tipoUsuario(rs.getString("descrip_tipo"));
+            tu.setActivo_tipoUsuario(rs.getBoolean("estado_tipo"));
             return tu;
         });
     }
 
     public TipoUsuario obtenerTipoUsuarioPorId(int id) {
-        String sql = "SELECT * FROM Tipo_Usuario WHERE id_tipousuario = ?";
-
-        return jdbcTemplate.queryForObject(sql, new Object[]{id}, (resultSet, i) -> {
+        String sql = "SELECT * FROM Tipo_Usuario WHERE id_tipousuario = ? AND estado_tipo = TRUE";
+        return jdbcTemplate.queryForObject(sql, new Object[]{id}, (rs, i) -> {
             TipoUsuario tu = new TipoUsuario();
-            tu.setId_tipoUsuario(resultSet.getInt("id_tipousuario"));
-            tu.setNombre_tipoUsuario(resultSet.getString("nombre_tipo"));
-            tu.setDescrip_tipoUsuario(resultSet.getString("descrip_tipo"));
+            tu.setId_tipoUsuario(rs.getInt("id_tipousuario"));
+            tu.setNombre_tipoUsuario(rs.getString("nombre_tipo"));
+            tu.setDescrip_tipoUsuario(rs.getString("descrip_tipo"));
+            tu.setActivo_tipoUsuario(rs.getBoolean("estado_tipo"));
             return tu;
         });
     }
 
     public void crearTipoUsuario(TipoUsuario tipoUsuario) {
-        String sql = "INSERT INTO Tipo_Usuario (nombre_tipo, descrip_tipo) VALUES (?, ?)";
+        String sql = "INSERT INTO Tipo_Usuario (nombre_tipo, descrip_tipo, estado_tipo) VALUES (?, ?, TRUE)";
         jdbcTemplate.update(sql, tipoUsuario.getNombre_tipoUsuario(), tipoUsuario.getDescrip_tipoUsuario());
     }
 
     public void actualizarTipoUsuario(TipoUsuario tipoUsuario) {
-        String sql = "UPDATE Tipo_Usuario SET nombre_tipo = ?, descrip_tipo = ? WHERE id_tipousuario = ?";
-        jdbcTemplate.update(sql, tipoUsuario.getNombre_tipoUsuario(), tipoUsuario.getDescrip_tipoUsuario(), tipoUsuario.getId_tipoUsuario());
+        String sql = "UPDATE Tipo_Usuario SET nombre_tipo = ?, descrip_tipo = ?, estado_tipo = ? WHERE id_tipousuario = ?";
+        jdbcTemplate.update(sql,
+                tipoUsuario.getNombre_tipoUsuario(),
+                tipoUsuario.getDescrip_tipoUsuario(),
+                tipoUsuario.isActivo_tipoUsuario(),  // ahora es boolean
+                tipoUsuario.getId_tipoUsuario());
     }
 
     public void eliminarTipoUsuario(int id) {
-        String sql = "DELETE FROM Tipo_Usuario WHERE id_tipousuario = ?";
+        String sql = "UPDATE Tipo_Usuario SET estado_tipo = FALSE WHERE id_tipousuario = ?";
         jdbcTemplate.update(sql, id);
     }
 
+    public void reactivarTipoUsuario(int id) {
+        String sql = "UPDATE Tipo_Usuario SET estado_tipo = TRUE WHERE id_tipousuario = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
+    public boolean existeId(int id) {
+        String sql = "SELECT COUNT(*) FROM Tipo_Usuario WHERE id_tipousuario = ?";
+        Integer count = jdbcTemplate.queryForObject(sql, new Object[]{id}, Integer.class);
+        return count != null && count > 0;
+    }
 }

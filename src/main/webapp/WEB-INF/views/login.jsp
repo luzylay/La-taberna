@@ -52,10 +52,6 @@
                                 <button type="submit"
                                     class="btn btn-primary">Entrar</button>
                             </div>
-                            <div class="text-center">
-                                <a href="#" class="link-recuperar">¿Olvidaste tu
-                                    contraseña?</a>
-                            </div>
                         </form>
                     </div>
                 </div>

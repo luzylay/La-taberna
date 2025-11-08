@@ -1,6 +1,5 @@
 package com.example.demo.Model;
 
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +13,6 @@ import java.util.Objects;
 @NoArgsConstructor
 public class Usuario {
 
-    @Id
     private int id_usuario;
     private String nombre_user;
     private String apaterno_user;
@@ -35,13 +33,14 @@ public class Usuario {
                 ", correo_user='" + correo_user + '\'' +
                 ", telefono_user='" + telefono_user + '\'' +
                 ", estado_user=" + estado_user +
-                ", password=" + password +
+                ", password='" + password + '\'' +
                 ", tipo_user=" + tipo_user +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
         return id_usuario == usuario.id_usuario;
@@ -49,6 +48,6 @@ public class Usuario {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id_usuario);
+        return Objects.hash(id_usuario);
     }
 }

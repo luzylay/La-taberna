@@ -76,7 +76,6 @@ public class CategoriaController {
 
         productoService.getProductosPorCategoria(id_categoria)
                         .forEach(p->{
-                            detalleVentaService.eliminarDetallePorProducto(p.getId_producto());
                             productoService.eliminarProducto(p.getId_producto());
                         });
 

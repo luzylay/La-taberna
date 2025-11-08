@@ -48,17 +48,6 @@
                             ${sessionScope.user.tipo_user.nombre_tipoUsuario}
                         </li>
                     </ul>
-
-                    <!-- Btns -->
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
-                        <a href="#" class="btn btn-primary">
-                            <i class="bi bi-pencil-square me-1"></i> Editar Perfil
-                        </a>
-                        <a href="#" class="btn btn-warning text-white">
-                            <i class="bi bi-lock-fill me-1"></i> Cambiar Contraseña
-                        </a>
-                    </div>
-
                 </div>
             </div>
         </div>

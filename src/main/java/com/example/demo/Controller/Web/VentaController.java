@@ -142,7 +142,6 @@ public class VentaController {
     public String eliminarVenta(
             @RequestParam("id_venta") Integer id_venta,
             RedirectAttributes redirigir) {
-        detalleVentaService.eliminarDetallesVenta(id_venta);
         ventaService.eliminarVenta(id_venta);
         redirigir.addFlashAttribute("verificar", 3);
         return "redirect:/gestion/ventas";

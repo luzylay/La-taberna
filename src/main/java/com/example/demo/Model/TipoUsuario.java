@@ -1,6 +1,5 @@
 package com.example.demo.Model;
 
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,10 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TipoUsuario {
 
-    @Id
     private int id_tipoUsuario;
     private String nombre_tipoUsuario;
     private String descrip_tipoUsuario;
+    private boolean activo_tipoUsuario;
 
     @Override
     public String toString() {
@@ -21,6 +20,7 @@ public class TipoUsuario {
                 "id_tipoUsuario=" + id_tipoUsuario +
                 ", nombre_tipoUsuario='" + nombre_tipoUsuario + '\'' +
                 ", descrip_tipoUsuario='" + descrip_tipoUsuario + '\'' +
+                ", activo_tipoUsuario=" + activo_tipoUsuario +
                 '}';
     }
 }

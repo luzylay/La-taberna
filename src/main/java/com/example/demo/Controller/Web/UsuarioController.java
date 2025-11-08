@@ -36,7 +36,7 @@ public class UsuarioController {
 
     @GetMapping
     public String showViewUsers(Model model){
-        List<Usuario> listaUsuarios = usuarioService.obtenerUsuarios();
+        List<Usuario> listaUsuarios = usuarioService.obtenerUsuariosValidos();
         model.addAttribute("usuarios",listaUsuarios);
         return "gestion-usuarios";
     }
@@ -99,15 +99,7 @@ public class UsuarioController {
     public String eliminarUsuario(
             @RequestParam("id_usuario") int id,
             RedirectAttributes redirigir) {
-        //Se eliminan las ventas que tiene ligado el usuario
-        ventaService.obtenerVentasPorUsuario(id).forEach(venta -> {
-            detalleVentaService.eliminarDetallesVenta(venta.getId_venta());
-            ventaService.eliminarVenta(venta.getId_venta());
-        });
-
-        //se elimina el usuarioc
         usuarioService.eliminarUsuario(id);
-
         redirigir.addFlashAttribute("verificar", 3);
         return "redirect:/gestion/usuarios";
     }

@@ -21,13 +21,13 @@ public class UsuarioRestController {
 
     @GetMapping("/listar-usuarios")
     public List<Usuario> listarUsuarios() {
-        List<Usuario> usuarios = usuarioService.obtenerUsuarios();
+        List<Usuario> usuarios = usuarioService.obtenerUsuariosValidos();
         return usuarios;
     }
 
     @GetMapping("/total-usuarios")
     public int totalUsuarios() {
-        List<Usuario> usuarios = usuarioService.obtenerUsuarios();
+        List<Usuario> usuarios = usuarioService.obtenerUsuariosValidos();
         if (usuarios.isEmpty()) return 0;
         return usuarios.size();
     }

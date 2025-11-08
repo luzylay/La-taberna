@@ -2,7 +2,8 @@
 CREATE TABLE IF NOT EXISTS Tipo_Usuario (
     id_tipousuario INT PRIMARY KEY AUTO_INCREMENT,
     nombre_tipo VARCHAR(30) NOT NULL,
-    descrip_tipo VARCHAR(150)
+    descrip_tipo VARCHAR(150),
+    estado_tipo BOOLEAN DEFAULT 1
 );
 
 -- Usuario
@@ -23,7 +24,8 @@ CREATE TABLE IF NOT EXISTS Usuario (
 CREATE TABLE IF NOT EXISTS Categoria (
     id_categoria INT PRIMARY KEY AUTO_INCREMENT,
     nombre_cate VARCHAR(30) NOT NULL,
-    descrip_cate VARCHAR(150)
+    descrip_cate VARCHAR(150),
+    estado_cate BOOLEAN DEFAULT 1
 );
 
 -- Producto
@@ -36,25 +38,25 @@ CREATE TABLE IF NOT EXISTS Producto (
     anio_pro INT,
     precio_pro DECIMAL(8,2) NOT NULL,
     url_pro VARCHAR(250),
+    estado_pro BOOLEAN DEFAULT 1,
     FOREIGN KEY (categoria_pro) REFERENCES Categoria(id_categoria)
 );
 
--- Venta
-CREATE TABLE IF NOT EXISTS Venta (
-    id_venta INT PRIMARY KEY AUTO_INCREMENT,
-    fecha_venta DATETIME DEFAULT NOW(),
-    id_usuario INT,
-    total_venta DECIMAL(8,2) NOT NULL,
-    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
+CREATE TABLE Venta (
+  id_venta INT AUTO_INCREMENT PRIMARY KEY,
+  id_usuario INT NOT NULL,
+  fecha_venta DATE NOT NULL,
+  total_venta DECIMAL(10,2) DEFAULT 0,
+  estado_venta BOOLEAN DEFAULT 1,
+  FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
 );
 
--- Detalle_Venta
-CREATE TABLE IF NOT EXISTS Detalle_Venta (
-    id_detalle INT PRIMARY KEY AUTO_INCREMENT,
-    id_venta INT,
-    id_producto INT,
-    cantidad_det INT NOT NULL,
-    subtotal_det DECIMAL(8,2) NOT NULL,
-    FOREIGN KEY (id_venta) REFERENCES Venta(id_venta),
-    FOREIGN KEY (id_producto) REFERENCES Producto(id_producto)
+CREATE TABLE Detalle_Venta (
+  id_detalle INT AUTO_INCREMENT PRIMARY KEY,
+  id_venta INT NOT NULL,
+  id_producto INT NOT NULL,
+  cantidad_det INT NOT NULL,
+  subtotal_det DECIMAL(10,2) NOT NULL,
+  FOREIGN KEY (id_venta) REFERENCES Venta(id_venta),
+  FOREIGN KEY (id_producto) REFERENCES Producto(id_producto)
 );

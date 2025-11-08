@@ -1,6 +1,5 @@
 package com.example.demo.Model;
 
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DetalleVenta {
 
-    @Id
     private int id_detalle;
     private Venta venta;
     private Producto producto;
@@ -21,14 +19,18 @@ public class DetalleVenta {
     public String toString() {
         return "DetalleVenta{" +
                 "id_detalle=" + id_detalle +
-                ", id_venta=" + venta +
-                ", id_producto=" + producto +
+                ", venta=" + venta +
+                ", producto=" + producto +
                 ", cantidad_det=" + cantidad_det +
                 ", subtotal_det=" + subtotal_det +
                 '}';
     }
 
     public void establecerSubtotal_det() {
-        subtotal_det = cantidad_det * producto.getPrecio_pro();
+        if (producto != null) {
+            subtotal_det = cantidad_det * producto.getPrecio_pro();
+        } else {
+            subtotal_det = 0;
+        }
     }
 }

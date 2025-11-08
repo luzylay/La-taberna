@@ -6,7 +6,9 @@ import com.example.demo.Model.Usuario;
 
 public interface UsuarioRepository {
 
-    public List<Usuario> obtenerUsuarios();
+    public List<Usuario> obtenerUsuariosTodos();
+
+    public List<Usuario> obtenerUsuariosValidos();
 
     public Usuario obtenerUsuarioPorId(int id);
 

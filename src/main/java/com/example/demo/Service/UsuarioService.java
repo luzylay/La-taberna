@@ -9,7 +9,9 @@ public interface UsuarioService {
 
     public boolean login(String correo, String password, HttpSession session);
 
-    public List<Usuario> obtenerUsuarios();
+    public List<Usuario> obtenerUsuariosTodos();
+
+    public List<Usuario> obtenerUsuariosValidos();
 
     public Usuario obtenerUsuarioPorId(int id);
 

@@ -36,37 +36,34 @@ public class UsuarioServiceImpl implements UsuarioService {
         return false;
     }
 
-    // Obtener todos los usuarios
-    public List<Usuario> obtenerUsuarios() {
-        return usuarioDAO.obtenerUsuarios();
+    public List<Usuario> obtenerUsuariosTodos() {
+        return usuarioDAO.obtenerUsuariosTodos();
     }
 
-    // Obtener usuario por ID
+    public List<Usuario> obtenerUsuariosValidos() {
+        return usuarioDAO.obtenerUsuariosValidos();
+    }
+
     public Usuario obtenerUsuarioPorId(int id) {
         return usuarioDAO.obtenerUsuarioPorId(id);
     }
 
-    // Crear un nuevo usuario
     public boolean crearUsuario(Usuario usuario) {
         return usuarioDAO.crearUsuario(usuario);
     }
 
-    // Actualizar usuario existente
     public void actualizarUsuario(Usuario usuario) {
         usuarioDAO.actualizarUsuario(usuario);
     }
 
-    // Eliminar usuario por ID
     public void eliminarUsuario(int id) {
         usuarioDAO.eliminarUsuario(id);
     }
 
-    // Verificar si existe un usuario por correo
     public boolean existeUsuarioPorCorreo(String correo) {
         return usuarioDAO.existerUsuarioPorCorreo(correo);
     }
 
-    // Buscar usuario por correo
     public Usuario buscarPorCorreo(String correo) {
         return usuarioDAO.buscarPorCorreo(correo);
     }

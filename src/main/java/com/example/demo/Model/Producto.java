@@ -1,6 +1,5 @@
 package com.example.demo.Model;
 
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Producto {
-    @Id
+
     private int id_producto;
     private String nombre_pro;
     private String descrip_pro;
@@ -18,6 +17,7 @@ public class Producto {
     private int anio_pro;
     private double precio_pro;
     private String url_pro;
+    private boolean activo_pro;
 
     @Override
     public String toString() {
@@ -30,6 +30,7 @@ public class Producto {
                 ", anio_pro=" + anio_pro +
                 ", precio_pro=" + precio_pro +
                 ", url_pro='" + url_pro + '\'' +
+                ", activo_pro=" + activo_pro +
                 '}';
-    }    
+    }
 }
