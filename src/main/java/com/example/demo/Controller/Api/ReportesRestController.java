@@ -78,7 +78,7 @@ public class ReportesRestController {
             response.setContentType(MediaType.APPLICATION_PDF_VALUE);
             response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=reporte_ventas.pdf");
 
-            List<Venta> listaVentas = ventaService.obtenerVentas();
+            List<Venta> listaVentas = ventaService.obtenerVentasActivas();
             ReportesVentaPDF.generarReporteVentas("REPORTE GENERAL DE VENTAS",listaVentas, response.getOutputStream());
 
         } catch (Exception e) {
@@ -110,7 +110,7 @@ public class ReportesRestController {
     @GetMapping("/reporte/ventas-por-usuario")
     public void reporteVentasPorUsuario(HttpServletResponse response) {
 
-        List<Venta> listaVentas = ventaService.obtenerVentas();
+        List<Venta> listaVentas = ventaService.obtenerVentasActivas();
 
         try {
             response.setContentType(MediaType.APPLICATION_PDF_VALUE);

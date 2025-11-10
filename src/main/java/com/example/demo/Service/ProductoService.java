@@ -5,21 +5,25 @@ import com.example.demo.Model.Producto;
 
 public interface ProductoService {
 
-    List<Producto> getTodosLosProductos();
+    public List<Producto> getTodosLosProductos();
 
-    Producto getProductoPorId(int id);
+    public List<Producto> getProductosActivos();
 
-    int agregarProducto(Producto producto);
+    public Producto getProductoPorId(int id);
 
-    int actualizarProducto(Producto producto);
+    public int agregarProducto(Producto producto);
 
-    int eliminarProducto(int id);
+    public int actualizarProducto(Producto producto);
 
-    boolean existeId(int id);
+    public int eliminarProducto(int id);
 
-    List<Producto> getProductosFiltrados(int pagina, int productosPorPagina, String nombre, String categoria);
+    public boolean existeId(int id);
 
-    int getProductCountFiltered(String nombre, String categoria);
+    public List<Producto> getProductosFiltrados(int pagina, int productosPorPagina, String nombre, String categoria);
+
+    public int getProductCountFiltered(String nombre, String categoria);
 
     public List<Producto> getProductosPorCategoria(int id_categoria);
+
+    public int activarProducto(int id);
 }

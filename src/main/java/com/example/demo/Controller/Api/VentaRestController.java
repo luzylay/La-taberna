@@ -33,7 +33,7 @@ public class VentaRestController {
 
     @GetMapping("/total-ventas")
     public double totalVentas() {
-        List<Venta> ventas = ventaService.obtenerVentas();
+        List<Venta> ventas = ventaService.obtenerVentasActivas();
         if (ventas.isEmpty()) return 0;
 
         return ventas.stream()
@@ -43,7 +43,7 @@ public class VentaRestController {
 
     @GetMapping("/promedio-por-ticket")
     public double promedioPorTicket() {
-        List<Venta> ventas = ventaService.obtenerVentas();
+        List<Venta> ventas = ventaService.obtenerVentasActivas();
         if (ventas.isEmpty()) {
             return 0.0;
         }

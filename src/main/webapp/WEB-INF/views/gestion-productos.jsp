@@ -49,18 +49,32 @@
                 <!-- FIN BARRITA LATAREAL :D ----------------------------------------------------------->
 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 min-vh-100">
-                    <div class="d-flex justify-content-between align-items-center mt-5 mb-5">
-                        <div class="titulo-panel text-center flex-grow-1">
-                            <h1 class="fw-bold mb-0">
-                                <i class="bi bi-box-seam me-2"></i> Gestión de Categorías
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-5 mb-4">
+                        <div class="titulo-panel text-center text-md-start flex-grow-1 mb-4">
+                            <h1 class="border-start border-4 border-black ps-3 fw-bold d-inline-flex align-items-center mb-0">
+                                <i class="bi bi-box-seam-fill me-2"></i>
+                                Gestión de Productos
                             </h1>
+                        </div>
+
+                        <!-- Switch para mostrar eliminados -->
+                        <div class="form-check form-switch d-flex align-items-center bg-dark bg-opacity-75 px-3 py-2 rounded-3 shadow-sm">
+                            <label class="form-check-label text-white fw-semibold small me-3 mb-0" for="activador">
+                                <i class="bi bi-trash3 me-2"></i>Ver Eliminados
+                            </label>
+                            <input
+                                    class="form-check-input mx-1"
+                                    type="checkbox"
+                                    id="activador"
+                                    onchange="window.location.href='/gestion/productos?activador='+this.checked"
+                            <c:if test="${estado}">checked</c:if>
+                            >
                         </div>
 
                         <!-- Btn Agregar -->
                         <a href="/gestion/productos/NuevoProducto"
-                           class="btn btn-success btn-lg shadow-sm"
-                           style="border-radius: 50px; transition: all 0.3s;">
-                            <i class="bi bi-plus-circle me-2"></i> Agregar Producto
+                           class="btn btn-success btn-lg shadow-sm ms-md-3"
+                        <i class="bi bi-plus-circle me-2"></i>Agregar Producto
                         </a>
                     </div>
 
@@ -70,17 +84,37 @@
                             <div class="col-sm-6 col-md-4 col-lg-3">
                                 <div class="card h-100 shadow border-0 rounded-4 producto-card"
                                      style="transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                                    <span class="badge bg-dark bg-opacity-75 mb-3 d-block">ID: ${p.id_producto}</span>
-                                    <!-- Img -->
+
+                                    <!-- ID -->
+                                    <span class="badge bg-dark bg-opacity-75 mb-2 d-block">
+                                        ID: ${p.id_producto}
+                                    </span>
+
+                                    <!-- Estado -->
+                                    <c:choose>
+                                        <c:when test="${p.activo_pro}">
+                                            <span class="badge bg-success bg-opacity-75 mb-3 d-block">
+                                                <i class="bi bi-check-circle me-1"></i> Activo
+                                            </span>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <span class="badge bg-danger bg-opacity-75 mb-3 d-block">
+                                                <i class="bi bi-x-circle me-1"></i> Eliminado
+                                            </span>
+                                        </c:otherwise>
+                                    </c:choose>
+
+                                    <!-- Imagen -->
                                     <img src="${p.url_pro}"
                                          class="card-img-top rounded-top-4"
-                                         alt="ID: ${p.id_producto} - P: ${p.nombre_pro}"
+                                         alt="ID: ${p.id_producto} - ${p.nombre_pro}"
                                          style="height: 180px; object-fit: cover;">
 
                                     <div class="card-body d-flex flex-column">
                                         <h5 class="card-title text-center fw-bold text-primary mb-2">
                                             ${p.nombre_pro}
                                         </h5>
+
                                         <p class="card-text text-muted small mb-2">
                                             ${p.descrip_pro}
                                         </p>
@@ -103,7 +137,8 @@
                                             <form action="/gestion/productos/eliminarProducto" method="post"
                                                   onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
                                                 <input type="hidden" name="id_producto" value="${p.id_producto}">
-                                                <button type="submit" class="btn btn-danger btn-sm rounded-pill shadow-sm px-3">
+                                                <button type="submit"
+                                                        class="btn btn-danger btn-sm rounded-pill shadow-sm px-3">
                                                     <i class="bi bi-trash me-1"></i> Eliminar
                                                 </button>
                                             </form>
@@ -114,7 +149,6 @@
                         </c:forEach>
                     </div>
                 </main>
-
             </div>
         </div>
 

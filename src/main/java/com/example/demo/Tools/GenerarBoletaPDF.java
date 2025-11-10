@@ -37,7 +37,9 @@ public class GenerarBoletaPDF {
         celdaRUC.setHorizontalAlignment(Element.ALIGN_RIGHT);
         tablaDatosEncabezado.addCell(celdaRUC);
 
-        PdfPCell celdaBoleta = new PdfPCell(new Phrase("BOLETA DE VENTA", CellTools.fuenteTitulo));
+        String mensaje = venta.isEstado_venta()? "BOLETA DE VENTA":"BOLETA ANULADA";
+
+        PdfPCell celdaBoleta = new PdfPCell(new Phrase(mensaje, CellTools.fuenteTitulo));
         celdaBoleta.setBorder(PdfPCell.NO_BORDER);
         celdaBoleta.setHorizontalAlignment(Element.ALIGN_RIGHT);
         tablaDatosEncabezado.addCell(celdaBoleta);

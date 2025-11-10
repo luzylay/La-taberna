@@ -29,14 +29,19 @@ public class VentaDAO implements VentaRepository {
         this.detalleVentaDAO = detalleVentaDAO;
     }
 
-    public List<Venta> obtenerVentas() {
+    public List<Venta> obtenerTodasVentas() {
+        String sql = "SELECT * FROM Venta";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> mapReutilizable(rs));
+    }
+
+    public List<Venta> obtenerVentasActivas() {
         String sql = "SELECT * FROM Venta WHERE estado_venta = TRUE";
-        return jdbcTemplate.query(sql, (rs, rowNum) -> mapVentaFromResultSet(rs));
+        return jdbcTemplate.query(sql, (rs, rowNum) -> mapReutilizable(rs));
     }
 
     public Venta obtenerVentaPorId(int id) {
-        String sql = "SELECT * FROM Venta WHERE id_venta = ? AND estado_venta =TRUE";
-        return jdbcTemplate.queryForObject(sql, new Object[]{id}, (rs, rowNum) -> mapVentaFromResultSet(rs));
+        String sql = "SELECT * FROM Venta WHERE id_venta = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{id}, (rs, rowNum) -> mapReutilizable(rs));
     }
 
     public int guardarVenta(Venta venta) {
@@ -72,11 +77,12 @@ public class VentaDAO implements VentaRepository {
         }
         venta.establecerTotal_venta();
 
-        String sql = "UPDATE Venta SET fecha_venta = ?, id_usuario = ?, total_venta = ?, estado_venta = TRUE WHERE id_venta = ?";
+        String sql = "UPDATE Venta SET fecha_venta = ?, id_usuario = ?, total_venta = ?, estado_venta = ? WHERE id_venta = ?";
         jdbcTemplate.update(sql,
                 venta.getFecha_venta(),
                 venta.getId_usuario().getId_usuario(),
                 venta.getTotal_venta(),
+                venta.isEstado_venta(),
                 venta.getId_venta());
     }
 
@@ -98,21 +104,22 @@ public class VentaDAO implements VentaRepository {
 
     public List<Venta> obtenerVentasPorUsuario(int idUsuario) {
         String sql = "SELECT * FROM Venta WHERE id_usuario = ? AND estado_venta = TRUE";
-        return jdbcTemplate.query(sql, new Object[]{idUsuario}, (rs, rowNum) -> mapVentaFromResultSet(rs));
+        return jdbcTemplate.query(sql, new Object[]{idUsuario}, (rs, rowNum) -> mapReutilizable(rs));
     }
 
     public List<Venta> obtenerVentasPorFecha(LocalDateTime inicio, LocalDateTime fin) {
         String sql = "SELECT * FROM Venta WHERE fecha_venta BETWEEN ? AND ? AND estado_venta = TRUE";
-        return jdbcTemplate.query(sql, new Object[]{inicio, fin}, (rs, rowNum) -> mapVentaFromResultSet(rs));
+        return jdbcTemplate.query(sql, new Object[]{inicio, fin}, (rs, rowNum) -> mapReutilizable(rs));
     }
 
-    private Venta mapVentaFromResultSet(java.sql.ResultSet rs) throws java.sql.SQLException {
+    private Venta mapReutilizable(java.sql.ResultSet rs) throws java.sql.SQLException {
         Venta venta = new Venta();
         venta.setId_venta(rs.getInt("id_venta"));
         venta.setFecha_venta(rs.getTimestamp("fecha_venta").toLocalDateTime());
         venta.setId_usuario(usuarioDAO.obtenerUsuarioPorId(rs.getInt("id_usuario")));
         venta.setTotal_venta(rs.getDouble("total_venta"));
         venta.setDetalles_Venta(detalleVentaDAO.obtenerDetallesPorVenta(rs.getInt("id_venta")));
+        venta.setEstado_venta(rs.getBoolean("estado_venta"));
         return venta;
     }
 }

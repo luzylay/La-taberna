@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface VentaService {
 
-    public List<Venta> obtenerVentas();
+    public List<Venta> obtenerTodasLasVentas();
+
+    public List<Venta> obtenerVentasActivas();
 
     public Venta obtenerVentaPorId(int id);
 

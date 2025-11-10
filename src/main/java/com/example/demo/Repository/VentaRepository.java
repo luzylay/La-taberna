@@ -7,7 +7,9 @@ import com.example.demo.Model.Venta;
 
 public interface VentaRepository {
 
-    public List<Venta> obtenerVentas();
+    public List<Venta> obtenerTodasVentas();
+
+    public List<Venta> obtenerVentasActivas();
 
     public Venta obtenerVentaPorId(int id);
 

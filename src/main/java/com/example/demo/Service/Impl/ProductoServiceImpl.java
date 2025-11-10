@@ -18,7 +18,16 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     public List<Producto> getTodosLosProductos() {
-        return productoDAO.obtenerProductos();
+        return productoDAO.obtenerTodosProductos();
+    }
+
+    public int activarProducto(int id){
+        return productoDAO.activarProducto(id);
+    }
+
+    @Override
+    public List<Producto> getProductosActivos() {
+        return productoDAO.obtenerProductosActivos();
     }
 
     public Producto getProductoPorId(int id) {

@@ -6,7 +6,9 @@ import com.example.demo.Model.Producto;
 
 public interface ProductoRepository {
 
-    public List<Producto> obtenerProductos();
+    public List<Producto> obtenerTodosProductos();
+
+    public List<Producto> obtenerProductosActivos();
 
     public Producto obtenerProductoPorId(int id);
 
@@ -24,4 +26,6 @@ public interface ProductoRepository {
     public int eliminarProducto(int idDetalle);
 
     public List<Producto> obtenerProductosPorCategoria(int id_categoria);
+
+    public int activarProducto(int id);
 }

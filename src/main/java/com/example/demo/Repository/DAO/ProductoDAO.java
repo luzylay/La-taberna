@@ -20,8 +20,14 @@ public class ProductoDAO implements ProductoRepository {
         this.categoriaDAO = categoriaDAO;
     }
 
-    public List<Producto> obtenerProductos() {
-        String sql = "SELECT * FROM Producto WHERE estado_pro = TRUE"; // Cambiado a TRUE
+    public List<Producto> obtenerTodosProductos() {
+        String sql = "SELECT * FROM Producto";
+        return jdbcTemplate.query(sql, (rs, i) -> mapProducto(rs));
+    }
+
+    @Override
+    public List<Producto> obtenerProductosActivos() {
+        String sql = "SELECT * FROM Producto WHERE estado_pro = TRUE";
         return jdbcTemplate.query(sql, (rs, i) -> mapProducto(rs));
     }
 
@@ -57,7 +63,7 @@ public class ProductoDAO implements ProductoRepository {
                 producto.getAnio_pro(),
                 producto.getPrecio_pro(),
                 producto.getUrl_pro(),
-                true, //como se modifica que se ponga activo de una vez xd
+                producto.isActivo_pro(),
                 producto.getId_producto());
     }
 

@@ -35,8 +35,13 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public String showViewUsers(Model model){
-        List<Usuario> listaUsuarios = usuarioService.obtenerUsuariosValidos();
+    public String showViewUsers(
+            @RequestParam(name="activador", required = false, defaultValue = "false") boolean verEliminados,
+                                Model model){
+
+        List<Usuario> listaUsuarios = verEliminados? usuarioService.obtenerUsuariosTodos(): usuarioService.obtenerUsuariosValidos();
+
+        model.addAttribute("estado",verEliminados);
         model.addAttribute("usuarios",listaUsuarios);
         return "gestion-usuarios";
     }

@@ -19,6 +19,11 @@ public class CategoriaServiceImpl implements CategoriaService {
         return categoriaRepository.obtenerCategorias();
     }
 
+    @Override
+    public List<Categoria> obtenerCategoriasTodas() {
+        return categoriaRepository.obtenerCategoriasTodas();
+    }
+
     public Categoria obtenerCategoriaPorId(int id){
         return categoriaRepository.obtenerCategoriaPorId(id);
     }

@@ -1,17 +1,16 @@
 package com.example.demo.Service.Impl;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import com.example.demo.Model.DetalleVenta;
+import com.example.demo.Model.Venta;
+import com.example.demo.Repository.DAO.VentaDAO;
 import com.example.demo.Service.CategoriaService;
 import com.example.demo.Service.DetalleVentaService;
+import com.example.demo.Service.VentaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Model.Venta;
-import com.example.demo.Repository.DAO.VentaDAO;
-import com.example.demo.Service.VentaService;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class VentaServiceImpl implements VentaService {
@@ -31,8 +30,13 @@ public class VentaServiceImpl implements VentaService {
     }
 
     @Override
-    public List<Venta> obtenerVentas() {
-        return ventaDAO.obtenerVentas();
+    public List<Venta> obtenerTodasLasVentas() {
+        return ventaDAO.obtenerTodasVentas();
+    }
+
+    @Override
+    public List<Venta> obtenerVentasActivas() {
+        return ventaDAO.obtenerVentasActivas();
     }
 
     @Override
@@ -47,20 +51,12 @@ public class VentaServiceImpl implements VentaService {
 
     @Override
     public void actualizarVenta(Venta venta) {
-        if (ventaDAO.existeVenta(venta.getId_venta())) {
-            ventaDAO.actualizarVenta(venta);
-        } else {
-            throw new RuntimeException("No se puede actualizar. La venta con ID " + venta.getId_venta() + " no existe.");
-        }
+        ventaDAO.actualizarVenta(venta);
     }
 
     @Override
     public void eliminarVenta(int id) {
-        if (ventaDAO.existeVenta(id)) {
-            ventaDAO.eliminarVenta(id);
-        } else {
-            throw new RuntimeException("No se puede eliminar. La venta con ID " + id + " no existe.");
-        }
+        ventaDAO.eliminarVenta(id);
     }
 
     @Override
@@ -79,7 +75,7 @@ public class VentaServiceImpl implements VentaService {
     }
 
     public double montoTotalDeMes(int mes) {
-        return ventaDAO.obtenerVentas().stream()
+        return ventaDAO.obtenerVentasActivas().stream()
                 .filter(v -> v.getFecha_venta().getMonthValue() == mes)
                 .mapToDouble(Venta::getTotal_venta)
                 .sum();

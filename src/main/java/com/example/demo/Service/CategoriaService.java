@@ -7,6 +7,8 @@ public interface CategoriaService {
 
     public List<Categoria> obtenerCategorias();
 
+    public List<Categoria> obtenerCategoriasTodas();
+
     public Categoria obtenerCategoriaPorId(int id);
 
     public int agregarCategoria(Categoria categoria);

@@ -29,8 +29,13 @@ public class CategoriaController {
     }
 
     @GetMapping
-    public String showManagementCategory(Model model) {
-        List<Categoria> categorias = categoriaService.obtenerCategorias();
+    public String showManagementCategory(
+            @RequestParam(name="activador", required = false, defaultValue = "false") boolean verEliminados,
+            Model model) {
+
+        List<Categoria> categorias = verEliminados? categoriaService.obtenerCategoriasTodas():categoriaService.obtenerCategorias();
+
+        model.addAttribute("estado",verEliminados);
         model.addAttribute("categorias", categorias);
         return "gestion-categorias";
     }
@@ -66,6 +71,15 @@ public class CategoriaController {
     public String editarCategoria(@ModelAttribute Categoria categoria,
                                  RedirectAttributes redirigir) {
         categoriaService.actualizarCategoria(categoria);
+
+        if (categoria.isActivo_cate()) {
+            productoService.getProductosPorCategoria(categoria.getId_categoria())
+                    .forEach(p -> productoService.activarProducto(p.getId_producto()));
+        } else {
+            productoService.getProductosPorCategoria(categoria.getId_categoria())
+                    .forEach(p -> productoService.eliminarProducto(p.getId_producto()));
+        }
+
         redirigir.addFlashAttribute("verificar", 2);
         return "redirect:/gestion/categoria";
     }

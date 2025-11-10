@@ -71,12 +71,41 @@
                                 <tr>
                                     <td>Nombre</td>
                                     <td>${categoria.nombre_cate}</td>
-                                    <td><input type="text" name="nombre_cate" class="form-control" value="${categoria.nombre_cate}" required></td>
+                                    <td>
+                                        <input type="text" name="nombre_cate" class="form-control"
+                                               value="${categoria.nombre_cate}" required>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Descripción</td>
                                     <td class="text-start">${categoria.descrip_cate}</td>
                                     <td><textarea name="descrip_cate" class="form-control" required>${categoria.descrip_cate}</textarea></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Estado</td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${categoria.activo_cate}">
+                                                Activo
+                                            </c:when>
+                                            <c:otherwise>
+                                                Inactivo
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                    <td>
+                                        <select name="activo_cate" class="form-select" required>
+                                            <option value="true"
+                                            <c:if test="${categoria.activo_cate}">selected</c:if>>
+                                            Activo
+                                            </option>
+                                            <option value="false"
+                                            <c:if test="${!categoria.activo_cate}">selected</c:if>>
+                                            Inactivo
+                                            </option>
+                                        </select>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>

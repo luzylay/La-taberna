@@ -123,6 +123,23 @@
                                     <td>${producto.stock_pro}</td>
                                     <td><input type="number" name="stock_pro" class="form-control" value="${producto.stock_pro}"></td>
                                 </tr>
+
+                                <tr>
+                                    <td>Estado</td>
+                                    <td>
+                                        <span class="badge ${producto.activo_pro ? 'bg-success' : 'bg-danger'}">
+                                            ${producto.activo_pro ? 'Activo' : 'Eliminado'}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <select name="activo_pro" class="form-select text-center fw-semibold">
+                                            <option value="true" ${producto.activo_pro ? 'selected' : ''}>Activo</option>
+                                            <option value="false" ${!producto.activo_pro ? 'selected' : ''}>Eliminado</option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+
                                 <tr>
                                     <td>Imagen</td>
                                     <td>
@@ -132,6 +149,7 @@
                                     <td><input type="text" name="url_pro" class="form-control" value="${producto.url_pro}"></td>
                                 </tr>
                                 </tbody>
+
                             </table>
                         </div>
 

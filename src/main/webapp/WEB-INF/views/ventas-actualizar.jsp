@@ -80,6 +80,14 @@
 
                         </div>
 
+                        <!-- Estado -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Estado</label>
+                            <select class="form-select" name="estado_venta" required>
+                                <option value="true"  ${venta.estado_venta ? 'selected' : ''}>Activa</option>
+                                <option value="false" ${!venta.estado_venta ? 'selected' : ''}>Anulada</option>
+                            </select>
+                        </div>
 
                         <!-- Detalles -->
                         <div class="mt-4">

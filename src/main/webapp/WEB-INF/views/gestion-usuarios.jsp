@@ -8,6 +8,7 @@
     <title>Gestión - Usuarios</title>
     <link rel="stylesheet" href="css/gestion-css.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
 </head>
 <body>
@@ -36,20 +37,32 @@
 
         <!-- MAIN -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 min-vh-100">
-            <div class="d-flex justify-content-between align-items-center mt-4 mb-3">
-                <h1 class="text-center p-3 flex-grow-1 fw-bold">
-                    <i class="bi bi-people-fill me-2"></i> Gestión de Usuarios
-                </h1>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-4 mb-3">
+                <div class="titulo-panel text-center text-md-start flex-grow-1 mb-3 mb-md-0">
+                    <h1 class="border-start border-4 border-black ps-3 fw-bold d-inline-flex align-items-center mb-0">
+                        <i class="bi bi-people-fill me-2"></i> Gestión de Usuarios
+                    </h1>
+                </div>
+
+                <!-- SWITCH -->
+                <div class="form-check form-switch d-flex align-items-center bg-dark bg-opacity-75 px-3 py-2 rounded-3 shadow-sm me-3">
+                    <label class="form-check-label text-white fw-semibold small me-3 mb-0" for="activador">
+                        <i class="bi bi-eye-slash me-2"></i> Ver Inactivos
+                    </label>
+                    <input class="form-check-input mx-1" type="checkbox" id="activador" name="activador"
+                           onchange="window.location.href='/gestion/usuarios?activador='+this.checked"
+                    <c:if test="${estado}">checked</c:if>
+                    >
+                </div>
 
                 <!-- Btn Agregar -->
                 <a href="/gestion/usuarios/NuevoUsuario"
-                   class="btn btn-success btn-lg shadow-sm"
-                   style="border-radius: 50px; transition: all 0.3s;">
+                   class="btn btn-success btn-lg shadow-sm">
                     <i class="bi bi-plus-circle me-2"></i> Agregar Usuario
                 </a>
             </div>
 
-            <!-- LISTA DE USUARIOS EN FORMATO DE TARJETAS -->
+            <!-- LISTA DE USUARIOS -->
             <div class="row g-4">
                 <c:forEach var="u" items="${usuarios}">
                     <div class="col-12 col-md-6 col-lg-4">
@@ -66,20 +79,13 @@
 
                             <!-- Cuerpo -->
                             <div class="card-body">
-                                <p class="mb-2">
-                                    <i class="bi bi-envelope me-2"></i>
-                                    <strong>Correo:</strong> ${u.correo_user}
-                                </p>
-                                <p class="mb-2">
-                                    <i class="bi bi-telephone me-2"></i>
-                                    <strong>Teléfono:</strong> ${u.telefono_user}
-                                </p>
-                                <p class="mb-2">
-                                    <i class="bi bi-person-badge me-2"></i>
-                                    <strong>Tipo de usuario:</strong> ${u.tipo_user.nombre_tipoUsuario}
-                                </p>
-                                <p class="mb-0">
-                                    <i class="bi bi-toggle-on me-2"></i>
+                                <p class="mb-2"><i class="bi bi-envelope me-2"></i>
+                                    <strong>Correo:</strong> ${u.correo_user}</p>
+                                <p class="mb-2"><i class="bi bi-telephone me-2"></i>
+                                    <strong>Teléfono:</strong> ${u.telefono_user}</p>
+                                <p class="mb-2"><i class="bi bi-person-badge me-2"></i>
+                                    <strong>Tipo de usuario:</strong> ${u.tipo_user.nombre_tipoUsuario}</p>
+                                <p class="mb-0"><i class="bi bi-toggle-on me-2"></i>
                                     <strong>Estado:</strong>
                                     <c:choose>
                                         <c:when test="${u.estado_user}">
@@ -118,21 +124,14 @@
     </div>
 </div>
 
+<!-- ALERTAS -->
 <c:if test="${not empty verificar}">
     <script type="text/javascript">
         <c:choose>
-            <c:when test="${verificar == 1}">
-                alert("Se agregó un usuario correctamente :D");
-            </c:when>
-            <c:when test="${verificar == 2}">
-                alert("Se editó un usuario correctamente :D");
-            </c:when>
-            <c:when test="${verificar == 3}">
-                alert("Se eliminó un usuario correctamente :D");
-            </c:when>
-            <c:otherwise>
-                alert("La operación no se pudo realizar D:\nMotivo: ${msj}");
-            </c:otherwise>
+            <c:when test="${verificar == 1}">alert("Se agregó un usuario correctamente :D");</c:when>
+            <c:when test="${verificar == 2}">alert("Se editó un usuario correctamente :D");</c:when>
+            <c:when test="${verificar == 3}">alert("Se eliminó un usuario correctamente :D");</c:when>
+            <c:otherwise>alert("La operación no se pudo realizar D:\nMotivo: ${msj}");</c:otherwise>
         </c:choose>
     </script>
 </c:if>

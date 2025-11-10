@@ -32,8 +32,13 @@ public class ProductoController {
     }
 
     @GetMapping
-    public String showManagementProduct(Model model) {
-        List<Producto> productos = productoService.getTodosLosProductos();
+    public String showManagementProduct(
+            @RequestParam(name="activador", required = false, defaultValue = "false") boolean verEliminados
+            ,Model model) {
+
+        List<Producto> productos = verEliminados? productoService.getTodosLosProductos():productoService.getProductosActivos();
+
+        model.addAttribute("estado",verEliminados);
         model.addAttribute("productos", productos);
         return "gestion-productos";
     }

@@ -39,8 +39,12 @@ public class VentaController {
 
     @GetMapping
     public String showSellPage(
-            Model model) {
-        List<Venta> ventas = ventaService.obtenerVentas();
+            @RequestParam(name="activador", required = false, defaultValue = "false") boolean verEliminados
+            ,Model model) {
+
+        List<Venta> ventas = verEliminados? ventaService.obtenerTodasLasVentas():ventaService.obtenerVentasActivas();
+
+        model.addAttribute("estado",verEliminados);
         model.addAttribute("ventas", ventas);
 
         return "gestion-ventas";
@@ -109,16 +113,18 @@ public class VentaController {
 
     @PostMapping("/actualizarVenta")
     public String actualizarVenta(
-            @RequestParam("id_venta") Integer id_venta,
+            @RequestParam(name="id_venta") Integer id_venta,
             @RequestParam("id_producto") List<Integer> productos,
             @RequestParam("cantidades") List<Integer> cantidades,
             @RequestParam("fecha_venta") LocalDateTime fecha_venta,
+            @RequestParam(name="estado_venta") boolean estado,
             RedirectAttributes redirigir) {
 
         detalleVentaService.eliminarDetallesVenta(id_venta);
 
         Venta venta = ventaService.obtenerVentaPorId(id_venta);
         venta.setFecha_venta(fecha_venta);
+        venta.setEstado_venta(estado);
 
         List<DetalleVenta> detalles = new ArrayList<>();
 
