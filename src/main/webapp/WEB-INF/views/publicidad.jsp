@@ -6,32 +6,27 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Ofertas y Promociones | La Taberna de Roly</title>
-
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-
     <!-- CSS principal -->
     <link href="css/styles.css" rel="stylesheet">
-
     <!-- CSS específico -->
     <link href="css/publicidad.css" rel="stylesheet">
-
     <link rel="icon" type="image/png" href="https://static.vecteezy.com/system/resources/previews/036/331/638/original/bottle-of-wine-icon-png.png">
 </head>
 <body class="bg-light">
 <jsp:include page="header.jsp"/>
 
-<!-- Encabezado -->
-<section class="page-header text-center text-white py-5 mb-5">
-    <div class="overlay"></div>
-    <div class="container position-relative">
-        <h1 class="display-4 fw-bold mb-3">Ofertas y Promociones</h1>
-        <p class="lead mb-0">No te pierdas nuestras increíbles ofertas y eventos especiales</p>
-    </div>
-</section>
+        <!-- Encabezado -->
+        <section class="page-header text-center text-white py-5 mb-5">
+            <div class="overlay"></div>
+            <div class="container position-relative">
+                <h1 class="display-4 fw-bold mb-3">Ofertas y Promociones</h1>
+                <p class="lead mb-0">No te pierdas nuestras increíbles ofertas y eventos especiales</p>
+            </div>
+        </section>
 
 <!-- Contenido Principal -->
 <main class="container mb-5">
@@ -52,8 +47,11 @@
                     <h4 class="card-title fw-bold mb-3">2x1 en Cervezas Seleccionadas</h4>
                     <p class="card-text text-muted mb-4">¡Aprovecha esta oferta por tiempo limitado en tus cervezas
                         favoritas!</p>
-                    <div class="d-flex justify-content-between align-items-center small text-muted">
-                        <span><i class="bi bi-clock me-1 text-primary"></i>Válido hasta: 30/10/2025</span>
+                    <div class="d-flex justify-content-between align-items-center small">
+                        <p class="mb-1">
+                        <i class="bi bi-clock text-danger me-2">
+                        </i>
+                        <strong>Válido hasta:</strong> 30/10/2025</p>
                     </div>
                 </div>
             </div>
@@ -69,8 +67,11 @@
                 <div class="card-body p-4">
                     <h4 class="card-title fw-bold mb-3">Descuento del 20% en Vinos Premium</h4>
                     <p class="card-text text-muted mb-4">Selección exclusiva de vinos con un descuento especial.</p>
-                    <div class="d-flex justify-content-between align-items-center small text-muted">
-                        <span><i class="bi bi-clock me-1 text-primary"></i>Válido hasta: 15/11/2025</span>
+                    <div class="d-flex justify-content-between align-items-center small">
+                        <p class="mb-1">
+                        <i class="bi bi-clock text-danger me-2">
+                        </i>
+                        <strong>Válido hasta:</strong> 15/11/2025</p>
                     </div>
                 </div>
             </div>
@@ -91,8 +92,8 @@
                         <div class="row align-items-center">
                             <div class="col-auto">
                                 <div class="event-date text-center bg-warning rounded-3 p-2">
-                                    <span class="event-day d-block fs-3 fw-bold text-white">15</span>
-                                    <span class="event-month text-uppercase text-white">Oct</span>
+                                    <span class="event-day d-block fs-3 fw-bold text-dark">15</span>
+                                    <span class="event-month text-uppercase text-dark">Oct</span>
                                 </div>
                             </div>
                             <div class="col">
@@ -104,7 +105,7 @@
                                     tienda principal</p>
                             </div>
                             <div class="col-auto">
-                                <button class="btn btn-outline-success">
+                                <button class="btn btn-outline-danger">
                                     <i class="bi bi-info-circle me-1"></i> Más información
                                 </button>
                             </div>
@@ -120,8 +121,8 @@
                         <div class="row align-items-center">
                             <div class="col-auto">
                                 <div class="event-date text-center bg-warning rounded-3 p-2">
-                                    <span class="event-day d-block fs-3 fw-bold text-white">22</span>
-                                    <span class="event-month text-uppercase text-white">Oct</span>
+                                    <span class="event-day d-block fs-3 fw-bold text-dark">22</span>
+                                    <span class="event-month text-uppercase text-dark">Oct</span>
                                 </div>
                             </div>
                             <div class="col">
@@ -133,7 +134,7 @@
                                     anexo</p>
                             </div>
                             <div class="col-auto">
-                                <button class="btn btn-outline-success">
+                                <button class="btn btn-outline-danger">
                                     <i class="bi bi-info-circle me-1"></i> Más información
                                 </button>
                             </div>
@@ -144,7 +145,9 @@
         </div>
     </section>
 </main>
-
+<!-- <footer> -->
+        <jsp:include page="footer.jsp" />
+        <!-- <footer> -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

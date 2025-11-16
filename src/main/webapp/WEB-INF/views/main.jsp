@@ -17,18 +17,23 @@
 <!-- Header -->
 <jsp:include page="header.jsp"/>
 <!-- Header -->
+<style>
+.vh-100.bg-dark {
+    background: linear-gradient(rgba(60, 20, 35, 5), rgba(45, 15, 25, 5)) !important;
+}
+</style>
 
 <!-- HERO -->
 <section id="inicio"
          class="vh-100 d-flex align-items-center text-center text-white position-relative overflow-hidden bg-dark">
     <img src="/img/taberna_fondo.png"
          alt="Interior de La Taberna"
-         class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover opacity-75">
+         class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover opacity-50">
     <div class="container position-relative z-1">
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <h1 class="display-3 fw-bold mb-3">
-                    LA TABERNA <br><span class="text-danger">DE ROLY</span>
+                    LA TABERNA <br><span class="bs-yellow">DE ROLY</span>
                 </h1>
                 <p class="lead fw-semibold mb-5">
                     Donde cada copa cuenta una historia y cada momento se celebra.
@@ -53,7 +58,6 @@
             <p class="text-muted fs-5 mb-3">
                 Explora nuestra selección de bebidas, vinos y cervezas elaboradas con la mejor calidad y tradición.
             </p>
-            <hr class="w-25 mx-auto border-danger border-2 opacity-75">
         </div>
 
         <div class="row g-4">
@@ -98,14 +102,12 @@
 <!-- CARRUSEL CERVEZAS -->
 <section class="my-5">
     <div class="container">
-        <h2 class="mb-3 text-center fw-bold text-warning text-uppercase">
+        <h2 class="mb-3 text-center fw-bold text-uppercase">
             <i class="bi bi-beer me-2"></i>Destacados de la categoría <span class="text-danger">Cerveza</span>
         </h2>
         <p class="text-muted text-center fs-5 mb-4">
             Una selección especial de nuestras mejores cervezas artesanales, elaboradas con pasión y tradición.
         </p>
-        <hr class="w-25 mx-auto border-warning border-2 opacity-75">
-
         <div id="carruselCervezas" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <c:set var="contador" value="0"/>
@@ -186,7 +188,6 @@
             <p class="text-muted fs-5 mb-3">
                 Disfruta de descuentos y combos exclusivos por tiempo limitado.
             </p>
-            <hr class="w-25 mx-auto border-danger border-2 opacity-75">
         </div>
 
         <!-- Cards de resumen -->
@@ -240,7 +241,6 @@
             <p class="text-muted fs-5">
                 Más de tres décadas de pasión, tradición y excelencia en cada botella.
             </p>
-            <hr class="w-25 mx-auto border-danger border-2 opacity-75">
         </div>
 
         <div class="row align-items-center gy-4">

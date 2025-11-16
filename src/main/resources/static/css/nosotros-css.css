@@ -70,13 +70,6 @@ section {
     text-align: center;
 }
 
-.section-nosotros h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-    margin-bottom: 20px;
-}
-
 .section-nosotros p {
     font-size: 1.25rem;
     max-width: 800px;

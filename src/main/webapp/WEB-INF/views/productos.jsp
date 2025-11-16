@@ -40,7 +40,7 @@
 
                     </div>
                     <div class="col-md-4">
-                        <button type="submit" class="btn btn-outline-secondary">Aplicar Filtros</button>
+                        <button type="submit" class="btn btn-outline-danger">Aplicar Filtros</button>
                     </div>
                 </div>
             </form>
@@ -121,6 +121,14 @@
                         </div>
                     </c:forEach>
             </div>
+            <style>
+            .pagination { display: flex !important; gap: 4px !important; justify-content: center !important; margin-top: 1rem !important; }
+            .page-item { list-style: none !important; }
+            .page-link { padding: 6px 10px !important; text-decoration: none !important; color: #722f37 !important; border: 1px solid #8B0000 !important; border-radius: 3px !important; }
+            .page-link:hover { background: #8B0000 !important; color: white !important; }
+            .active .page-link { background: #722f37 !important; color: white !important; border-color: #722f37 !important; }
+            .disabled .page-link { color: #ccc !important; border-color: #eee !important; pointer-events: none !important; }
+            </style>
             <!-- Paginacion -->
             <nav aria-label="Navegación de páginas" class="mt-4">
                 <ul class="pagination justify-content-center">

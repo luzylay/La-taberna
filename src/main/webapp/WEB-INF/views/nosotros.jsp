@@ -24,7 +24,7 @@
         <!-- header -->
 
         <div class="text-center py-5 section-nosotros">
-            <h1 class="display-4 fw-bold titulo-dorado">Nosotros</h1>
+            <h1 class="display-4 fw-bold">Nosotros</h1>
             <p class="lead mt-3">
                 Bienvenido a <strong>La Taberna de Roly</strong>. Aquí
                 encontrarás toda la información sobre nuestra empresa,
@@ -35,7 +35,7 @@
 
         <section id="quienes-somos" class="py-5 bg-gradient">
             <div class="container">
-                <h2 class="mb-4 text-center fw-bold">Quiénes Somos</h2>
+                <h2 class="fw-bold text-uppercase text-center">Quiénes Somos</h2>
                 <p class="text-center fs-5">
                     <strong>La Taberna de Roly</strong> es una empresa familiar
                     dedicada a la
@@ -49,7 +49,7 @@
 
         <section id="historia" class="py-5 bg-light">
             <div class="container">
-                <h2 class="mb-4 text-center fw-bold">Nuestra Historia</h2>
+                <h2 class="fw-bold text-uppercase text-center">Nuestra Historia</h2>
                 <div class="row align-items-center">
                     <div class="col-md-6 mb-4 mb-md-0">
                         <p class="fs-5 text-muted">
@@ -75,14 +75,14 @@
 
         <section id="mision-vision" class="py-5 bg-gradient">
             <div class="container">
-                <h2 class="mb-5 text-center fw-bold">Misión y Visión</h2>
+                <h2 class="fw-bold text-uppercase text-center">Misión y Visión</h2>
                 <div class="row g-4 justify-content-center">
                     <div class="col-md-5">
                         <div class="card border-0 shadow-lg h-100 hover-shadow">
                             <div class="card-body text-center">
                                 <i
-                                    class="bi bi-bullseye fs-1 text-warning mb-3"></i>
-                                <h5 class="card-title fw-bold">Misión</h5>
+                                    class="bi bi-bullseye fs-1 text-danger mb-3"></i>
+                                <h4 class="card-title text-danger fw-bold">Misión</h4>
                                 <p class="card-text text-muted">
                                     Ofrecer vinos artesanales de alta calidad
                                     que representen la pasión y tradición
@@ -95,8 +95,8 @@
                     <div class="col-md-5">
                         <div class="card border-0 shadow-lg h-100 hover-shadow">
                             <div class="card-body text-center">
-                                <i class="bi bi-eye fs-1 text-warning mb-3"></i>
-                                <h5 class="card-title fw-bold">Visión</h5>
+                                <i class="bi bi-eye fs-1 text-danger mb-3"></i>
+                                <h4 class="card-title text-danger fw-bold">Visión</h4>
                                 <p class="card-text text-muted">
                                     Ser reconocidos nacional e
                                     internacionalmente como líderes en vinos
@@ -112,14 +112,14 @@
 
         <section id="valores" class="py-5 bg-light">
             <div class="container">
-                <h2 class="mb-5 text-center fw-bold">Nuestros Valores</h2>
+                <h2 class="fw-bold text-uppercase text-center">Nuestros Valores</h2>
                 <div class="row g-4 text-center">
                     <div class="col-md-3">
                         <div class="card border-0 shadow-lg py-4 hover-scale">
                             <div class="card-body">
                                 <i
                                     class="bi bi-heart-fill text-danger fs-2 mb-3"></i>
-                                <h6 class="fw-bold">Pasión</h6>
+                                <h4 class="fw-bold text-danger">Pasión</h4>
                                 <p class="text-muted">Amamos lo que hacemos y lo
                                     reflejamos en cada vino.</p>
                             </div>
@@ -129,8 +129,8 @@
                         <div class="card border-0 shadow-lg py-4 hover-scale">
                             <div class="card-body">
                                 <i
-                                    class="bi bi-award-fill text-warning fs-2 mb-3"></i>
-                                <h6 class="fw-bold">Calidad</h6>
+                                    class="bi bi-award-fill text-danger fs-2 mb-3"></i>
+                                <h4 class="fw-bold text-danger">Calidad</h4>
                                 <p class="text-muted">Nuestros vinos cumplen con
                                     los más altos estándares.</p>
                             </div>
@@ -140,8 +140,8 @@
                         <div class="card border-0 shadow-lg py-4 hover-scale">
                             <div class="card-body">
                                 <i
-                                    class="bi bi-people-fill text-primary fs-2 mb-3"></i>
-                                <h6 class="fw-bold">Compromiso</h6>
+                                    class="bi bi-people-fill text-danger fs-2 mb-3"></i>
+                                <h4 class="fw-bold text-danger">Compromiso</h4>
                                 <p class="text-muted">Estamos comprometidos con
                                     clientes y comunidad.</p>
                             </div>
@@ -151,8 +151,8 @@
                         <div class="card border-0 shadow-lg py-4 hover-scale">
                             <div class="card-body">
                                 <i
-                                    class="bi bi-lightning-fill text-info fs-2 mb-3"></i>
-                                <h6 class="fw-bold">Innovación</h6>
+                                    class="bi bi-lightning-fill text-danger fs-2 mb-3"></i>
+                                <h4 class="fw-bold text-danger">Innovación</h4>
                                 <p class="text-muted">Buscamos siempre mejorar e
                                     innovar en nuestros procesos.</p>
                             </div>
