@@ -28,5 +28,7 @@ public interface VentaService {
 
     public double montoTotalDeMes(int mes);
 
+    public List<Venta> obtenerVentasPorMes(int mes);
+
     public List<DetalleVenta> ventasPorCategoria(int idCategoria);
 }

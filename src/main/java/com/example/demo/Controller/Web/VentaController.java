@@ -83,6 +83,7 @@ public class VentaController {
             ventaNueva.setId_usuario(usuarioService.obtenerUsuarioPorId(id_usuario));
             ventaNueva.setFecha_venta(fecha_venta);
             ventaNueva.setTotal_venta(0.0);
+            ventaNueva.setEstado_venta(true);
 
             int idGenerada = ventaService.guardarVenta(ventaNueva);
 

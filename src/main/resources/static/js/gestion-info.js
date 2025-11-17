@@ -88,7 +88,7 @@ function crearGraficos() {
         fetch(dataURL)
             .then(rpta => rpta.json())
             .then(data => {
-                let dataGrafico = [[Valor1, Valor2]]; // encabezados
+                let dataGrafico = [[Valor1, Valor2]];
                 for (const key in data) {
                     dataGrafico.push([key, data[key]]);
                 }
@@ -122,35 +122,40 @@ function crearGraficos() {
             });
     }
 
-    // Grafico #1: Top 10 productos más vendidos
+    // Grafico #1: Cantidad total de productos vendidos por mes
     dibujarGrafico(
         "ColumnChart",
         {
-            title: "Top 10 Productos Más Vendidos",
+            title: "Cantidad Total de Productos Vendidos por Mes",
             legend: { position: "none" },
             chartArea: { width: "75%", left: 100, height: "80%" },
             annotations: { alwaysOutside: true, textStyle: { fontSize: 12 } },
         },
-        "/api/ventas/top-10-vendidos",
-        "Producto",
-        "Cantidad Vendida",
+        "/api/ventas/cantidad-productos-por-mes",
+        "Mes",
+        "Unidades Vendidas",
         "chart1"
     );
 
-    // Grafico #2: Top 10 productos con mayor stock
+    // Grafico #2: Promedio del ticket mensual
     dibujarGrafico(
-        "ColumnChart",
+        "LineChart",
         {
-            title: "Top 10 Productos con Mayor Stock",
+            title: "Promedio del Ticket Mensual",
             legend: { position: "none" },
+            curveType: "function",
             chartArea: { width: "75%", left: 100, height: "80%" },
-            annotations: { alwaysOutside: true, textStyle: { fontSize: 12 } }
-        },
-        "/api/productos/top-10-stock-alto",
-        "Producto",
-        "Stock",
+            annotations: { alwaysOutside: true, textStyle: { fontSize: 12 } },
+                    lineWidth: 5,
+                    pointSize: 6,
+                    curveType: "function"
+                  },
+        "/api/ventas/promedio-ticket-mensual",
+        "Mes",
+        "Promedio (S/.)",
         "chart2"
     );
+
 
     // Grafico #3: Ventas mensuales
     dibujarGrafico(
@@ -172,21 +177,23 @@ function crearGraficos() {
 
 
 
-    // Grafico #4: Ventas por categoría
+    // Grafico #4: Cantidad de Ventas por categoria
     dibujarGrafico(
-        "BarChart",
+        "ColumnChart",
         {
-            title: "Ventas por Categoría (S/)",
+            title: "Cantidad de Ventas por Mes",
             legend: { position: "none" },
             chartArea: { width: "75%", left: 100, height: "80%" },
-            vAxis: { textStyle: { fontSize: 12 } },
-            hAxis: { title: "Monto Total (S/.)" }
+            vAxis: { title: "Cantidad", textStyle: { fontSize: 12 } },
+            hAxis: { title: "Mes", textStyle: { fontSize: 12 } },
+            annotations: { alwaysOutside: true, textStyle: { fontSize: 12 } }
         },
-        "/api/ventas/venta-por-categoria",
-        "Categoría",
-        "Monto (S/.)",
+        "/api/ventas/cant-ventas-por-mes",
+        "Meses",
+        "Cantidad",
         "chart4"
     );
+
 }
 
 // =======================

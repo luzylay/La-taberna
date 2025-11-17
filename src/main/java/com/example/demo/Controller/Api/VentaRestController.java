@@ -10,18 +10,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.time.YearMonth;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/ventas")
 public class VentaRestController {
-    private VentaService ventaService;
-    private DetalleVentaService detalleVentaService;
-    private CategoriaService categoriaService;
+
+    private final VentaService ventaService;
+    private final DetalleVentaService detalleVentaService;
+    private final CategoriaService categoriaService;
+
+    private final String[] meses = {
+            "Enero", "Febrero", "Marzo", "Abril",
+            "Mayo", "Junio", "Julio", "Agosto",
+            "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    };
+
+    private final int nroMes = LocalDate.now().getMonthValue();
 
     public VentaRestController(VentaService ventaService,
                                DetalleVentaService detalleVentaService,
@@ -44,56 +51,72 @@ public class VentaRestController {
     @GetMapping("/promedio-por-ticket")
     public double promedioPorTicket() {
         List<Venta> ventas = ventaService.obtenerVentasActivas();
-        if (ventas.isEmpty()) {
-            return 0.0;
-        }
+        if (ventas.isEmpty()) return 0.0;
+
         double total = ventas.stream()
                 .mapToDouble(Venta::getTotal_venta)
                 .sum();
+
         return total / ventas.size();
     }
 
-    @GetMapping("/top-10-vendidos")
-    public Map<String, Integer> top10MasVendidos() {
+    @GetMapping("/cantidad-productos-por-mes")
+    public Map<String, Integer> cantidadVendidaPorMes() {
 
-        Map<String, Integer> filtro1 = new LinkedHashMap<>();
-        filtro1 = detalleVentaService.obtenerDetalles()
-                .stream()
-                .collect(Collectors.groupingBy(
-                        d -> d.getProducto().getNombre_pro(),
-                        Collectors.summingInt(DetalleVenta::getCantidad_det)
-                ));
+        Map<String, Integer> resultado = new LinkedHashMap<>();
 
-        Map<String, Integer> datos = new LinkedHashMap<>();
+        for (int i = 0; i < nroMes; i++) {
 
-        datos = filtro1
-                .entrySet()
-                .stream()
-                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
-                .limit(10)
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        Map.Entry::getValue,
-                        (a, b) -> a,
-                        LinkedHashMap::new
-                ));
-        return datos;
+            int cantidad = ventaService.obtenerVentasPorMes(i + 1)
+                    .stream()
+                    .flatMap(venta -> venta.getDetalles_Venta().stream())
+                    .mapToInt(DetalleVenta::getCantidad_det)
+                    .sum();
+
+            resultado.put(meses[i], cantidad);
+        }
+
+        return resultado;
     }
 
-    @GetMapping("/venta-por-categoria")
-    public Map<String, Double> pasterDash() {
-        Map<String, Double> grafico = new LinkedHashMap<>();
+    @GetMapping("/promedio-ticket-mensual")
+    public Map<String, Double> promedioTicketMensaul() {
 
-        categoriaService.obtenerCategorias()
-                .forEach(c -> {
-                    grafico.put(
-                            c.getNombre_cate(),
-                            ventaService.ventasPorCategoria(c.getId_categoria())
-                                    .stream()
-                                    .mapToDouble(DetalleVenta::getSubtotal_det)
-                                    .sum()
-                    );
-                });
+        Map<String, Double> resultado = new LinkedHashMap<>();
+
+        for (int i = 0; i < nroMes; i++) {
+
+            List<Venta> ventasDelMes = ventaService.obtenerVentasPorMes(i + 1);
+
+            double promedioMensual =
+                    ventasDelMes.stream()
+                            .mapToDouble(Venta::getTotal_venta)
+                            .average()
+                            .orElse(0.0);
+
+            promedioMensual = Math.round(promedioMensual * 100.0) / 100.0;
+
+
+            resultado.put(meses[i], promedioMensual);
+        }
+
+        return resultado;
+    }
+
+
+
+    @GetMapping("/cant-ventas-por-mes")
+    public Map<String, Integer> pasterDash() {
+
+        Map<String, Integer> grafico = new LinkedHashMap<>();
+
+        for (int i = 0; i < nroMes; i++) {
+            grafico.put(
+                    meses[i],
+                    ventaService.obtenerVentasPorMes(i + 1).size()
+            );
+        }
+
         return grafico;
     }
 
@@ -102,16 +125,11 @@ public class VentaRestController {
 
         Map<String, Double> graficoDeLineas = new LinkedHashMap<>();
 
-        String[] meses = {
-                "Enero", "Febrero", "Marzo", "Abril",
-                "Mayo", "Junio", "Julio", "Agosto",
-                "Septiembre", "Octubre", "Noviembre", "Diciembre"
-        };
-
-        int nroMes = LocalDate.now().getMonthValue();
-
         for (int i = 0; i < nroMes; i++) {
-            double monto = Optional.ofNullable(ventaService.montoTotalDeMes(i + 1)).orElse(0.0);
+            double monto = Optional.ofNullable(
+                    ventaService.montoTotalDeMes(i + 1)
+            ).orElse(0.0);
+
             graficoDeLineas.put(meses[i], monto);
         }
 

@@ -45,7 +45,7 @@ public class VentaDAO implements VentaRepository {
     }
 
     public int guardarVenta(Venta venta) {
-        String sql = "INSERT INTO Venta (id_usuario, total_venta, estado_venta, fecha_venta) VALUES (?, ?, 1, ?)";
+        String sql = "INSERT INTO Venta (id_usuario, total_venta, estado_venta, fecha_venta) VALUES (?, ?, TRUE, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         if (venta.getFecha_venta() == null) {

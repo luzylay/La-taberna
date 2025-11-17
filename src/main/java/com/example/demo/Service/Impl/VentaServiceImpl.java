@@ -74,11 +74,20 @@ public class VentaServiceImpl implements VentaService {
         return ventaDAO.obtenerVentasPorFecha(inicio, fin);
     }
 
+    @Override
     public double montoTotalDeMes(int mes) {
         return ventaDAO.obtenerVentasActivas().stream()
                 .filter(v -> v.getFecha_venta().getMonthValue() == mes)
                 .mapToDouble(Venta::getTotal_venta)
                 .sum();
+    }
+
+    @Override
+    public List<Venta> obtenerVentasPorMes(int mes) {
+        return obtenerVentasActivas()
+                .stream()
+                .filter(venta -> venta.getFecha_venta().getMonthValue() == mes)
+                .toList();
     }
 
     @Override

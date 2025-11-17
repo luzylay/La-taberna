@@ -37,7 +37,7 @@ public class ProductoDAO implements ProductoRepository {
     }
 
     public List<Producto> obtenerProductosPorCategoria(int id_categoria) {
-        String sql = "SELECT * FROM Producto WHERE categoria_pro = ? AND estado_pro = TRUE";
+        String sql = "SELECT * FROM Producto WHERE categoria_pro = ?";
         return jdbcTemplate.query(sql, new Object[]{id_categoria}, (rs, i) -> mapProducto(rs));
     }
 
@@ -84,31 +84,31 @@ public class ProductoDAO implements ProductoRepository {
     }
 
     public List<Producto> obtenerProductosFiltrados(int pagina, int productosPorPagina, String nombre, String categoriaNombre) {
-        int offset = (pagina - 1) * productosPorPagina;
+        int indice = (pagina - 1) * productosPorPagina;
         String sql = "SELECT p.* FROM Producto p";
-        List<Object> params = new ArrayList<>();
+        List<Object> parametros = new ArrayList<>();
 
         if (categoriaNombre != null && !categoriaNombre.isEmpty()) {
             sql += " INNER JOIN Categoria c ON p.categoria_pro = c.id_categoria";
         }
 
-        sql += " WHERE p.estado_pro = TRUE"; // cambio
+        sql += " WHERE p.estado_pro = TRUE";
 
         if (nombre != null && !nombre.isEmpty()) {
             sql += " AND p.nombre_pro LIKE ?";
-            params.add("%" + nombre + "%");
+            parametros.add("%" + nombre + "%");
         }
 
         if (categoriaNombre != null && !categoriaNombre.isEmpty()) {
             sql += " AND LOWER(c.nombre_cate) = ? AND c.estado_cate = TRUE";
-            params.add(categoriaNombre.toLowerCase());
+            parametros.add(categoriaNombre.toLowerCase());
         }
 
         sql += " LIMIT ? OFFSET ?";
-        params.add(productosPorPagina);
-        params.add(offset);
+        parametros.add(productosPorPagina);
+        parametros.add(indice);
 
-        return jdbcTemplate.query(sql, params.toArray(), (rs, i) -> mapProducto(rs));
+        return jdbcTemplate.query(sql, parametros.toArray(), (rs, i) -> mapProducto(rs));
     }
 
     public int getCantidadDeDatosObtenidos(String nombre, String categoriaNombre) {
