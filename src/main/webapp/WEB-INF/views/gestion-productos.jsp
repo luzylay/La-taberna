@@ -125,24 +125,27 @@
                                             <li><strong>Precio:</strong> S/. ${p.precio_pro}</li>
                                             <li><strong>Stock:</strong> ${p.stock_pro}</li>
                                         </ul>
+                                        
+                                        <c:if test="${not empty sessionScope.user and sessionScope.user.tipo_user.nombre_tipoUsuario == 'Administrador'}">
+                                            <div class="mt-auto d-flex justify-content-around">
+                                                <!-- Btn Editar -->
+                                                <a href="/gestion/productos/editar/${p.id_producto}"
+                                                   class="btn btn-warning btn-sm rounded-pill shadow-sm px-3">
+                                                    <i class="bi bi-pencil-square me-1"></i> Editar
+                                                </a>
 
-                                        <div class="mt-auto d-flex justify-content-around">
-                                            <!-- Btn Editar -->
-                                            <a href="/gestion/productos/editar/${p.id_producto}"
-                                               class="btn btn-warning btn-sm rounded-pill shadow-sm px-3">
-                                                <i class="bi bi-pencil-square me-1"></i> Editar
-                                            </a>
+                                                <!-- Btn Eliminar -->
+                                                <form action="/gestion/productos/eliminarProducto" method="post"
+                                                      onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
+                                                    <input type="hidden" name="id_producto" value="${p.id_producto}">
+                                                    <button type="submit"
+                                                            class="btn btn-danger btn-sm rounded-pill shadow-sm px-3">
+                                                        <i class="bi bi-trash me-1"></i> Eliminar
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </c:if>
 
-                                            <!-- Btn Eliminar -->
-                                            <form action="/gestion/productos/eliminarProducto" method="post"
-                                                  onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
-                                                <input type="hidden" name="id_producto" value="${p.id_producto}">
-                                                <button type="submit"
-                                                        class="btn btn-danger btn-sm rounded-pill shadow-sm px-3">
-                                                    <i class="bi bi-trash me-1"></i> Eliminar
-                                                </button>
-                                            </form>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

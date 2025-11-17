@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UsuarioService {
 
-    public boolean login(String correo, String password, HttpSession session);
+    public Usuario login(String correo, String password);
 
     public List<Usuario> obtenerUsuariosTodos();
 

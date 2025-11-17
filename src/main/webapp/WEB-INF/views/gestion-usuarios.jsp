@@ -98,23 +98,24 @@
                                 </p>
                             </div>
 
-                            <!-- Pie -->
-                            <div class="card-footer bg-light d-flex justify-content-between align-items-center rounded-bottom-4">
-                                <!-- Btn Editar -->
-                                <a href="/gestion/usuarios/editar/${u.id_usuario}"
-                                   class="btn btn-warning btn-sm rounded-pill shadow-sm">
-                                    <i class="bi bi-pencil-square"></i> Editar
-                                </a>
+                            <c:if test="${not empty sessionScope.user and sessionScope.user.tipo_user.nombre_tipoUsuario == 'Administrador'}">
+                                <div class="card-footer bg-light d-flex justify-content-between align-items-center rounded-bottom-4">
+                                    <!-- Btn Editar -->
+                                    <a href="/gestion/usuarios/editar/${u.id_usuario}"
+                                       class="btn btn-warning btn-sm rounded-pill shadow-sm">
+                                        <i class="bi bi-pencil-square"></i> Editar
+                                    </a>
 
-                                <!-- Btn Eliminar -->
-                                <form action="/gestion/usuarios/eliminarUsuario" method="post"
-                                      onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');" class="m-0">
-                                    <input type="hidden" name="id_usuario" value="${u.id_usuario}">
-                                    <button type="submit" class="btn btn-danger btn-sm rounded-pill shadow-sm">
-                                        <i class="bi bi-trash"></i> Eliminar
-                                    </button>
-                                </form>
-                            </div>
+                                    <!-- Btn Eliminar -->
+                                    <form action="/gestion/usuarios/eliminarUsuario" method="post"
+                                          onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');" class="m-0">
+                                        <input type="hidden" name="id_usuario" value="${u.id_usuario}">
+                                        <button type="submit" class="btn btn-danger btn-sm rounded-pill shadow-sm">
+                                            <i class="bi bi-trash"></i> Eliminar
+                                        </button>
+                                    </form>
+                                </div>
+                            </c:if>
                         </div>
                     </div>
                 </c:forEach>

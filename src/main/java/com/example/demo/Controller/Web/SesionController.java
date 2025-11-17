@@ -2,6 +2,7 @@ package com.example.demo.Controller.Web;
 
 import com.example.demo.Model.TipoUsuario;
 import com.example.demo.Model.Usuario;
+import com.example.demo.Model.Venta;
 import com.example.demo.Service.Impl.UsuarioServiceImpl;
 import com.example.demo.Service.TipoUsuarioService;
 import com.example.demo.Service.UsuarioService;
@@ -12,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
 
 @Controller
 public class SesionController {
@@ -34,18 +37,27 @@ public class SesionController {
 
     @PostMapping("/login")
     public String postLogin(
-            @RequestParam(name = "correo", required = true) String correo,
-            @RequestParam(name = "password", required = true) String password,
+            @RequestParam(name = "correo") String correo,
+            @RequestParam(name = "password") String password,
             HttpSession session,
             Model model) {
-        if (usuarioService.login(correo, password, session)) {
+
+        Usuario usuario = usuarioService.login(correo, password);
+        if (usuario != null) {
+            session.setAttribute("user", usuario);
+
+            Venta venta = new Venta();
+            venta.setDetalles_Venta(new ArrayList<>());
+            venta.setId_usuario(usuario);
+            session.setAttribute("ventaActiva", venta);
+
+            session.setMaxInactiveInterval(60*60);
             return "redirect:/";
         } else {
             model.addAttribute("error", "Correo o contraseña incorrectos");
             return "/login";
         }
     }
-
 
     @GetMapping("/registrar")
     public String showRegisterPage() {
@@ -86,7 +98,7 @@ public class SesionController {
                 .build();
 
         usuarioService.crearUsuario(user);
-        usuarioService.login(user.getCorreo_user(), user.getPassword(), session);
+        usuarioService.login(user.getCorreo_user(), user.getPassword());
         return "redirect:/";
     }
 

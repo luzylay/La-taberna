@@ -144,27 +144,27 @@
                                 </div>
                             </div>
 
-                            <!-- Pie de la tarjetita-->
                             <div class="card-footer bg-light rounded-bottom-4 d-flex justify-content-between align-items-center">
                                 <span class="fw-bold text-success fs-5">
                                     Total: S/${v.total_venta}
                                 </span>
                                 <div class="d-flex">
-                                    <!-- Editar -->
-                                    <a href="/gestion/ventas/editar/${v.id_venta}"
-                                       class="btn btn-warning btn-sm rounded-pill shadow-sm me-2">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
+                                    <c:if test="${not empty sessionScope.user and sessionScope.user.tipo_user.nombre_tipoUsuario == 'Administrador'}">
+                                        <!-- Editar -->
+                                        <a href="/gestion/ventas/editar/${v.id_venta}"
+                                           class="btn btn-warning btn-sm rounded-pill shadow-sm me-2">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
 
-                                    <!-- Eliminar -->
-                                    <form action="/gestion/ventas/eliminarVenta" method="post"
-                                          onsubmit="return confirm('¿Seguro que deseas eliminar esta venta?');">
-                                        <input type="hidden" name="id_venta" value="${v.id_venta}">
-                                        <button type="submit" class="btn btn-danger btn-sm rounded-pill shadow-sm me-2">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </form>
-
+                                        <!-- Eliminar -->
+                                        <form action="/gestion/ventas/eliminarVenta" method="post"
+                                              onsubmit="return confirm('¿Seguro que deseas eliminar esta venta?');">
+                                            <input type="hidden" name="id_venta" value="${v.id_venta}">
+                                            <button type="submit" class="btn btn-danger btn-sm rounded-pill shadow-sm me-2">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </c:if>
                                     <!-- Boleta -->
                                     <a href="/generar/generarBoleta/${v.id_venta}"
                                        class="btn btn-success btn-sm rounded-pill shadow-sm"

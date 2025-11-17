@@ -12,7 +12,7 @@ VALUES
 ('Admin', 'User', 'Test', 'admin@gmail.com', 'admin', '987654321', 1, 1),
 
 -- Auxiliares
-('Maria', 'Fernandez', 'Quispe', 'maria.fernandez@empresa.com', '12345', '945123456', 1, 2),
+('Maria', 'Fernandez', 'Quispe', 'maria.fernandez@empresa.com', '12345', '945123456', 1, 3),
 ('Luis', 'Torres', 'Gomez', 'luis.torres@empresa.com', '12345', '912345678', 1, 3),
 
 -- Clientes

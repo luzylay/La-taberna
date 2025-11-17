@@ -20,21 +20,14 @@ public class UsuarioServiceImpl implements UsuarioService {
         this.usuarioDAO = usuarioDAO;
     }
 
-    public boolean login(String correo, String password, HttpSession session) {
+    public Usuario login(String correo, String password) {
         Usuario usuario = usuarioDAO.buscarPorCorreo(correo);
         if (usuario != null && usuario.getPassword().equals(password)) {
-            session.setAttribute("user", usuario);
-
-            Venta venta =   new Venta();
-            venta.setDetalles_Venta(new ArrayList<>());
-            venta.setId_usuario(usuario);
-            session.setAttribute("ventaActiva",venta);
-
-            session.setMaxInactiveInterval(60*60);
-            return true;
+            return usuario;
         }
-        return false;
+        return null;
     }
+
 
     public List<Usuario> obtenerUsuariosTodos() {
         return usuarioDAO.obtenerUsuariosTodos();

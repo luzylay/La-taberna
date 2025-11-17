@@ -104,25 +104,26 @@
                                 <h5 class="fw-bold text-primary mb-2 text-truncate">${c.nombre_cate}</h5>
                                 <p class="text-muted small mb-3">${c.descrip_cate}</p>
 
-                                <div class="mt-auto d-flex justify-content-around">
-                                    <!-- Editar -->
-                                    <a href="/gestion/categoria/editar/${c.id_categoria}"
-                                       class="btn btn-warning btn-sm rounded-pill shadow-sm px-3">
-                                        <i class="bi bi-pencil-square me-1"></i> Editar
-                                    </a>
+                                <c:if test="${not empty sessionScope.user and sessionScope.user.tipo_user.nombre_tipoUsuario == 'Administrador'}">
+                                    <div class="mt-auto d-flex justify-content-around">
+                                        <!-- Editar -->
+                                        <a href="/gestion/categoria/editar/${c.id_categoria}"
+                                           class="btn btn-warning btn-sm rounded-pill shadow-sm px-3">
+                                            <i class="bi bi-pencil-square me-1"></i> Editar
+                                        </a>
 
-                                    <!-- Eliminar -->
-                                    <form action="/gestion/categoria/eliminarCategoria" method="post"
-                                          onsubmit="return confirm('¿Estás seguro de eliminar esta categoría?');">
-                                        <input type="hidden" name="id_categoria" value="${c.id_categoria}">
-                                        <button type="submit"
-                                                class="btn btn-danger btn-sm rounded-pill shadow-sm px-3">
-                                            <i class="bi bi-trash me-1"></i> Eliminar
-                                        </button>
-                                    </form>
-                                </div>
+                                        <!-- Eliminar -->
+                                        <form action="/gestion/categoria/eliminarCategoria" method="post"
+                                              onsubmit="return confirm('¿Estás seguro de eliminar esta categoría?');">
+                                            <input type="hidden" name="id_categoria" value="${c.id_categoria}">
+                                            <button type="submit"
+                                                    class="btn btn-danger btn-sm rounded-pill shadow-sm px-3">
+                                                <i class="bi bi-trash me-1"></i> Eliminar
+                                            </button>
+                                        </form>
+                                    </div>
+                                </c:if>
                             </div>
-
                         </div>
                     </div>
                 </c:forEach>
