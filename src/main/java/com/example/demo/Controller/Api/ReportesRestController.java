@@ -15,6 +15,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 @RestController
@@ -139,4 +140,31 @@ public class ReportesRestController {
             e.printStackTrace();
         }
     }
+
+    @GetMapping("/reporte/ventas-hoy")
+    public void reporteVentasHoy(HttpServletResponse response) {
+
+        LocalDate hoy = LocalDate.now();
+
+        LocalDateTime fechaInicio = hoy.atStartOfDay();
+        LocalDateTime fechaFin = hoy.atTime(23, 59, 59);
+
+        List<Venta> listaVentas = ventaService.obtenerVentasPorFecha(fechaInicio, fechaFin);
+
+        try {
+            response.setContentType(MediaType.APPLICATION_PDF_VALUE);
+            response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
+                    "attachment; filename=reporte_ventas_hoy.pdf");
+
+            ReportesVentaPDF.generarReporteVentas(
+                    "REPORTE DE VENTAS DE HOY",
+                    listaVentas,
+                    response.getOutputStream()
+            );
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -71,13 +71,15 @@
 
                 <!-- Reporte de Boleta -->
                 <div class="col">
-                    <div class="card h-100 shadow-sm border-0">
+                    <div class="card h-100 shadow-lg border-0 rounded-4">
                         <div class="card-body text-center">
                             <i class="bi bi-receipt-cutoff display-4 text-primary"></i>
-                            <h5 class="card-title mt-3">Boleta de Venta</h5>
+                            <h5 class="card-title mt-3 fw-bold">Boleta de Venta</h5>
                             <p class="text-muted">Genera una boleta individual por ID de venta.</p>
+
                             <form class="d-flex justify-content-center mt-3" id="formBoleta">
-                                <input type="number" class="form-control w-50 me-2" id="idVenta" placeholder="ID Venta">
+                                <input type="number" class="form-control w-50 me-2 shadow-sm"
+                                       id="idVenta" placeholder="ID Venta">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="bi bi-file-earmark-pdf-fill"></i> Generar
                                 </button>
@@ -86,30 +88,47 @@
                     </div>
                 </div>
 
+                <!-- Reporte de Ventas de Hoy -->
+                <div class="col">
+                    <div class="card h-100 shadow-lg border-0 rounded-4">
+                        <div class="card-body text-center">
+                            <i class="bi bi-calendar-date-fill display-4 text-success"></i>
+                            <h5 class="card-title mt-3 fw-bold">Ventas de Hoy</h5>
+                            <p class="text-muted">Genera un reporte con todas las ventas del día actual.</p>
+
+                            <form action="/generar/reporte/ventas-hoy" method="get">
+                                <button type="submit" class="btn btn-success mt-3">
+                                    <i class="bi bi-file-earmark-pdf-fill"></i> Descargar
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Reporte por Stock -->
                 <div class="col">
-                    <div class="card h-100 shadow-sm border-0">
+                    <div class="card h-100 shadow-lg border-0 rounded-4">
                         <div class="card-body text-center">
-                            <i class="bi bi-box-seam display-4 text-success"></i>
-                            <h5 class="card-title mt-3">Reporte por Stock</h5>
-                            <p class="text-muted">Lista todos los productos y el stock físico disponible en inventario.</p>
-                            <a href="/generar/reporte/stock"
-                               class="btn btn-success">
+                            <i class="bi bi-box-seam display-4 text-secondary"></i>
+                            <h5 class="card-title mt-3 fw-bold">Reporte por Stock</h5>
+                            <p class="text-muted">Lista todos los productos y el stock físico disponible.</p>
+
+                            <a href="/generar/reporte/stock" class="btn btn-secondary mt-3">
                                 <i class="bi bi-file-earmark-pdf-fill"></i> Descargar
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Reporte de Ventas -->
+                <!-- Reporte de Ventas General -->
                 <div class="col">
-                    <div class="card h-100 shadow-sm border-0">
+                    <div class="card h-100 shadow-lg border-0 rounded-4">
                         <div class="card-body text-center">
                             <i class="bi bi-bar-chart-fill display-4 text-warning"></i>
-                            <h5 class="card-title mt-3">Reporte de Ventas</h5>
-                            <p class="text-muted">Genera un resumen general de todas las ventas registradas.</p>
-                            <a href="/generar/reporte/ventas"
-                               class="btn btn-warning text-white">
+                            <h5 class="card-title mt-3 fw-bold">Reporte de Ventas</h5>
+                            <p class="text-muted">Genera un resumen general de todas las ventas.</p>
+
+                            <a href="/generar/reporte/ventas" class="btn btn-warning text-white mt-3">
                                 <i class="bi bi-file-earmark-pdf-fill"></i> Descargar
                             </a>
                         </div>
@@ -118,36 +137,38 @@
 
                 <!-- Reporte de Usuarios -->
                 <div class="col">
-                    <div class="card h-100 shadow-sm border-0">
+                    <div class="card h-100 shadow-lg border-0 rounded-4">
                         <div class="card-body text-center">
                             <i class="bi bi-people-fill display-4 text-info"></i>
-                            <h5 class="card-title mt-3">Reporte por Usuarios</h5>
-                            <p class="text-muted">
-                                Genera un reporte con las ventas realizadas por usuario. Si un usuario tiene más de una venta, se suman los totales.
-                            </p>
+                            <h5 class="card-title mt-3 fw-bold">Reporte por Usuarios</h5>
+                            <p class="text-muted">Ventas agrupadas por vendedor.</p>
+
                             <a href="/generar/reporte/ventas-por-usuario"
-                               class="btn btn-info text-white">
+                               class="btn btn-info text-white mt-3">
                                 <i class="bi bi-file-earmark-pdf-fill"></i> Descargar
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Reporte de Ventas en Rango Fechas -->
+                <!-- Reporte de Ventas por Fecha -->
                 <div class="col">
-                    <div class="card h-100 shadow-sm border-0">
+                    <div class="card h-100 shadow-lg border-0 rounded-4">
                         <div class="card-body text-center">
                             <i class="bi bi-calendar-range-fill display-4 text-danger"></i>
-                            <h5 class="card-title mt-3">Ventas por Lapso de Fechas</h5>
-                            <p class="text-muted">Genera un reporte de ventas entre dos fechas específicas.</p>
+                            <h5 class="card-title mt-3 fw-bold">Ventas por Lapso de Fechas</h5>
+                            <p class="text-muted">Genera un reporte entre dos fechas específicas.</p>
 
-                            <form action="/generar/reporte/ventas-entre-fechas" id="formReporteFechas" class="mt-3" method="get">
+                            <form action="/generar/reporte/ventas-entre-fechas" id="formReporteFechas"
+                                  class="mt-3" method="get">
                                 <div class="row g-2 justify-content-center">
                                     <div class="col-5">
-                                        <input type="datetime-local" class="form-control" id="fecha1" name="fecha1" required>
+                                        <input type="datetime-local" class="form-control shadow-sm"
+                                               id="fecha1" name="fecha1" required>
                                     </div>
                                     <div class="col-5">
-                                        <input type="datetime-local" class="form-control" id="fecha2" name="fecha2" required>
+                                        <input type="datetime-local" class="form-control shadow-sm"
+                                               id="fecha2" name="fecha2" required>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-danger mt-3">
@@ -158,17 +179,15 @@
                     </div>
                 </div>
 
-                <!-- Reporte de Productos Vendidos -->
+                <!-- Productos Vendidos -->
                 <div class="col">
-                    <div class="card h-100 shadow-sm border-0">
+                    <div class="card h-100 shadow-lg border-0 rounded-4">
                         <div class="card-body text-center">
                             <i class="bi bi-bag-check-fill display-4 text-success"></i>
-                            <h5 class="card-title mt-3">Productos Vendidos</h5>
-                            <p class="text-muted">
-                                Descarga un reporte con el listado de productos vendidos y sus estadísticas.
-                            </p>
+                            <h5 class="card-title mt-3 fw-bold">Productos Vendidos</h5>
+                            <p class="text-muted">Listado de productos y estadísticas.</p>
 
-                            <a href="/generar/reporte/productos-vendidos" class="btn btn-success">
+                            <a href="/generar/reporte/productos-vendidos" class="btn btn-success mt-3">
                                 <i class="bi bi-file-earmark-pdf-fill"></i> Descargar
                             </a>
                         </div>
@@ -176,6 +195,7 @@
                 </div>
 
             </div>
+
         </main>
     </div>
 </div>
@@ -196,6 +216,17 @@
             alert('Por favor ingrese un ID de venta válido.');
         }
     });
+</script>
+
+<!-- Esto de aca evita que el usuario pase de poner el día de hoy -->
+<script>
+    const hoy = new Date();
+    hoy.setHours(23, 59, 59, 999);
+
+    const formato = hoy.toISOString().slice(0, 16);
+
+    document.getElementById("fecha1").setAttribute("max", formato);
+    document.getElementById("fecha2").setAttribute("max", formato);
 </script>
 
 </body>

@@ -73,31 +73,4 @@ public class VentaServiceImpl implements VentaService {
     public List<Venta> obtenerVentasPorFecha(LocalDateTime inicio, LocalDateTime fin) {
         return ventaDAO.obtenerVentasPorFecha(inicio, fin);
     }
-
-    @Override
-    public double montoTotalDeMes(int mes) {
-        return ventaDAO.obtenerVentasActivas().stream()
-                .filter(v -> v.getFecha_venta().getMonthValue() == mes)
-                .mapToDouble(Venta::getTotal_venta)
-                .sum();
-    }
-
-    @Override
-    public List<Venta> obtenerVentasPorMes(int mes) {
-        return obtenerVentasActivas()
-                .stream()
-                .filter(venta -> venta.getFecha_venta().getMonthValue() == mes)
-                .toList();
-    }
-
-    @Override
-    public List<DetalleVenta> ventasPorCategoria(int idCategoria) {
-        return detalleVentaService.obtenerDetalles()
-                .stream()
-                .filter(d -> d.getProducto() != null
-                        && d.getProducto().getCategoria_pro() != null
-                        && d.getProducto().getCategoria_pro().getId_categoria() == idCategoria)
-                .toList();
-    }
-
 }

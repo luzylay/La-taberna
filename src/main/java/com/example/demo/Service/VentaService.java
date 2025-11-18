@@ -25,10 +25,4 @@ public interface VentaService {
     public List<Venta> obtenerVentasPorUsuario(int idUsuario);
 
     public List<Venta> obtenerVentasPorFecha(LocalDateTime inicio, LocalDateTime fin);
-
-    public double montoTotalDeMes(int mes);
-
-    public List<Venta> obtenerVentasPorMes(int mes);
-
-    public List<DetalleVenta> ventasPorCategoria(int idCategoria);
 }
