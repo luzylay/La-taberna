@@ -20,7 +20,7 @@
             <div class="overlay"></div>
             <div class="container position-relative">
                 <h1 class="display-4 fw-bold mb-3">Contacta con nosotros</h1>
-                <p class="lead mb-0">Si tienes dudas, sugerencias o quieres más información sobre nuestros productos, completa el formulario y te responderemos lo antes posible.</p>
+                <p class="fs-5 mb-2">Si tienes dudas, sugerencias o quieres más información sobre nuestros productos, completa el formulario y te responderemos lo antes posible.</p>
             </div>
         </section>
 

@@ -24,7 +24,7 @@
             <div class="overlay"></div>
             <div class="container position-relative">
                 <h1 class="display-4 fw-bold mb-3">Ofertas y Promociones</h1>
-                <p class="lead mb-0">No te pierdas nuestras increíbles ofertas y eventos especiales</p>
+                <p class="fs-5 mb-2">No te pierdas nuestras increíbles ofertas y eventos especiales</p>
             </div>
         </section>
 

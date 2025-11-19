@@ -11,7 +11,6 @@
             rel="stylesheet">
         <link rel="stylesheet" href="css/contact-css.css">
         <link rel="stylesheet" href="css/nosotros-css.css">
-
         <link rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
         <link rel="icon" type="image/png" href="https://static.vecteezy.com/system/resources/previews/036/331/638/original/bottle-of-wine-icon-png.png">
@@ -25,7 +24,7 @@
 
         <div class="text-center py-5 section-nosotros">
             <h1 class="display-4 fw-bold">Nosotros</h1>
-            <p class="lead mt-3">
+            <p class="fs-5 mb-2">
                 Bienvenido a <strong>La Taberna de Roly</strong>. Aquí
                 encontrarás toda la información sobre nuestra empresa,
                 nuestra historia, misión, visión y los valores que nos guían
@@ -54,13 +53,7 @@
                     <div class="col-md-6 mb-4 mb-md-0">
                         <p class="fs-5 text-muted">
                             Fundada en 1985, <strong>La Taberna de Roly</strong>
-                            comenzó como un
-                            pequeño proyecto familiar en Lima, Perú. A lo largo
-                            de los años, hemos crecido
-                            manteniendo nuestra filosofía de calidad y pasión
-                            por el vino. Cada generación
-                            ha aportado innovación y dedicación para mantenernos
-                            como referentes del sector.
+                            comenzó como un pequeño proyecto familiar en Lima, Perú. A lo largo de los años, hemos crecido manteniendo nuestra filosofía de calidad y pasión por el vino. Cada generación ha aportado innovación y dedicación para mantenernos como referentes del sector.
                         </p>
                     </div>
                     <div class="col-md-6 text-center">
@@ -80,8 +73,6 @@
                     <div class="col-md-5">
                         <div class="card border-0 shadow-lg h-100 hover-shadow">
                             <div class="card-body text-center">
-                                <i
-                                    class="bi bi-bullseye fs-1 text-danger mb-3"></i>
                                 <h4 class="card-title text-danger fw-bold">Misión</h4>
                                 <p class="card-text text-muted">
                                     Ofrecer vinos artesanales de alta calidad
@@ -95,7 +86,6 @@
                     <div class="col-md-5">
                         <div class="card border-0 shadow-lg h-100 hover-shadow">
                             <div class="card-body text-center">
-                                <i class="bi bi-eye fs-1 text-danger mb-3"></i>
                                 <h4 class="card-title text-danger fw-bold">Visión</h4>
                                 <p class="card-text text-muted">
                                     Ser reconocidos nacional e

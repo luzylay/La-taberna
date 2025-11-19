@@ -15,7 +15,7 @@
         <!-- PANEL PRINCIPAL -->
         <li class="nav-item mb-4 text-center">
             <span class="text-white fw-bold fs-5">
-                <i class="bi bi-speedometer2 me-2"></i> Panel de Gestión
+                <i class="bi me-2"></i> Panel de Gestión
             </span>
         </li>
 
@@ -27,13 +27,13 @@
         <!-- Sesión activa -->
         <li class="nav-item mb-2">
             <span class="nav-link text-white d-flex flex-column align-items-start">
-                <strong><i class="bi bi-person-circle me-2"></i> Usuario:</strong>
+                <strong><i class="bi"></i>Usuario:</strong>
                 <span class="badge bg-primary">${sessionScope.user.nombre_user}</span>
             </span>
         </li>
         <li class="nav-item mb-2">
             <span class="nav-link text-white d-flex flex-column align-items-start">
-                <strong><i class="bi bi-shield-lock-fill me-2"></i> Tipo:</strong>
+                <strong><i class="bi"></i>Tipo:</strong>
                 <span class="badge bg-success">${sessionScope.user.tipo_user.nombre_tipoUsuario}</span>
             </span>
         </li>

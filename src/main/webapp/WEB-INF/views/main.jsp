@@ -35,7 +35,7 @@
                 <h1 class="display-3 fw-bold mb-3">
                     LA TABERNA <br><span class="bs-yellow">DE ROLY</span>
                 </h1>
-                <p class="lead fw-semibold mb-5">
+                <p class="fs-5 mb-5 fw-semibold">
                     Donde cada copa cuenta una historia y cada momento se celebra.
                 </p>
                 <div class="d-flex justify-content-center gap-3 flex-wrap">

@@ -45,7 +45,7 @@
 <section class="hero-servicios text-center d-flex align-items-center justify-content-center py-5">
     <div class="container">
         <h1 class="titulo-servicios fw-bold display-4 mb-3">Nuestros Servicios</h1>
-        <p class="lead mx-auto w-75">
+        <p class="fs-5 mb-2">
             En <strong>La Taberna de Roly</strong> ofrecemos más que productos: brindamos experiencias únicas para
             los amantes del buen licor y la atención personalizada.
         </p>
@@ -113,7 +113,7 @@
 <section class="py-5 bg-light text-center">
     <div class="container">
         <h2 class="titulo-servicios mb-3">¿Quieres más información?</h2>
-        <p class="lead">Contáctanos para personalizar tu experiencia con nuestros servicios.</p>
+        <p class="fs-5 mb-3">Contáctanos para personalizar tu experiencia con nuestros servicios.</p>
         <a href="${pageContext.request.contextPath}/contacto"
            class="btn btn-danger mt-2 px-4 py-2 rounded-pill fw-bold shadow-sm">
             <i class="bi bi-envelope-paper me-2"></i> Ir a Contacto
