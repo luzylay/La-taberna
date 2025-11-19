@@ -1,127 +1,92 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Gestión</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Gestión</title>
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
 
-        <link rel="icon" type="image/png"
-            href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/gestion-css.css">
 
-        <link rel="stylesheet"
-            href="${pageContext.request.contextPath}/css/gestion-css.css">
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-            rel="stylesheet">
-        <link rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
 
-        <script type="text/javascript"
-            src="https://www.gstatic.com/charts/loader.js"></script>
-    </head>
-    <body>
+<div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="sidebarMenu">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Menú</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+        <jsp:include page="gestion-panel-lateral.jsp" />
+    </div>
+</div>
 
-        <div class="container-fluid">
-            <div class="row">
+<div class="d-none d-md-block sidebar-container">
+    <jsp:include page="gestion-panel-lateral.jsp" />
+</div>
 
-                <!-- BARRITA LATERAL :D ----------------------------------------------------------->
-                <!-- Botón para móviles -->
-                <button class="btn btn-dark d-md-none mb-3" type="button"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#sidebarMenu"
-                    aria-controls="sidebarMenu" style="border-radius: 0px;">
-                    <i class="bi bi-list"></i> Menú
-                </button>
-                <div
-                    class="offcanvas offcanvas-start d-md-none bg-dark bg-opacity-90"
-                    tabindex="-1"
-                    id="sidebarMenu" aria-labelledby="sidebarLabel">
-                    <div class="offcanvas-header">
-                        <button type="button" class="btn-close text-reset"
-                            data-bs-dismiss="offcanvas"
-                            aria-label="Cerrar"></button>
-                    </div>
-                    <div class="offcanvas-body p-0">
-                        <jsp:include page="gestion-panel-lateral.jsp" />
-                    </div>
-                </div>
-                <!-- SOLO APARECE SI ES PANTALLA GRANDE -->
-                <div class="d-none d-md-block col-md-2 p-0 vh-100">
-                    <jsp:include page="gestion-panel-lateral.jsp" />
-                </div>
-                <!-- FIN BARRITA LATAREAL :D ----------------------------------------------------------->
+<main class="px-4 py-4">
 
-                <!-- Main -->
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-4 py-4">
-                    <h1 class="border-start border-4 border-primary ps-3 fw-bold mb-4">
-                        <i class="bi bi-bar-chart-fill me-2"></i>Dashboard
-                    </h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="border-start border-4 border-primary ps-3 fw-bold m-0">
+            <i class="bi me-2"></i>Dashboard
+        </h1>
+        <button class="btn btn-dark d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+            <i class="bi bi-list"></i>
+        </button>
+    </div>
 
-                    <!-- Panelitos de resumen -->
-                    <div class="row g-3 mb-4">
-                        <div class="col-md-4">
-                            <div class="card text-white bg-primary h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Venta Total</h5>
-                                    <p class="card-text" >S/<span id="total_venta">...</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card text-white bg-success h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Promedio por Ticket</h5>
-                                    <p class="card-text" >S/<span id="promedio">...</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card text-white bg-warning h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Usuarios Existentes</h5>
-                                    <p class="card-text" id="cant_users">...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Gráficos -->
-                    <div class="row g-4">
-                        <div class="col-lg-6">
-                            <div class="chart-container h-100">
-                                <div id="chart1" class="h-100"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="chart-container h-100">
-                                <div id="chart2" class="h-100"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="chart-container h-100">
-                                <div id="chart3" class="h-100"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="chart-container h-100">
-                                <div id="chart4" class="h-100"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                </main>
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary h-100 p-3">
+                <h6 class="text-uppercase opacity-75">Venta Total</h6>
+                <h2 class="fw-bold mb-0">S/ <span id="total_venta">0.00</span></h2>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success h-100 p-3">
+                <h6 class="text-uppercase opacity-75">Ticket Promedio</h6>
+                <h2 class="fw-bold mb-0">S/ <span id="promedio">0.00</span></h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-secondary h-100 p-3"> <h6 class="text-uppercase opacity-75">Usuarios Activos</h6>
+                <h2 class="fw-bold mb-0" id="cant_users">0</h2>
+            </div>
+        </div>
+    </div>
 
-        <footer class="bg-dark text-white text-center py-2 mt-4">
-            <div>© 2025 - Panel de Gestión | Todos los derechos reservados</div>
-        </footer>
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <div class="chart-wrapper">
+                <div id="chart3" class="chart-div"></div> </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="chart-wrapper">
+                <div id="chart2" class="chart-div"></div> </div>
+        </div>
 
-        <!-- Scripts -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script type="text/javascript"
-            src="/js/gestion-info.js"></script>
-    </body>
+        <div class="col-lg-6">
+            <div class="chart-wrapper">
+                <div id="chart1" class="chart-div"></div> </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="chart-wrapper">
+                <div id="chart4" class="chart-div"></div> </div>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <div>© 2025 - Panel de Gestión | Todos los derechos reservados</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/gestion-info.js"></script>
+</body>
 </html>
