@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión - Categorías</title>
 
-    <link rel="stylesheet" href="css/gestion-css.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/gestion-css.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
@@ -58,7 +58,7 @@
                            <c:if test="${estado}">checked</c:if> >
                 </div>
 
-                <a href="/gestion/categoria/NuevaCategoria" class="btn btn-success btn-lg shadow-sm ms-md-3">
+                <a href="${pageContext.request.contextPath}/gestion/categoria/NuevaCategoria" class="btn btn-success btn-lg shadow-sm ms-md-3">
                     <i class="bi bi-plus-circle me-2"></i> Agregar Categoría
                 </a>
             </div>
@@ -101,7 +101,7 @@
                                             <i class="bi bi-pencil-square me-1"></i> Editar
                                         </a>
 
-                                        <form action="/gestion/categoria/eliminarCategoria" method="post"
+                                        <form action="${pageContext.request.contextPath}/gestion/categoria/eliminarCategoria" method="post"
                                               onsubmit="return confirm('¿Estás seguro de eliminar esta categoría?');">
                                             <input type="hidden" name="id_categoria" value="${c.id_categoria}">
                                             <button type="submit" class="btn btn-danger btn-sm shadow-sm px-3">

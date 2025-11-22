@@ -13,16 +13,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     <style>
-        .campo-antiguo {
-            background-color: #f8f9fa;
-        }
-        .campo-nuevo {
-            background-color: #fff;
-        }
-        .campo-label {
-            font-weight: 600;
-            color: #495057;
-        }
         .img-thumb {
             max-width: 80px;
             border-radius: 6px;
@@ -41,7 +31,7 @@
         <button class="btn btn-dark d-md-none mb-3" type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#sidebarMenu"
-                aria-controls="sidebarMenu" style="border-radius: 0px;">
+                aria-controls="sidebarMenu" style="border-radius: 0;">
             <i class="bi bi-list"></i> Menú
         </button>
 
@@ -71,7 +61,7 @@
                 </div>
 
                 <div class="card-body p-4">
-                    <form action="/gestion/productos/aplicarEdicion" method="post">
+                    <form action="${pageContext.request.contextPath}/gestion/productos/aplicarEdicion" method="post">
                         <input type="hidden" name="id_producto" value="${producto.id_producto}">
 
                         <div class="table-responsive">
@@ -169,7 +159,7 @@
                         </div>
 
                         <div class="d-flex flex-column flex-sm-row justify-content-between mt-4 gap-2">
-                            <a href="/gestion/productos" class="btn btn-secondary px-4">
+                            <a href="${pageContext.request.contextPath}/gestion/productos" class="btn btn-secondary px-4">
                                 <i class="bi bi-arrow-left"></i> Volver
                             </a>
                             <button type="submit" class="btn btn-warning px-5 text-dark fw-semibold">

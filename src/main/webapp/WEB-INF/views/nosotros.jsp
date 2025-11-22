@@ -8,8 +8,8 @@
     <title>Nosotros</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/contact-css.css">
-    <link rel="stylesheet" href="css/nosotros-css.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/contact-css.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/nosotros-css.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="icon" type="image/png" href="https://static.vecteezy.com/system/resources/previews/036/331/638/original/bottle-of-wine-icon-png.png">
 </head>

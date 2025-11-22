@@ -19,7 +19,7 @@
         <button class="btn btn-dark d-md-none mb-3" type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#sidebarMenu"
-                aria-controls="sidebarMenu" style="border-radius: 0px;">
+                aria-controls="sidebarMenu" style="border-radius: 0;">
             <i class="bi bi-list"></i> Menú
         </button>
 
@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="card-body p-4">
-                    <form action="/gestion/usuarios/editarUsuario" method="post">
+                    <form action="${pageContext.request.contextPath}/gestion/usuarios/editarUsuario" method="post">
                         <input type="hidden" name="id_usuario" value="${usuario.id_usuario}">
 
                         <div class="table-responsive">
@@ -138,7 +138,7 @@
                         </div>
 
                         <div class="d-flex flex-column flex-sm-row justify-content-between mt-4 gap-2">
-                            <a href="/gestion/usuarios" class="btn btn-secondary px-4">
+                            <a href="${pageContext.request.contextPath}/gestion/usuarios" class="btn btn-secondary px-4">
                                 <i class="bi bi-arrow-left"></i> Volver
                             </a>
                             <button type="submit" class="btn btn-warning px-5 text-dark fw-semibold">

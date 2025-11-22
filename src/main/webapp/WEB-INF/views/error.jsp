@@ -39,18 +39,6 @@
             color: var(--color4);
             font-weight: 600;
         }
-
-        .btn-primary {
-            background-color: var(--color1);
-            border: none;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--color2);
-            transform: scale(1.05);
-        }
     </style>
 </head>
 <body>
@@ -63,7 +51,7 @@
         <p class="lead mb-0 fw-bold">Regresar a la Página Principal</p>
     </div>
     <div class="container">
-        <a href="/" class="btn btn-success mt-2">Regresar</a>
+        <a href="${pageContext.request.contextPath}/" class="btn btn-success mt-2">Regresar</a>
     </div>
 </section>
 

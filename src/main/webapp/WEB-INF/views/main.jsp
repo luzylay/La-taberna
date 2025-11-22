@@ -41,7 +41,7 @@
 <jsp:include page="header.jsp"/>
 
 <section id="inicio" class="vh-100 d-flex align-items-center text-center text-white position-relative overflow-hidden bg-hero-wine">
-    <img src="/img/taberna_fondo.png"
+    <img src="${pageContext.request.contextPath}/img/taberna_fondo.png"
          alt="Interior de La Taberna"
          class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover opacity-50">
 
@@ -187,8 +187,6 @@
         <span class="carousel-control-next-icon bg-dark rounded-circle p-3"></span>
         <span class="visually-hidden">Siguiente</span>
     </button>
-    </div>
-    </div>
 </section>
 
 <section id="ofertas" class="py-5 bg-light">
@@ -231,7 +229,7 @@
         </div>
 
         <div class="text-center mt-5">
-            <a href="/publicidad" class="btn btn-danger px-4 py-2 fw-bold shadow-sm">
+            <a href="${pageContext.request.contextPath}/publicidad" class="btn btn-danger px-4 py-2 fw-bold shadow-sm">
                 <i class="bi bi-ticket-perforated me-2"></i> Ver todas las promociones
             </a>
         </div>
@@ -318,7 +316,7 @@
                         <div class="mb-3">
                             <span id="modal-price" class="text-danger fw-bold fs-5"></span>
                         </div>
-                        <form id="modal-form" action="/carrito/agregarProducto" method="POST"
+                        <form id="modal-form" action="${pageContext.request.contextPath}/carrito/agregarProducto" method="POST"
                               class="d-flex flex-column flex-sm-row align-items-center gap-2">
                             <input type="hidden" name="id_producto" id="modal-id-producto">
                             <input type="number" name="cantidad" class="form-control input-cantidad" min="1" value="1">
@@ -336,6 +334,6 @@
 <jsp:include page="footer.jsp"/>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/js/modal.js"></script>
+<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 </body>
 </html>

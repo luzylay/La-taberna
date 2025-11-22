@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión - Ventas</title>
-    <link rel="stylesheet" href="css/gestion-css.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/gestion-css.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
 </head>
@@ -20,7 +20,7 @@
         <button class="btn btn-dark d-md-none mb-3" type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#sidebarMenu"
-                aria-controls="sidebarMenu" style="border-radius: 0px;">
+                aria-controls="sidebarMenu" style="border-radius: 0;">
             <i class="bi bi-list"></i> Menú
         </button>
 
@@ -57,7 +57,7 @@
                     >
                 </div>
 
-                <a href="/gestion/ventas/NuevaVenta" class="btn btn-success btn-lg shadow-sm ms-md-3">
+                <a href="${pageContext.request.contextPath}/gestion/ventas/NuevaVenta" class="btn btn-success btn-lg shadow-sm ms-md-3">
                     <i class="bi bi-plus-circle me-2"></i> Nueva Venta
                 </a>
             </div>
@@ -134,7 +134,7 @@
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
 
-                                        <form action="/gestion/ventas/eliminarVenta" method="post"
+                                        <form action="${pageContext.request.contextPath}/gestion/ventas/eliminarVenta" method="post"
                                               onsubmit="return confirm('¿Seguro que deseas eliminar esta venta?');">
                                             <input type="hidden" name="id_venta" value="${v.id_venta}">
                                             <button type="submit" class="btn btn-danger btn-sm shadow-sm me-2">

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión - Productos</title>
 
-    <link rel="stylesheet" href="css/gestion-css.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/gestion-css.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
 
@@ -21,7 +21,7 @@
         <button class="btn btn-dark d-md-none mb-3" type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#sidebarMenu"
-                aria-controls="sidebarMenu" style="border-radius: 0px;">
+                aria-controls="sidebarMenu" style="border-radius: 0;">
             <i class="bi bi-list"></i> Menú
         </button>
 
@@ -63,8 +63,8 @@
                            <c:if test="${estado}">checked</c:if> >
                 </div>
 
-                <a href="/gestion/productos/NuevoProducto"
-                   class="btn btn-success btn-lg shadow-sm ms-md-3"
+                <a href="${pageContext.request.contextPath}/gestion/productos/NuevoProducto"
+                   class="btn btn-success btn-lg shadow-sm ms-md-3">
                 <i class="bi bi-plus-circle me-2"></i>Agregar Producto
                 </a>
             </div>
@@ -120,7 +120,7 @@
                                             <i class="bi bi-pencil-square me-1"></i> Editar
                                         </a>
 
-                                        <form action="/gestion/productos/eliminarProducto" method="post"
+                                        <form action="${pageContext.request.contextPath}/gestion/productos/eliminarProducto" method="post"
                                               onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
                                             <input type="hidden" name="id_producto" value="${p.id_producto}">
                                             <button type="submit"
@@ -163,7 +163,7 @@
     <div>© 2025 - Panel de Gestión | <i class="bi bi-shield-lock"></i> Derechos reservados</div>
 </footer>
 
-<script type="text/javascript" src="js/gestion-graficos.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/gestion-graficos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

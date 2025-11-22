@@ -7,8 +7,8 @@
     <title>Registro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/contact-css.css">
-    <link rel="stylesheet" href="/css/login-css.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/contact-css.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login-css.css">
 </head>
 <body>
 
@@ -20,7 +20,7 @@
             <div class="card-body">
                 <h2 class="text-center mb-4">Crear Cuenta</h2>
 
-                <form action="/registrar" method="post" class="row">
+                <form action="${pageContext.request.contextPath}/registrar" method="post" class="row">
 
                     <div class="mb-3 col-md-6">
                         <label for="nombre_user" class="form-label">Nombre</label>
@@ -84,7 +84,7 @@
 
                     <div class="text-center">
                         <p>¿Ya tienes cuenta?
-                            <a href="/login" class="link-primary">Inicia sesión aquí</a>
+                            <a href="${pageContext.request.contextPath}/login" class="link-primary">Inicia sesión aquí</a>
                         </p>
                     </div>
 

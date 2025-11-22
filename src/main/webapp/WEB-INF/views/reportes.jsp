@@ -18,7 +18,7 @@
         <button class="btn btn-dark d-md-none mb-3" type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#sidebarMenu"
-                aria-controls="sidebarMenu" style="border-radius: 0px;">
+                aria-controls="sidebarMenu" style="border-radius: 0;">
             <i class="bi bi-list"></i> Menú
         </button>
 
@@ -83,7 +83,7 @@
                             <h5 class="card-title mt-3 fw-bold">Ventas de Hoy</h5>
                             <p class="text-muted">Genera un reporte con todas las ventas del día actual.</p>
 
-                            <form action="/generar/reporte/ventas-hoy" method="get">
+                            <form action="${pageContext.request.contextPath}/generar/reporte/ventas-hoy" method="get">
                                 <button type="submit" class="btn btn-success mt-3">
                                     <i class="bi bi-file-earmark-pdf-fill"></i> Descargar
                                 </button>
@@ -99,7 +99,7 @@
                             <h5 class="card-title mt-3 fw-bold">Reporte por Stock</h5>
                             <p class="text-muted">Lista todos los productos y el stock físico disponible.</p>
 
-                            <a href="/generar/reporte/stock" class="btn btn-secondary mt-3">
+                            <a href="${pageContext.request.contextPath}/generar/reporte/stock" class="btn btn-secondary mt-3">
                                 <i class="bi bi-file-earmark-pdf-fill"></i> Descargar
                             </a>
                         </div>
@@ -113,7 +113,7 @@
                             <h5 class="card-title mt-3 fw-bold">Reporte de Ventas</h5>
                             <p class="text-muted">Genera un resumen general de todas las ventas.</p>
 
-                            <a href="/generar/reporte/ventas" class="btn btn-warning text-white mt-3">
+                            <a href="${pageContext.request.contextPath}/generar/reporte/ventas" class="btn btn-warning text-white mt-3">
                                 <i class="bi bi-file-earmark-pdf-fill"></i> Descargar
                             </a>
                         </div>
@@ -127,7 +127,7 @@
                             <h5 class="card-title mt-3 fw-bold">Reporte por Usuarios</h5>
                             <p class="text-muted">Ventas agrupadas por vendedor.</p>
 
-                            <a href="/generar/reporte/ventas-por-usuario" class="btn btn-info text-white mt-3">
+                            <a href="${pageContext.request.contextPath}/generar/reporte/ventas-por-usuario" class="btn btn-info text-white mt-3">
                                 <i class="bi bi-file-earmark-pdf-fill"></i> Descargar
                             </a>
                         </div>
@@ -141,7 +141,7 @@
                             <h5 class="card-title mt-3 fw-bold">Ventas por Lapso de Fechas</h5>
                             <p class="text-muted">Genera un reporte entre dos fechas específicas.</p>
 
-                            <form action="/generar/reporte/ventas-entre-fechas" id="formReporteFechas" class="mt-3" method="get">
+                            <form action="${pageContext.request.contextPath}/generar/reporte/ventas-entre-fechas" id="formReporteFechas" class="mt-3" method="get">
                                 <div class="row g-2 justify-content-center">
                                     <div class="col-5">
                                         <input type="datetime-local" class="form-control shadow-sm"
@@ -167,7 +167,7 @@
                             <h5 class="card-title mt-3 fw-bold">Productos Vendidos</h5>
                             <p class="text-muted">Listado de productos y estadísticas.</p>
 
-                            <a href="/generar/reporte/productos-vendidos" class="btn btn-success mt-3">
+                            <a href="${pageContext.request.contextPath}/generar/reporte/productos-vendidos" class="btn btn-success mt-3">
                                 <i class="bi bi-file-earmark-pdf-fill"></i> Descargar
                             </a>
                         </div>

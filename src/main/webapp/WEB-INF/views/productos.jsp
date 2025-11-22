@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
-    <link rel="stylesheet" href="/css/productos-css.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/productos-css.css">
     <link rel="icon" type="image/png" href="https://static.vecteezy.com/system/resources/previews/036/331/638/original/bottle-of-wine-icon-png.png">
 </head>
 <body>
@@ -16,7 +16,7 @@
     <h1>Nuestros Productos</h1>
     <p class="lead">Explora nuestra colección completa de licores.</p>
 
-    <form method="get" action="/productos">
+    <form method="get" action="${pageContext.request.contextPath}/productos">
         <div class="row mb-3">
             <div class="col-md-4">
                 <input type="text" name="nombre" class="form-control"
@@ -161,7 +161,7 @@
                             <span id="modal-price" class="text-danger fw-bold fs-5"></span>
                         </div>
 
-                        <form id="modal-form" action="/carrito/agregarProducto" method="POST"
+                        <form id="modal-form" action="${pageContext.request.contextPath}/carrito/agregarProducto" method="POST"
                               class="d-flex flex-column flex-sm-row align-items-center gap-2">
                             <input type="hidden" name="id_producto" id="modal-id-producto" value="modal-id-producto">
                             <input type="number" name="cantidad" class="form-control" min="1" value="1" style="width: 100px;">
@@ -178,6 +178,6 @@
 
 <jsp:include page="footer.jsp" />
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/js/modal.js"></script>
+<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 </body>
 </html>

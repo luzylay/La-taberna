@@ -17,7 +17,7 @@
         <button class="btn btn-dark d-md-none mb-3" type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#sidebarMenu"
-                aria-controls="sidebarMenu" style="border-radius: 0px;">
+                aria-controls="sidebarMenu" style="border-radius: 0;">
             <i class="bi bi-list"></i> Menú
         </button>
 
@@ -43,7 +43,7 @@
 
             <div class="card border-0 mb-4">
                 <div class="card-body">
-                    <form action="/gestion/ventas/guardarVenta" method="post">
+                    <form action="${pageContext.request.contextPath}/gestion/ventas/guardarVenta" method="post">
 
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -90,7 +90,7 @@
                         </div>
 
                         <div class="mt-4 d-flex justify-content-between">
-                            <a href="/gestion/ventas" class="btn btn-secondary px-4">
+                            <a href="${pageContext.request.contextPath}/gestion/ventas" class="btn btn-secondary px-4">
                                 <i class="bi bi-arrow-left"></i> Volver
                             </a>
                             <button type="submit" class="btn btn-success px-4 shadow-sm">
@@ -161,8 +161,8 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/js/actualizar-ventas-js.js"></script>
-<script src="/js/agregar-ventas.js"></script>
+<script src="${pageContext.request.contextPath}/js/actualizar-ventas-js.js"></script>
+<script src="${pageContext.request.contextPath}/js/agregar-ventas.js"></script>
 
 </body>
 </html>

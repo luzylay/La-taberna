@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito de Compras</title>
 
-    <link rel="stylesheet" href="/css/contact-css.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/contact-css.css">
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/891/891462.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -24,7 +24,7 @@
 
 <section id="carrito" class="py-5">
     <div class="container">
-        <div class="card shadow border-0 overflow-hidden">
+        <div class="card border-1 overflow-hidden">
             <c:choose>
 
                 <%-- CASO 1: EL CARRITO ESTÁ VACÍO --%>
@@ -33,7 +33,7 @@
                         <img src="https://cdn-icons-png.flaticon.com/512/102/102661.png" width="120" class="mb-3" alt="Carrito vacío">
                         <h3 class="fw-bold">Tu carrito está vacío</h3>
                         <p class="text-muted">Agrega productos para continuar con tu compra.</p>
-                        <a href="/productos" class="btn btn-primary mt-3 px-4">Ver productos</a>
+                        <a href="${pageContext.request.contextPath}/productos" class="btn btn-primary mt-3 px-4">Ver productos</a>
                     </div>
                 </c:when>
 
@@ -79,7 +79,7 @@
 
                         <div class="d-flex justify-content-between align-items-center mt-4">
                             <h4>Total: <span class="text-primary fw-bold">S/${venta.total_venta}</span></h4>
-                            <form action="/carrito/finalizar" method="POST">
+                            <form action="${pageContext.request.contextPath}/carrito/finalizar" method="POST">
                                 <button type="submit" class="btn btn-success btn-lg">
                                     Compra
                                 </button>
@@ -113,6 +113,7 @@
 </div>
 
 <jsp:include page="footer.jsp"/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <c:if test="${ventaEnviada == true}">
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -122,6 +123,5 @@
     </script>
 </c:if>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

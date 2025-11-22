@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Añadir Producto</title>
 
-    <link rel="stylesheet" href="css/gestion-css.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/gestion-css.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
 
@@ -23,7 +23,7 @@
         <button class="btn btn-dark d-md-none mb-3" type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#sidebarMenu"
-                aria-controls="sidebarMenu" style="border-radius: 0px;">
+                aria-controls="sidebarMenu" style="border-radius: 0;">
             <i class="bi bi-list"></i> Menú
         </button>
 
@@ -54,7 +54,7 @@
                             </div>
 
                             <div class="card-body">
-                                <form action="/gestion/productos/guardar" method="post" modelAttribute="nuevoProducto">
+                                <form action="${pageContext.request.contextPath}/gestion/productos/guardar" method="post" modelAttribute="nuevoProducto">
 
                                     <div class="mb-3">
                                         <label for="nombre_pro" class="form-label">Nombre del Producto</label>
@@ -103,7 +103,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-between">
-                                        <a href="/gestion/productos" class="btn btn-secondary btn-lg">
+                                        <a href="${pageContext.request.contextPath}/gestion/productos" class="btn btn-secondary btn-lg">
                                             <i class="bi bi-arrow-left"></i> Volver
                                         </a>
                                         <button type="submit" class="btn btn-dark btn-lg">

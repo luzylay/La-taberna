@@ -2,7 +2,7 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/header-footer.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header-footer.css">
 </head>
 
 <footer class="mt-auto text-white pt-5 pb-5">
@@ -16,10 +16,10 @@
 
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h5 class="mb-4 fw-bold footer-cabeza">ENLACES</h5>
-                <p><a href="main.html" class="text-white text-decoration-none">Inicio</a></p>
+                <p><a href="${pageContext.request.contextPath}/" class="text-white text-decoration-none">Inicio</a></p>
                 <p><a href="#historia" class="text-white text-decoration-none">Historia</a></p>
-                <p><a href="lista_productos.html" class="text-white text-decoration-none">Productos</a></p>
-                <p><a href="contacto.html" class="text-white text-decoration-none">Contacto</a></p>
+                <p><a href="${pageContext.request.contextPath}/productos" class="text-white text-decoration-none">Productos</a></p>
+                <p><a href="${pageContext.request.contextPath}/contacto" class="text-white text-decoration-none">Contacto</a></p>
             </div>
 
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">

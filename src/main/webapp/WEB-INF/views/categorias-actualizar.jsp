@@ -20,7 +20,7 @@
                 data-bs-toggle="offcanvas"
                 data-bs-target="#sidebarMenu"
                 aria-controls="sidebarMenu"
-                style="border-radius: 0px;">
+                style="border-radius: 0;">
             <i class="bi bi-list"></i> Menú
         </button>
 
@@ -49,7 +49,7 @@
                     Los cambios se aplicarán inmediatamente al catálogo de productos
                 </div>
                 <div class="card-body p-4">
-                    <form action="/gestion/categoria/aplicarEdicion" method="post">
+                    <form action="${pageContext.request.contextPath}/gestion/categoria/aplicarEdicion" method="post">
                         <input type="hidden" name="id_categoria" value="${categoria.id_categoria}">
 
                         <div class="table-responsive">
@@ -105,7 +105,7 @@
                         </div>
 
                         <div class="d-flex flex-column flex-sm-row justify-content-between mt-4 gap-2">
-                            <a href="/gestion/categoria" class="btn btn-secondary px-4">
+                            <a href="${pageContext.request.contextPath}/gestion/categoria" class="btn btn-secondary px-4">
                                 <i class="bi bi-arrow-left"></i> Volver
                             </a>
                             <button type="submit" class="btn btn-warning px-5 text-dark fw-semibold">

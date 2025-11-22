@@ -6,13 +6,13 @@
         rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/css/header-footer.css">    
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header-footer.css">
 </head>
 <header class="header-vino">
     <nav
         class="navbar navbar-expand-lg navbar-dark navbar-transparente py-3">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="/">LA TABERNA
+            <a class="navbar-brand fw-bold" href="${pageContext.request.contextPath}/">LA TABERNA
                 <span>DE ROLY</span></a>
             <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse" data-bs-target="#menu">
@@ -23,15 +23,15 @@
 
                         class="navbar-nav ms-auto align-items-lg-center gap-1 pb-1">
                     <li class="nav-item"><a class="nav-link"
-                            href="/publicidad">Ofertas</a></li>
+                            href="${pageContext.request.contextPath}/publicidad">Ofertas</a></li>
                     <li class="nav-item"><a class="nav-link"
-                            href="/productos">Productos</a></li>
+                            href="${pageContext.request.contextPath}/productos">Productos</a></li>
                     <li class="nav-item"><a class="nav-link"
-                            href="/servicios">Servicios</a></li>        
+                            href="${pageContext.request.contextPath}/servicios">Servicios</a></li>
                     <li class="nav-item"><a class="nav-link"
-                            href="/contacto">Contacto</a></li>
+                            href="${pageContext.request.contextPath}/contacto">Contacto</a></li>
                     <li class="nav-item"><a class="nav-link"
-                            href="/nosotros">Nosotros</a></li>
+                            href="${pageContext.request.contextPath}/nosotros">Nosotros</a></li>
 
 
                     <!--Primero verifica que no este vacia la sesion en servidor-->
@@ -39,7 +39,7 @@
                         <c:choose>
                             <c:when test="${sessionScope.user.tipo_user.nombre_tipoUsuario == 'Administrador'
                                         or sessionScope.user.tipo_user.nombre_tipoUsuario == 'Auxiliar'}">
-                                <li class="nav-item"><a class="nav-link" href="/gestion">Gestión</a></li>
+                                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/gestion">Gestión</a></li>
 
                                 <ul class="navbar-nav ms-auto">
                                   <li class="nav-item">
@@ -74,18 +74,18 @@
                                 </ul>
                             </c:when>
                         </c:choose>
-                        <a href="/perfil" class="btn btn-outline-light m-2">Perfil</a>
-                        <a href="/logout" class="btn btn-outline-light m-2">Logout</a>
+                        <a href="${pageContext.request.contextPath}/perfil" class="btn btn-outline-light m-2">Perfil</a>
+                        <a href="${pageContext.request.contextPath}/logout" class="btn btn-outline-light m-2">Logout</a>
                         <li class="nav-link text-white fs-4">
-                            <a href="/carrito" class="text-white">
+                            <a href="${pageContext.request.contextPath}/carrito" class="text-white">
                                 <i class="bi bi-cart4 me-2"></i>
                             </a>
                         </li>
                     </c:if>
 
                     <c:if test="${empty sessionScope.user}">
-                        <a href="/login" class="btn btn-outline-light m-2">Ingresar</a>
-                        <a href="/registrar" class="btn btn-outline-light m-2">Registrarse</a>
+                        <a href="${pageContext.request.contextPath}/login" class="btn btn-outline-light m-2">Ingresar</a>
+                        <a href="${pageContext.request.contextPath}/registrar" class="btn btn-outline-light m-2">Registrarse</a>
                     </c:if>
                 </ul>
             </div>

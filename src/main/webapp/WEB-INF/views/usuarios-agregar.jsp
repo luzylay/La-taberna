@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="card-body p-4">
-                    <form action="/gestion/usuarios/agregarUsuario" method="post">
+                    <form action="${pageContext.request.contextPath}/gestion/usuarios/agregarUsuario" method="post">
 
                         <div class="table-responsive">
                             <table class="table table-bordered text-center align-middle table-striped">
@@ -110,7 +110,7 @@
                         </div>
 
                         <div class="d-flex flex-column flex-sm-row justify-content-between mt-4 gap-2">
-                            <a href="/gestion/usuarios" class="btn btn-secondary px-4">
+                            <a href="${pageContext.request.contextPath}/gestion/usuarios" class="btn btn-secondary px-4">
                                 <i class="bi bi-arrow-left"></i> Volver
                             </a>
                             <button type="submit" class="btn btn-success px-5 fw-semibold">
