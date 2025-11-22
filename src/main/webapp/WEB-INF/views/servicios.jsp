@@ -30,16 +30,6 @@
             letter-spacing: 1px;
         }
 
-        /* Tarjetas de Servicios */
-        .card-servicio {
-            transition: all 0.3s ease;
-        }
-
-        .card-servicio:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.15) !important; /* Forzar sombra al hover */
-        }
-
         /* Iconos de Google Material */
         .icon-servicio {
             font-size: 48px;

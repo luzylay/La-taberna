@@ -11,7 +11,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp" />
-<section class="page-header text-center text-white py-5 mb-5">
+<section class="page-header text-center text-white py-5">
     <div class="overlay"></div>
     <div class="container position-relative">
         <h1 class="display-4 fw-bold mb-3">Contacta con nosotros</h1>
@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row g-4">
             <div class="col-md-6">
-                <div class="card shadow border-1">
+                <div class="card">
                     <div class="card-body p-4">
                         <form>
                             <div class="mb-3">
@@ -47,9 +47,9 @@
             </div>
 
             <div class="col-md-6">
-                <div class="card shadow border-0 overflow-hidden">
+                <div class="card border-0 overflow-hidden">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3904.12529021453!2d-77.0292126!3d-11.8963631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105d14a3d4733f1%3A0x3a79cfd4297605c8!2sLicoreria%20la%20taberna%20de%20roly!5e0!3m2!1ses-419!2spe!4v1757319823114!5m2!1ses-419!2spe"
-                            width="100%" height="400" style="border:0;"
+                            width="100%" height="418" style="border:0;"
                             allowfullscreen loading="lazy">
                     </iframe>
                 </div>

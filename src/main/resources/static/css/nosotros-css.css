@@ -15,11 +15,6 @@ h2 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.hover-scale:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
 .card i {
     font-size: 2.5px;
     margin-bottom: 0.5px;
@@ -34,19 +29,6 @@ h2 {
 #valores p {
     font-size: 0.9rem;
     color: #6b4a3f;
-}
-
-#historia img {
-    transition: transform 0.3s ease;
-}
-
-#historia img:hover {
-    transform: scale(1.03);
-}
-
-#mision-vision .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.2);
 }
 
 section {

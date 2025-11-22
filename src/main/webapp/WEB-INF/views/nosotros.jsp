@@ -51,7 +51,7 @@
             <div class="col-md-6 text-center">
                 <img src="https://elcronista.co/assets/media/fabrica-de-licores-del-tolima-se-encuentra-operando-2024.jpg?u=1721400058"
                      alt="Historia Viñedos Robles"
-                     class="img-fluid border border-3 w-75">
+                     class="img-fluid border w-75">
             </div>
         </div>
     </div>
@@ -62,7 +62,7 @@
         <h2 class="fw-bold text-uppercase text-center">Misión y Visión</h2>
         <div class="row g-4 justify-content-center">
             <div class="col-md-5">
-                <div class="card border-0 h-100 hover-shadow">
+                <div class="card border-0 h-100">
                     <div class="card-body text-center">
                         <h4 class="card-title text-danger fw-bold">Misión</h4>
                         <p class="card-text text-muted">
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="col-md-5">
-                <div class="card border-0 h-100 hover-shadow">
+                <div class="card border-0 h-100">
                     <div class="card-body text-center">
                         <h4 class="card-title text-danger fw-bold">Visión</h4>
                         <p class="card-text text-muted">
@@ -96,7 +96,7 @@
         <h2 class="fw-bold text-uppercase text-center">Nuestros Valores</h2>
         <div class="row g-4 text-center">
             <div class="col-md-3">
-                <div class="card border-0 py-4 hover-scale">
+                <div class="card border-0 py-4">
                     <div class="card-body">
                         <i class="bi bi-heart-fill text-danger fs-2 mb-3"></i>
                         <h4 class="fw-bold text-danger">Pasión</h4>
@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card border-0 py-4 hover-scale">
+                <div class="card border-0 py-4">
                     <div class="card-body">
                         <i class="bi bi-award-fill text-danger fs-2 mb-3"></i>
                         <h4 class="fw-bold text-danger">Calidad</h4>
@@ -114,7 +114,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card border-0 py-4 hover-scale">
+                <div class="card border-0 py-4">
                     <div class="card-body">
                         <i class="bi bi-people-fill text-danger fs-2 mb-3"></i>
                         <h4 class="fw-bold text-danger">Compromiso</h4>
@@ -123,7 +123,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card border-0 py-4 hover-scale">
+                <div class="card border-0 py-4">
                     <div class="card-body">
                         <i class="bi bi-lightning-fill text-danger fs-2 mb-3"></i>
                         <h4 class="fw-bold text-danger">Innovación</h4>

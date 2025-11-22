@@ -32,7 +32,7 @@
 
     <div class="row g-4 mb-5">
         <div class="col-lg-6 col-md-12">
-            <div class="card promo-card border-0 h-100">
+            <div class="card border-0 h-100">
                 <div class="position-relative">
                     <img src="https://tse1.mm.bing.net/th/id/OIP.W8x58ZVSMwnTtAUMUwhEVgHaE8?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Promoción Cervezas" class="card-img-top promo-img">
                     <span class="promo-badge bg-danger text-white">¡LIMITADO!</span>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="col-lg-6 col-md-12">
-            <div class="card promo-card border-0 h-100">
+            <div class="card border-0 h-100">
                 <div class="position-relative">
                     <img src="https://tse3.mm.bing.net/th/id/OIP.gl4DvqP63TA_CfaFddOGZAHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Promoción Vinos" class="card-img-top promo-img">
                     <span class="promo-badge bg-warning text-dark">EXCLUSIVO</span>
@@ -81,7 +81,7 @@
 
         <div class="row g-4">
             <div class="col-12">
-                <div class="card event-card shadow-sm border-0">
+                <div class="card shadow-sm border-0">
                     <div class="card-body p-4">
                         <div class="row align-items-center">
                             <div class="col-auto">
@@ -110,7 +110,7 @@
             </div>
 
             <div class="col-12">
-                <div class="card event-card shadow-sm border-0">
+                <div class="card shadow-sm border-0">
                     <div class="card-body p-4">
                         <div class="row align-items-center">
                             <div class="col-auto">

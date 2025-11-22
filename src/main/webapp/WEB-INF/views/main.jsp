@@ -288,8 +288,7 @@
                 <div class="position-relative">
                     <img src="https://elcronista.co/assets/media/fabrica-de-licores-del-tolima-se-encuentra-operando-2024.jpg"
                          alt="Historia de la Taberna"
-                         class="img-fluid
-                         w-75">
+                         class="img-fluid w-75">
                 </div>
             </div>
         </div>
