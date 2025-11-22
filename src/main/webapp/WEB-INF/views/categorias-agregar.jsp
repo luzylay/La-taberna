@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Añadir Categoría</title>
+
     <link rel="stylesheet" href="css/gestion-css.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
@@ -17,12 +18,12 @@
 <div class="container-fluid">
     <div class="row">
 
-        <!-- BARRA LATERAL -->
         <button class="btn btn-dark d-md-none mb-3" type="button"
                 data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
                 style="border-radius: 0px;">
             <i class="bi bi-list"></i> Menú
         </button>
+
         <div class="offcanvas offcanvas-start d-md-none bg-dark bg-opacity-90" tabindex="-1" id="sidebarMenu">
             <div class="offcanvas-header">
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
@@ -32,43 +33,40 @@
                 <jsp:include page="gestion-panel-lateral.jsp"/>
             </div>
         </div>
+
         <div class="d-none d-md-block col-md-2 p-0 vh-100">
             <jsp:include page="gestion-panel-lateral.jsp"/>
         </div>
 
-        <!-- MAIN -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 min-vh-100">
             <h1 class="mt-2 mb-2 text-center p-1">Crear Nueva Categoría</h1>
+
             <div class="container mt-3">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
-                        <div class="card shadow-lg">
+                        <div class="card">
                             <div class="card-header bg-dark text-white text-center">
                                 <h3>Nueva Categoría</h3>
                             </div>
                             <div class="card-body">
-                                <!-- FORMULARIO PARA AGREGAR CATE -->
+
                                 <form action="/gestion/categoria/guardar"
                                       method="post" modelAttribute="nuevaCategoria">
 
-                                    <!-- NOMBRE -->
                                     <div class="mb-3">
                                         <label for="nombre_cate" class="form-label">Nombre de la Categoría</label>
                                         <input type="text" class="form-control" id="nombre_cate" name="nombre_cate"
                                                placeholder="Ej. Vinos" required>
                                     </div>
 
-                                    <!-- DESCRIPCION -->
                                     <div class="mb-3">
                                         <label for="descrip_cate" class="form-label">Descripción</label>
                                         <textarea class="form-control" id="descrip_cate" name="descrip_cate" rows="3"
                                                   placeholder="Descripción de la categoría" required></textarea>
                                     </div>
 
-                                    <!-- BTN GUARDAR -->
-                                    <!-- Btns -->
                                     <div class="d-flex justify-content-between">
-                                        <a href="/gestion/categoria" class="btn btn-secondary btn-lg rounded-pill">
+                                        <a href="/gestion/categoria" class="btn btn-secondary btn-lg">
                                             <i class="bi bi-arrow-left"></i> Volver
                                         </a>
 
@@ -77,7 +75,6 @@
                                         </button>
                                     </div>
                                 </form>
-                                <!-- FIN FORMULARIO -->
                             </div>
                         </div>
                     </div>

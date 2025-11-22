@@ -7,24 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error</title>
     <link rel="icon" type="image/png" href="https://static.vecteezy.com/system/resources/previews/036/331/638/original/bottle-of-wine-icon-png.png">
-</head>
-<body>
-    <!-- header -->
-    <jsp:include page="header.jsp" />
-    <!-- header -->
-
-    <!-- Encabezado -->
-    <section class="page-header text-center text-white">
-        <div class="container position-relative">
-            <h1 class="display-4 fw-bold mb-3">Algo salio mal D:</h1>
-            <h2 class="titulo-dorado mb-3">Ha ocurrido un error inesperado.</h2>
-            <p class="lead mb-0 fw-bold">Regresar a la Página Principal</p>
-        </div>
-        <div class="container">
-
-            <a href="/" class="btn btn-success mt-2">Regresar</a>
-        </div>
-    </section>
 
     <style>
         :root {
@@ -36,17 +18,15 @@
         }
 
         .page-header {
-          position: relative;
-              background-image:
-                      linear-gradient(rgba(97, 34, 55, 0.7),
-                      rgba(97, 34, 55, 0.7)),
-                      url('https://www.losvinos.com.ar/wp-content/uploads/2019/10/bartender.jpeg');
-              background-position: center;
-              background-size: cover;
-              background-repeat: no-repeat;
-              color: var(--marfil);
-              padding: 100px 20px;
-              text-align: center;
+            position: relative;
+            background-image: linear-gradient(rgba(97, 34, 55, 0.7), rgba(97, 34, 55, 0.7)),
+            url('https://www.losvinos.com.ar/wp-content/uploads/2019/10/bartender.jpeg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: var(--marfil);
+            padding: 100px 20px;
+            text-align: center;
         }
 
         .main-texto h1 {
@@ -72,13 +52,22 @@
             transform: scale(1.05);
         }
     </style>
+</head>
+<body>
 
-    <!-- footer -->
-    <jsp:include page="footer.jsp" />
-    <!-- footer -->
+<jsp:include page="header.jsp" />
+<section class="page-header text-center text-white">
+    <div class="container position-relative">
+        <h1 class="display-4 fw-bold mb-3">Algo salio mal D:</h1>
+        <h2 class="titulo-dorado mb-3">Ha ocurrido un error inesperado.</h2>
+        <p class="lead mb-0 fw-bold">Regresar a la Página Principal</p>
+    </div>
+    <div class="container">
+        <a href="/" class="btn btn-success mt-2">Regresar</a>
+    </div>
+</section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<jsp:include page="footer.jsp" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-

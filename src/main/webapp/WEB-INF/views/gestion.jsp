@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Gestión</title>
+
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +55,8 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card text-white bg-secondary h-100 p-3"> <h6 class="text-uppercase opacity-75">Usuarios Activos</h6>
+            <div class="card text-white bg-secondary h-100 p-3">
+                <h6 class="text-uppercase opacity-75">Usuarios Activos</h6>
                 <h2 class="fw-bold mb-0" id="cant_users">0</h2>
             </div>
         </div>
@@ -63,20 +65,24 @@
     <div class="row g-4">
         <div class="col-lg-6">
             <div class="chart-wrapper">
-                <div id="chart3" class="chart-div"></div> </div>
+                <div id="chart3" class="chart-div"></div>
+            </div>
         </div>
         <div class="col-lg-6">
             <div class="chart-wrapper">
-                <div id="chart2" class="chart-div"></div> </div>
+                <div id="chart2" class="chart-div"></div>
+            </div>
         </div>
 
         <div class="col-lg-6">
             <div class="chart-wrapper">
-                <div id="chart1" class="chart-div"></div> </div>
+                <div id="chart1" class="chart-div"></div>
+            </div>
         </div>
         <div class="col-lg-6">
             <div class="chart-wrapper">
-                <div id="chart4" class="chart-div"></div> </div>
+                <div id="chart4" class="chart-div"></div>
+            </div>
         </div>
     </div>
 

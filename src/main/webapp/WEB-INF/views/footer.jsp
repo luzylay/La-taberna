@@ -1,10 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <head>
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/header-footer.css">
 </head>
 
@@ -24,6 +21,7 @@
                 <p><a href="lista_productos.html" class="text-white text-decoration-none">Productos</a></p>
                 <p><a href="contacto.html" class="text-white text-decoration-none">Contacto</a></p>
             </div>
+
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                 <h5 class="mb-4 fw-bold footer-cabeza">CONTACTO</h5>
                 <p><i class="bi bi-house-door-fill me-2"></i> Av. Túpac Amaru 1148, Carabayllo 15321 Lima, Perú</p>
@@ -31,9 +29,9 @@
 
             <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
                 <h5 class="mb-4 fw-bold footer-cabeza">SÍGUENOS</h5>
-                <a href="https://www.tiktok.com/@rolando.g.e"
-                   class="btn btn-outline-light btn-floating m-1"
-                   role="button"><i class="bi bi-tiktok"></i></a>
+                <a href="https://www.tiktok.com/@rolando.g.e" class="btn btn-outline-light btn-floating m-1" role="button">
+                    <i class="bi bi-tiktok"></i>
+                </a>
             </div>
         </div>
 

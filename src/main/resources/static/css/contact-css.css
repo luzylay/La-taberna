@@ -7,17 +7,16 @@
 }
 
 .page-header {
-  position: relative;
-      background-image:
-              linear-gradient(rgba(97, 34, 55, 0.7),
-              rgba(97, 34, 55, 0.7)),
-              url('https://www.losvinos.com.ar/wp-content/uploads/2019/10/bartender.jpeg');
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      color: var(--marfil);
-      padding: 100px 20px;
-      text-align: center;
+    position: relative;
+    background-image:
+            linear-gradient(rgba(97, 34, 55, 0.7), rgba(97, 34, 55, 0.7)),
+            url('https://www.losvinos.com.ar/wp-content/uploads/2019/10/bartender.jpeg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--marfil);
+    padding: 100px 20px;
+    text-align: center;
 }
 
 .main-texto h1 {

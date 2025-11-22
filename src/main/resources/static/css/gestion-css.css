@@ -43,7 +43,8 @@ body {
 }
 
 /* Main y Footer (Agregamos footer aquí para que comparta el margen) */
-main, footer {
+main,
+footer {
     margin-left: 16.6667%; /* Empuja el contenido a la derecha */
 }
 
@@ -65,7 +66,7 @@ footer {
 .card {
     border: none;
     border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sutil sombra */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sutil sombra */
 }
 
 .card h5 {
@@ -92,7 +93,8 @@ footer {
     }
 
     /* En celular, quitamos el margen izquierdo */
-    main, footer {
+    main,
+    footer {
         margin-left: 0;
     }
 

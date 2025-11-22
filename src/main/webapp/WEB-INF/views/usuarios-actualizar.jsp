@@ -7,21 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Usuario</title>
 
-    <link rel="icon" type="image/png"
-          href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
 
 <div class="container-fluid">
     <div class="row">
 
-        <!-- BARRITA LATERAL RESPONSIVE -->
         <button class="btn btn-dark d-md-none mb-3" type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#sidebarMenu"
@@ -40,18 +34,17 @@
             </div>
         </div>
 
-        <!-- BARRA LATERAL PANTALLAS GRANDES -->
         <div class="d-none d-md-block col-md-2 p-0 vh-100">
             <jsp:include page="gestion-panel-lateral.jsp"/>
         </div>
 
-        <!-- CONTENIDO PRINCIPAL -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-4 py-4">
+
             <h1 class="border-start border-4 border-warning ps-3 fw-bold mb-4">
                 <i class="bi bi-person-gear me-2"></i>Editar Usuario
             </h1>
 
-            <div class="card shadow-lg">
+            <div class="card">
                 <div class="card-header bg-warning text-dark fw-semibold text-center">
                     Los cambios en la información del usuario se aplicarán de inmediato
                 </div>
@@ -73,32 +66,44 @@
                                 <tr>
                                     <td>Nombre</td>
                                     <td>${usuario.nombre_user}</td>
-                                    <td><input type="text" name="nombre_user" class="form-control" value="${usuario.nombre_user}" required></td>
+                                    <td>
+                                        <input type="text" name="nombre_user" class="form-control" value="${usuario.nombre_user}" required>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Apellido Paterno</td>
                                     <td>${usuario.apaterno_user}</td>
-                                    <td><input type="text" name="apaterno_user" class="form-control" value="${usuario.apaterno_user}" required></td>
+                                    <td>
+                                        <input type="text" name="apaterno_user" class="form-control" value="${usuario.apaterno_user}" required>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Apellido Materno</td>
                                     <td>${usuario.amaterno_user}</td>
-                                    <td><input type="text" name="amaterno_user" class="form-control" value="${usuario.amaterno_user}" required></td>
+                                    <td>
+                                        <input type="text" name="amaterno_user" class="form-control" value="${usuario.amaterno_user}" required>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Correo</td>
                                     <td>${usuario.correo_user}</td>
-                                    <td><input type="email" name="correo_user" class="form-control" value="${usuario.correo_user}" required></td>
+                                    <td>
+                                        <input type="email" name="correo_user" class="form-control" value="${usuario.correo_user}" required>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Teléfono</td>
                                     <td>${usuario.telefono_user}</td>
-                                    <td><input type="tel" name="telefono_user" class="form-control" value="${usuario.telefono_user}" pattern="[0-9]{9}" required></td>
+                                    <td>
+                                        <input type="tel" name="telefono_user" class="form-control" value="${usuario.telefono_user}" pattern="[0-9]{9}" required>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Contraseña</td>
                                     <td>••••••••</td>
-                                    <td><input type="password" name="password" class="form-control" placeholder="Nueva contraseña (opcional)"></td>
+                                    <td>
+                                        <input type="password" name="password" class="form-control" placeholder="Nueva contraseña (opcional)">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Tipo de Usuario</td>
@@ -107,8 +112,8 @@
                                         <select name="tipo_user.id_tipoUsuario" class="form-select" required>
                                             <c:forEach var="tipo" items="${tipos}">
                                                 <option value="${tipo.id_tipoUsuario}"
-                                                        ${tipo.id_tipoUsuario == usuario.tipo_user.id_tipoUsuario ? 'selected' : ''}>
-                                                ${tipo.nombre_tipoUsuario}
+                                                    ${tipo.id_tipoUsuario == usuario.tipo_user.id_tipoUsuario ? 'selected' : ''}>
+                                                        ${tipo.nombre_tipoUsuario}
                                                 </option>
                                             </c:forEach>
                                         </select>
@@ -117,9 +122,9 @@
                                 <tr>
                                     <td>Estado</td>
                                     <td>
-                                        <span class="badge ${usuario.estado_user ? 'bg-success' : 'bg-danger'}">
-                                            ${usuario.estado_user ? 'Activo' : 'Inactivo'}
-                                        </span>
+                                                <span class="badge ${usuario.estado_user ? 'bg-success' : 'bg-danger'}">
+                                                    ${usuario.estado_user ? 'Activo' : 'Inactivo'}
+                                                </span>
                                     </td>
                                     <td>
                                         <select name="estado_user" class="form-select">
@@ -133,13 +138,14 @@
                         </div>
 
                         <div class="d-flex flex-column flex-sm-row justify-content-between mt-4 gap-2">
-                            <a href="/gestion/usuarios" class="btn btn-secondary rounded-pill px-4">
+                            <a href="/gestion/usuarios" class="btn btn-secondary px-4">
                                 <i class="bi bi-arrow-left"></i> Volver
                             </a>
-                            <button type="submit" class="btn btn-warning rounded-pill px-5 text-dark fw-semibold">
+                            <button type="submit" class="btn btn-warning px-5 text-dark fw-semibold">
                                 <i class="bi bi-save"></i> Guardar Cambios
                             </button>
                         </div>
+
                     </form>
                 </div>
             </div>

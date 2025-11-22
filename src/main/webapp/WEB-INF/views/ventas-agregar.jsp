@@ -14,75 +14,54 @@
 <div class="container-fluid">
     <div class="row">
 
-        <!-- BARRITA LATERAL :D ----------------------------------------------------------->
-        <!-- Botón para móviles -->
         <button class="btn btn-dark d-md-none mb-3" type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#sidebarMenu"
                 aria-controls="sidebarMenu" style="border-radius: 0px;">
             <i class="bi bi-list"></i> Menú
         </button>
-        <div
-                class="offcanvas offcanvas-start d-md-none bg-dark bg-opacity-90"
-                tabindex="-1"
-                id="sidebarMenu" aria-labelledby="sidebarLabel">
+
+        <div class="offcanvas offcanvas-start d-md-none bg-dark bg-opacity-90"
+             tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarLabel">
             <div class="offcanvas-header">
                 <button type="button" class="btn-close text-reset"
-                        data-bs-dismiss="offcanvas"
-                        aria-label="Cerrar"></button>
+                        data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
             </div>
             <div class="offcanvas-body p-0">
                 <jsp:include page="gestion-panel-lateral.jsp" />
             </div>
         </div>
-        <!-- SOLO APARECE SI ES PANTALLA GRANDE -->
+
         <div class="d-none d-md-block col-md-2 p-0 vh-100">
             <jsp:include page="gestion-panel-lateral.jsp" />
         </div>
-        <!-- FIN BARRITA LATAREAL :D ----------------------------------------------------------->
-
-        <!-- Contenido principal -->
         <main class="col-md-10 ms-sm-auto px-md-4 py-4">
 
             <h1 class="fw-bold text-center mb-4">
                 <i class="bi bi-cart-plus me-2"></i> Nueva Venta
             </h1>
 
-            <div class="card shadow-lg border-0 rounded-4 mb-4">
+            <div class="card border-0 mb-4">
                 <div class="card-body">
                     <form action="/gestion/ventas/guardarVenta" method="post">
 
                         <div class="row g-3">
-                            <!-- Usuario -->
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Cliente</label>
                                 <div class="input-group">
-                                    <input
-                                            class="col-md-3"
-                                            type="number"
-                                            id="id_usuario"
-                                            name="id_usuario"
-                                            class="form-control"
-                                            placeholder="ID Cliente"
-                                            min="1">
-                                    <input
-                                            type="text"
-                                            id="nombre_user"
-                                            class="form-control col-md-9"
-                                            name="nombre_user"
-                                            readonly
-                                            placeholder="Nombre del Cliente">
+                                    <input class="col-md-3" type="number" id="id_usuario" name="id_usuario"
+                                           class="form-control" placeholder="ID Cliente" min="1">
+                                    <input type="text" id="nombre_user" class="form-control col-md-9"
+                                           name="nombre_user" readonly placeholder="Nombre del Cliente">
                                 </div>
                             </div>
 
-                            <!-- Fecha -->
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Fecha de Venta</label>
                                 <input type="datetime-local" class="form-control" name="fecha_venta" required>
                             </div>
                         </div>
 
-                        <!-- Detalles de la venta -->
                         <div class="mt-4">
                             <h5 class="fw-bold">
                                 <i class="bi bi-basket me-2"></i> Detalles de la Venta
@@ -100,7 +79,6 @@
                                     </tr>
                                     </thead>
                                     <tbody id="tablaDetalles">
-                                    <!-- Acá irán llenandose gracias al modal :D -->
                                     </tbody>
                                 </table>
                             </div>
@@ -111,12 +89,11 @@
                             </button>
                         </div>
 
-                        <!-- Botones principales -->
                         <div class="mt-4 d-flex justify-content-between">
-                            <a href="/gestion/ventas" class="btn btn-secondary rounded-pill px-4">
+                            <a href="/gestion/ventas" class="btn btn-secondary px-4">
                                 <i class="bi bi-arrow-left"></i> Volver
                             </a>
-                            <button type="submit" class="btn btn-success rounded-pill px-4 shadow-sm">
+                            <button type="submit" class="btn btn-success px-4 shadow-sm">
                                 <i class="bi bi-save"></i> Guardar Venta
                             </button>
                         </div>
@@ -129,7 +106,6 @@
     </div>
 </div>
 
-<!-- Modal para seleccionar productos -->
 <div class="modal fade" id="modalProductos" tabindex="-1" aria-labelledby="modalProductosLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
@@ -148,7 +124,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <!-- Filas llenadas con JS -->
                     </tbody>
                 </table>
             </div>
@@ -160,7 +135,6 @@
     © 2025 - Panel de Gestión | <i class="bi bi-shield-lock"></i> Derechos reservados
 </footer>
 
-<!-- Modal -->
 <div class="modal fade" id="modalProductos" tabindex="-1" aria-labelledby="modalProductosLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
@@ -179,7 +153,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <!-- Se llena con JS -->
                     </tbody>
                 </table>
             </div>

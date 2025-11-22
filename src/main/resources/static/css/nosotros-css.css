@@ -37,8 +37,6 @@ h2 {
 }
 
 #historia img {
-    border-radius: 20px;
-    box-shadow: 0 0.5rem 1px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
 }
 
@@ -58,10 +56,8 @@ section {
 
 .section-nosotros {
     position: relative;
-    background-image:
-            linear-gradient(rgba(97, 34, 55, 0.7),
-            rgba(97, 34, 55, 0.7)),
-            url('https://wallpapers.com/images/featured/bar-c5vakob55hk4alvi.jpg');
+    background-image: linear-gradient(rgba(97, 34, 55, 0.7), rgba(97, 34, 55, 0.7)),
+    url('https://wallpapers.com/images/featured/bar-c5vakob55hk4alvi.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

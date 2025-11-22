@@ -8,14 +8,13 @@
     --color7: #dea811;
 }
 
-span{
+span {
     color: var(--color7);
     font-weight: bold;
 }
 
 .navbar {
     background-color: var(--color1);
-
 }
 
 .navbar .nav-link {
@@ -28,8 +27,7 @@ span{
     color: var(--color2);
 }
 
-
-footer{
+footer {
     background-color: var(--color1) !important;
 }
 

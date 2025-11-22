@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Cargamos Google Charts
-    google.charts.load("current", { packages: ["corechart"] });
+    google.charts.load("current", {
+        packages: ["corechart"]
+    });
 
     // 2. Cuando cargue, renderizamos
     google.charts.setOnLoadCallback(renderizarGraficos);
@@ -33,31 +35,46 @@ function cargarKPIs() {
 function renderizarGraficos() {
     // Opciones comunes para que todos se vean iguales (Estilo)
     const opcionesBase = {
-        legend: { position: 'none' }, // Sin leyenda para ahorrar espacio
+        legend: {
+            position: 'none'
+        }, // Sin leyenda para ahorrar espacio
         chartArea: {
             width: '85%',
             height: '70%', // Menos altura del dibujo para dar espacio al texto abajo
             top: 30
         },
         hAxis: {
-            textStyle: { fontSize: 11, color: '#666' },
-            slantedText: false,    // INTENTA NO INCLINAR (Horizontal)
-            maxAlternation: 1,     // Si no caben, oculta uno sí y uno no (mejor que inclinar)
-            showTextEvery: 1       // Intenta mostrar todos
+            textStyle: {
+                fontSize: 11,
+                color: '#666'
+            },
+            slantedText: false, // INTENTA NO INCLINAR (Horizontal)
+            maxAlternation: 1, // Si no caben, oculta uno sí y uno no (mejor que inclinar)
+            showTextEvery: 1 // Intenta mostrar todos
         },
         vAxis: {
-            textStyle: { color: '#999' },
-            gridlines: { color: '#f0f0f0' },
+            textStyle: {
+                color: '#999'
+            },
+            gridlines: {
+                color: '#f0f0f0'
+            },
             minValue: 0
         },
-        animation: { startup: true, duration: 1000, easing: 'out' }
+        animation: {
+            startup: true,
+            duration: 1000,
+            easing: 'out'
+        }
     };
 
     // Función reutilizable para dibujar
     const crearGrafico = (idDiv, tipoGrafico, urlApi, color, titulo, ejeX, ejeY) => {
         fetch(urlApi).then(r => r.json()).then(data => {
             // 1. Preparar datos
-            const tabla = [[ejeX, ejeY]];
+            const tabla = [
+                [ejeX, ejeY]
+            ];
 
             if (Array.isArray(data)) {
                 data.forEach(item => tabla.push([item.mes, item.valor]));
@@ -73,10 +90,10 @@ function renderizarGraficos() {
             };
 
             // Detalles bonitos para líneas y áreas
-            if(tipoGrafico === 'LineChart' || tipoGrafico === 'AreaChart') {
+            if (tipoGrafico === 'LineChart' || tipoGrafico === 'AreaChart') {
                 opciones.pointSize = 7; // Puntos visibles
                 opciones.lineWidth = 3; // Línea gordita
-                if(tipoGrafico === 'AreaChart') opciones.areaOpacity = 0.1;
+                if (tipoGrafico === 'AreaChart') opciones.areaOpacity = 0.1;
             }
 
             // 3. Dibujar

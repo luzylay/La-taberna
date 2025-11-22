@@ -7,20 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Usuario</title>
 
-    <link rel="icon" type="image/png"
-          href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
 
 <div class="container-fluid">
     <div class="row">
 
-        <!-- BARRITA LATERAL RESPONSIVE -->
         <button class="btn btn-dark d-md-none mb-3" type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#sidebarMenu"
@@ -39,18 +34,17 @@
             </div>
         </div>
 
-        <!-- BARRA LATERAL PANTALLAS GRANDES -->
         <div class="d-none d-md-block col-md-2 p-0 vh-100">
             <jsp:include page="gestion-panel-lateral.jsp"/>
         </div>
 
-        <!-- CONTENIDO PRINCIPAL -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-4 py-4">
+
             <h1 class="border-start border-4 border-success ps-3 fw-bold mb-4">
                 <i class="bi bi-person-plus-fill me-2"></i>Agregar Usuario
             </h1>
 
-            <div class="card shadow-lg">
+            <div class="card">
                 <div class="card-header bg-success text-white fw-semibold text-center">
                     Complete los campos para registrar un nuevo usuario
                 </div>
@@ -116,17 +110,19 @@
                         </div>
 
                         <div class="d-flex flex-column flex-sm-row justify-content-between mt-4 gap-2">
-                            <a href="/gestion/usuarios" class="btn btn-secondary rounded-pill px-4">
+                            <a href="/gestion/usuarios" class="btn btn-secondary px-4">
                                 <i class="bi bi-arrow-left"></i> Volver
                             </a>
-                            <button type="submit" class="btn btn-success rounded-pill px-5 fw-semibold">
+                            <button type="submit" class="btn btn-success px-5 fw-semibold">
                                 <i class="bi bi-check-circle"></i> Registrar Usuario
                             </button>
                         </div>
+
                     </form>
                 </div>
             </div>
         </main>
+
     </div>
 </div>
 

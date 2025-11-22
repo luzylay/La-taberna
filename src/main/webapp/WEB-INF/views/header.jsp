@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <head>
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -21,7 +20,8 @@
             </button>
             <div class="collapse navbar-collapse" id="menu">
                 <ul
-                    class="navbar-nav ms-auto align-items-lg-center gap-1 pb-1">
+
+                        class="navbar-nav ms-auto align-items-lg-center gap-1 pb-1">
                     <li class="nav-item"><a class="nav-link"
                             href="/publicidad">Ofertas</a></li>
                     <li class="nav-item"><a class="nav-link"

@@ -6,53 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reportes</title>
 
-    <link rel="icon" type="image/png"
-          href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
-
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5186/5186031.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body class="bg-light">
 
 <div class="container-fluid">
     <div class="row">
 
-        <!-- BARRITA LATERAL :D ----------------------------------------------------------->
-        <!-- Botón para móviles -->
         <button class="btn btn-dark d-md-none mb-3" type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#sidebarMenu"
                 aria-controls="sidebarMenu" style="border-radius: 0px;">
             <i class="bi bi-list"></i> Menú
         </button>
-        <div
-                class="offcanvas offcanvas-start d-md-none bg-dark bg-opacity-90"
-                tabindex="-1"
-                id="sidebarMenu" aria-labelledby="sidebarLabel">
+
+        <div class="offcanvas offcanvas-start d-md-none bg-dark bg-opacity-90"
+             tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarLabel">
             <div class="offcanvas-header">
                 <button type="button" class="btn-close text-reset"
-                        data-bs-dismiss="offcanvas"
-                        aria-label="Cerrar"></button>
+                        data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
             </div>
             <div class="offcanvas-body p-0">
                 <jsp:include page="gestion-panel-lateral.jsp"/>
             </div>
         </div>
-        <!-- SOLO APARECE SI ES PANTALLA GRANDE -->
+
         <div class="d-none d-md-block col-md-2 p-0 vh-100">
             <jsp:include page="gestion-panel-lateral.jsp"/>
         </div>
-        <!-- FIN BARRITA LATAREAL :D ----------------------------------------------------------->
-
-        <!-- Contenido principal -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-4 py-4">
 
             <h1 class="border-start border-4 border-primary ps-3 fw-bold mb-4">
                 <i class="bi bi-file-earmark-bar-graph me-2"></i>Generar Reportes
             </h1>
 
-            <div class="card shadow-sm rounded-4 mb-4">
+            <div class="card shadow-sm mb-4">
                 <div class="card-body d-flex flex-column flex-md-row align-items-center justify-content-between p-4">
                     <div class="d-flex align-items-center mb-3 mb-md-0">
                         <i class="bi bi-file-earmark-pdf-fill text-danger fs-1 me-3"></i>
@@ -66,12 +56,10 @@
                 </div>
             </div>
 
-            <!-- Sección de reportes -->
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
-                <!-- Reporte de Boleta -->
                 <div class="col">
-                    <div class="card h-100 shadow-lg border-0 rounded-4">
+                    <div class="card h-100 border-0">
                         <div class="card-body text-center">
                             <i class="bi bi-receipt-cutoff display-4 text-primary"></i>
                             <h5 class="card-title mt-3 fw-bold">Boleta de Venta</h5>
@@ -88,9 +76,8 @@
                     </div>
                 </div>
 
-                <!-- Reporte de Ventas de Hoy -->
                 <div class="col">
-                    <div class="card h-100 shadow-lg border-0 rounded-4">
+                    <div class="card h-100 border-0">
                         <div class="card-body text-center">
                             <i class="bi bi-calendar-date-fill display-4 text-success"></i>
                             <h5 class="card-title mt-3 fw-bold">Ventas de Hoy</h5>
@@ -105,9 +92,8 @@
                     </div>
                 </div>
 
-                <!-- Reporte por Stock -->
                 <div class="col">
-                    <div class="card h-100 shadow-lg border-0 rounded-4">
+                    <div class="card h-100 border-0">
                         <div class="card-body text-center">
                             <i class="bi bi-box-seam display-4 text-secondary"></i>
                             <h5 class="card-title mt-3 fw-bold">Reporte por Stock</h5>
@@ -120,9 +106,8 @@
                     </div>
                 </div>
 
-                <!-- Reporte de Ventas General -->
                 <div class="col">
-                    <div class="card h-100 shadow-lg border-0 rounded-4">
+                    <div class="card h-100 border-0">
                         <div class="card-body text-center">
                             <i class="bi bi-bar-chart-fill display-4 text-warning"></i>
                             <h5 class="card-title mt-3 fw-bold">Reporte de Ventas</h5>
@@ -135,32 +120,28 @@
                     </div>
                 </div>
 
-                <!-- Reporte de Usuarios -->
                 <div class="col">
-                    <div class="card h-100 shadow-lg border-0 rounded-4">
+                    <div class="card h-100 border-0">
                         <div class="card-body text-center">
                             <i class="bi bi-people-fill display-4 text-info"></i>
                             <h5 class="card-title mt-3 fw-bold">Reporte por Usuarios</h5>
                             <p class="text-muted">Ventas agrupadas por vendedor.</p>
 
-                            <a href="/generar/reporte/ventas-por-usuario"
-                               class="btn btn-info text-white mt-3">
+                            <a href="/generar/reporte/ventas-por-usuario" class="btn btn-info text-white mt-3">
                                 <i class="bi bi-file-earmark-pdf-fill"></i> Descargar
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Reporte de Ventas por Fecha -->
                 <div class="col">
-                    <div class="card h-100 shadow-lg border-0 rounded-4">
+                    <div class="card h-100 border-0">
                         <div class="card-body text-center">
                             <i class="bi bi-calendar-range-fill display-4 text-danger"></i>
                             <h5 class="card-title mt-3 fw-bold">Ventas por Lapso de Fechas</h5>
                             <p class="text-muted">Genera un reporte entre dos fechas específicas.</p>
 
-                            <form action="/generar/reporte/ventas-entre-fechas" id="formReporteFechas"
-                                  class="mt-3" method="get">
+                            <form action="/generar/reporte/ventas-entre-fechas" id="formReporteFechas" class="mt-3" method="get">
                                 <div class="row g-2 justify-content-center">
                                     <div class="col-5">
                                         <input type="datetime-local" class="form-control shadow-sm"
@@ -179,9 +160,8 @@
                     </div>
                 </div>
 
-                <!-- Productos Vendidos -->
                 <div class="col">
-                    <div class="card h-100 shadow-lg border-0 rounded-4">
+                    <div class="card h-100 border-0">
                         <div class="card-body text-center">
                             <i class="bi bi-bag-check-fill display-4 text-success"></i>
                             <h5 class="card-title mt-3 fw-bold">Productos Vendidos</h5>
@@ -195,7 +175,6 @@
                 </div>
 
             </div>
-
         </main>
     </div>
 </div>
@@ -218,7 +197,6 @@
     });
 </script>
 
-<!-- Esto de aca evita que el usuario pase de poner el día de hoy -->
 <script>
     const hoy = new Date();
     hoy.setHours(23, 59, 59, 999);

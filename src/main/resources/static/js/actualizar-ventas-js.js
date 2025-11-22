@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const subtotal = (cantidad * precio).toFixed(2);
 
         fila.innerHTML = `
-            <!-- Imagen -->
             <td>
                 <img src="${producto.url_pro || ''}"
                      alt="${producto.nombre_pro || ''}"
@@ -49,12 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
                      style="width: 60px; height: 60px; object-fit: cover;">
             </td>
 
-            <!-- Nombre -->
             <td class="fw-semibold">
                 ${producto.nombre_pro || ''}
             </td>
 
-            <!-- Cantidad -->
             <td>
                 <input type="number"
                        name="cantidades[]"
@@ -64,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
                        min="1">
             </td>
 
-            <!-- Precio unidad -->
             <td>
                 <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0;">
                     <span style="font-weight: 500;">S/</span>
@@ -76,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </td>
 
-            <!-- SubTotal -->
             <td>
                 <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0;">
                     <span style="font-weight: 500;">S/</span>
@@ -88,12 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </td>
 
-            <!-- ID oculto -->
             <td style="display: none;">
                 <input type="hidden" class="id_producto" name="id_producto[]" value="${producto.id_producto}">
             </td>
 
-            <!-- Acciones -->
             <td class="text-center">
                 <button type="button" class="btn btn-danger btn-sm eliminarFila"
                     onclick="if(confirm('¿Estás seguro de eliminar este producto?')) eliminarFila(this)">
